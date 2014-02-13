@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="BinaryIO.Read refactored&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/BinaryIO.java" afterPath="$PROJECT_DIR$/src/algos/BinaryIO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -84,7 +84,7 @@
       <file leaf-file-name="BinaryIO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="28" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.46862483" vertical-offset="1451" max-vertical-offset="2686">
+            <state line="158" column="35" selection-start="4408" selection-end="4408" vertical-scroll-proportion="1.4993324" vertical-offset="1563" max-vertical-offset="2924">
               <folding />
             </state>
           </provider>
@@ -507,7 +507,11 @@
       <created>1392309352254</created>
       <updated>1392309352254</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="BinaryIO.Flush refactored&#10;">
+      <created>1392309646797</created>
+      <updated>1392309646797</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -555,7 +559,8 @@
     <MESSAGE value="BinaryIO tests refactored" />
     <MESSAGE value="BinaryIO.WriteBits refactored&#10;" />
     <MESSAGE value="BinaryIO.WriteBits small changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="BinaryIO.WriteBits small changes&#10;" />
+    <MESSAGE value="BinaryIO.Flush refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="BinaryIO.Flush refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -633,7 +638,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="28" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.46862483" vertical-offset="1451" max-vertical-offset="2686">
+        <state line="158" column="35" selection-start="4408" selection-end="4408" vertical-scroll-proportion="1.4993324" vertical-offset="1563" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>

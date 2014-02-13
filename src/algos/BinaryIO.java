@@ -117,18 +117,23 @@ public class BinaryIO {
         return bitsInBuffer == 0;
     }
 
-    public int ReadBits(int bitsCount) {
-        if (bitsCount > SIZEOFINT) {
-            //
-        }
-        int tmp = 0;
-        while (bitsInBuffer <= SIZEOFINT - SIZEOFBYTE && dataPointer < data.length) {
 
-            tmp = 0;
-            tmp |= (data[dataPointer] & MASK);
-            dataPointer += 1;
-            writeValueToBuffer(tmp, SIZEOFBYTE);
+    public int ReadBits(int bitsCount) {
+        assert bitsCount <= SIZEOFINT;
+        fillBufferWithData();
+        int result = readBitsFromBuffer(bitsCount);
+        return result;
+    }
+
+    private void fillBufferWithData() {
+        int scannedByte = 0;
+        while (isSpaceForByteInBuffer() && HaveMoreData()) {
+            scannedByte = readByte();
+            writeValueToBuffer(scannedByte, SIZEOFBYTE);
         }
+    }
+
+    private int readBitsFromBuffer(int bitsCount) {
         int shift = freeBitsInBuffer();
 
         int copy = buffer;
@@ -139,7 +144,19 @@ public class BinaryIO {
         return result;
     }
 
-    public boolean CanMove() {
+    private boolean isSpaceForByteInBuffer() {
+        return bitsInBuffer <= SIZEOFINT - SIZEOFBYTE;
+    }
+
+    private int readByte() {
+        int scannedByte;
+        scannedByte = 0;
+        scannedByte |= (data[dataPointer] & MASK);
+        dataPointer += 1;
+        return scannedByte;
+    }
+
+    public boolean HaveMoreData() {
         return dataPointer < data.length;
     }
 
@@ -147,7 +164,4 @@ public class BinaryIO {
         return bytesProceeded;
     }
 
-    public int GetBitsInBuffer() {
-        return bitsInBuffer;
-    }
 }
