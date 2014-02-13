@@ -25,7 +25,7 @@ public class BinaryIO {
         } else {
             int shift = freeBitsInBuffer();
             fillUpBufferWithPartOfValueBits(value, bitsCount, shift);
-            copyBufferToData();
+            copyFullBufferToData();
             copyRemainingBitsOfValueToBuffer(value, bitsCount, shift);
         }
     }
@@ -37,7 +37,7 @@ public class BinaryIO {
 
     }
 
-    private void copyBufferToData() {
+    private void copyFullBufferToData() {
         byte[] bufferAsBytes = bufferToByteArray();
 
         for (int i = 3; i >= 0; --i, dataPointer++) {
@@ -100,11 +100,15 @@ public class BinaryIO {
             return;
         }
         shiftBitsInBufferToTheLeft(freeBitsInBuffer());
-        int bytesCount = (bitsInBuffer + SIZEOFBYTE - 1) / SIZEOFBYTE;
-        byte[] tmp = bufferToByteArray();
+        copyRemainingBufferToData();
+    }
 
+    private void copyRemainingBufferToData() {
+        byte[] bufferAsBytes = bufferToByteArray();
+
+        int bytesCount = (bitsInBuffer + SIZEOFBYTE - 1) / SIZEOFBYTE;
         for (int i = 3; i >= 4 - bytesCount; --i, dataPointer++) {
-            data[dataPointer] = tmp[i];
+            data[dataPointer] = bufferAsBytes[i];
         }
         bytesProceeded += bytesCount;
     }

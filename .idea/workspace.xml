@@ -84,7 +84,7 @@
       <file leaf-file-name="BinaryIO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="9" selection-start="1329" selection-end="1329" vertical-scroll-proportion="-0.5981308" vertical-offset="1196" max-vertical-offset="2618">
+            <state line="106" column="28" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.46862483" vertical-offset="1451" max-vertical-offset="2686">
               <folding />
             </state>
           </provider>
@@ -503,7 +503,11 @@
       <created>1392308918177</created>
       <updated>1392308918177</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="BinaryIO.WriteBits small changes&#10;">
+      <created>1392309352254</created>
+      <updated>1392309352254</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -528,7 +532,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -550,7 +554,8 @@
     <MESSAGE value="Initial commit&#10;" />
     <MESSAGE value="BinaryIO tests refactored" />
     <MESSAGE value="BinaryIO.WriteBits refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="BinaryIO.WriteBits refactored&#10;" />
+    <MESSAGE value="BinaryIO.WriteBits small changes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="BinaryIO.WriteBits small changes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -628,7 +633,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="9" selection-start="1329" selection-end="1329" vertical-scroll-proportion="-0.5981308" vertical-offset="1196" max-vertical-offset="2618">
+        <state line="106" column="28" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.46862483" vertical-offset="1451" max-vertical-offset="2686">
           <folding />
         </state>
       </provider>
