@@ -34,7 +34,7 @@ public class BinaryIO {
         buffer = value << (SIZEOFINT - bitsCount + shift);
         bitsInBuffer = bitsCount - shift;
         buffer >>>= (freeBitsInBuffer());
-        bytesProceeded += 4;
+
     }
 
     private void copyBufferToData() {
@@ -43,6 +43,7 @@ public class BinaryIO {
         for (int i = 3; i >= 0; --i, dataPointer++) {
             data[dataPointer] = bufferAsBytes[i];
         }
+        bytesProceeded += 4;
     }
 
     private void fillUpBufferWithPartOfValueBits(int value, int bitsCount, int shift) {
@@ -95,9 +96,10 @@ public class BinaryIO {
     }
 
     public void Flush() {
-        if (bitsInBuffer == 0)
+        if (bufferIsEmpty()){
             return;
-        buffer <<= (freeBitsInBuffer());
+        }
+        shiftBitsInBufferToTheLeft(freeBitsInBuffer());
         int bytesCount = (bitsInBuffer + SIZEOFBYTE - 1) / SIZEOFBYTE;
         byte[] tmp = bufferToByteArray();
 
@@ -105,6 +107,10 @@ public class BinaryIO {
             data[dataPointer] = tmp[i];
         }
         bytesProceeded += bytesCount;
+    }
+
+    private boolean bufferIsEmpty() {
+        return bitsInBuffer == 0;
     }
 
     public int ReadBits(int bitsCount) {
