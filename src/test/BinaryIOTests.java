@@ -18,14 +18,14 @@ public class BinaryIOTests {
 	public void testWriteBits() {
 		BinaryIO bio = new BinaryIO(data);
 		Random r = new Random();
-		int size = 5001;
-		byte[] numbers = new byte[size];
-		int[] bits = new int[size];
+		int inputSize = 5001;
+		byte[] numbers = new byte[inputSize];
+		int[] bits = new int[inputSize];
 
-        generateNumbers(r, size, numbers, bits);
-        writeNumbers(bio, size, numbers, bits);
+        generateNumbers(r, inputSize, numbers, bits);
+        writeNumbers(bio, inputSize, numbers, bits);
 
-        readNumbersAndAssert(size, numbers, bits);
+        readNumbersAndAssert(inputSize, numbers, bits);
 
 	}
 
