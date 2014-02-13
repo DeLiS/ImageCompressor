@@ -1,10 +1,5 @@
 red.bmp 3126 98 94 0 true
-dirtyGreen.bmp 12342 135 15 0 true
-dirtyGreen.bmp 3126 92 15 0 true
-smth.bmp 196662 2037 375 0 true
-red.bmp 3126 98 125 0 true
-greenred.bmp 12342 152 15 0 true
+Безымянный1.png 4968988 6793984 226 0 true
+Снимок.PNG 16863 57116 111 0 true
 _red.bmp 3126 98 31 0 false
-_dirtyGreen.bmp 3126 92 31 0 false
-_dirtyGreen.bmp 12342 135 47 0 false
-_greenred.bmp 12342 152 46 0 false
+_Безымянный1.png 6912054 6793984 356 0 false
