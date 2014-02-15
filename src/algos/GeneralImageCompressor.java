@@ -5,101 +5,138 @@ import java.nio.ByteBuffer;
 
 public abstract class GeneralImageCompressor implements IImageCompressor {
 
-	@Override
-	public byte[] Compress(BufferedImage image) {
-		int width = image.getWidth();
-		int height = image.getHeight();
-		int pixelCount = width * height;
-		byte[] red = new byte[pixelCount];
-		byte[] green = new byte[pixelCount];
-		byte[] blue = new byte[pixelCount];
+    private int imageWidth;
+    private int imageHeight;
+    private byte[] red;
+    private byte[] green;
+    private byte[] blue;
+    private byte[] compressedRed;
+    private byte[] compressedGreen;
+    private byte[] compressedBlue;
 
-		int current = 0;
-		for(int j=0;j<height;++j)
-		{
-			for(int i=0;i<width;++i)
-			{
-				int rgb = image.getRGB(i,j);		
-				red[current] = 		(byte)((rgb >> 16) & 0xFF);
-				green[current] = 	(byte)((rgb >>  8) & 0xFF);
-				blue[current] = 	(byte)((rgb      ) & 0xFF);
-				current++;
-			}
-		}
-		ICompressor compressor = GetCompressor();
-		byte[] compressedRed = compressor.Compress(red);
-		compressor = GetCompressor();
-		byte[] compressedGreen = compressor.Compress(green);
-		compressor = GetCompressor();
-		byte[] compressedBlue = compressor.Compress(blue);
-		ByteBuffer bb = ByteBuffer.allocate(20 + compressedRed.length + compressedGreen.length + compressedBlue.length);
-		
-		bb.putInt(width);
-		bb.putInt(height);
-		bb.putInt(compressedRed.length);
-		bb.putInt(compressedGreen.length);
-		bb.putInt(compressedBlue.length);
-		
-		for(int i=0;i<compressedRed.length;++i)
-		{
-			bb.put(compressedRed[i]);
-		}
-		for(int i=0;i<compressedGreen.length;++i)
-		{
-			bb.put(compressedGreen[i]);
-		}
-		for(int i=0;i<compressedBlue.length;++i)
-		{
-			bb.put(compressedBlue[i]);
-		}
-		
+    @Override
+	public byte[] Compress(BufferedImage image) {
+        initSizeAndColourArraysForCompression(image);
+        getColoursFromImage(image);
+        compressColours();
+        ByteBuffer bb = writeImageToByteBuffer();
 		return bb.array();
 	}
 
-	@Override
+    private ByteBuffer writeImageToByteBuffer() {
+        ByteBuffer bb = ByteBuffer.allocate(20 + compressedRed.length + compressedGreen.length + compressedBlue.length);
+
+        bb.putInt(imageWidth);
+        bb.putInt(imageHeight);
+        bb.putInt(compressedRed.length);
+        bb.putInt(compressedGreen.length);
+        bb.putInt(compressedBlue.length);
+
+        for(int i=0;i< compressedRed.length;++i)
+        {
+            bb.put(compressedRed[i]);
+        }
+        for(int i=0;i< compressedGreen.length;++i)
+        {
+            bb.put(compressedGreen[i]);
+        }
+        for(int i=0;i< compressedBlue.length;++i)
+        {
+            bb.put(compressedBlue[i]);
+        }
+        return bb;
+    }
+
+    private void compressColours() {
+        ICompressor compressor = GetCompressor();
+        compressedRed = compressor.Compress(red);
+        compressor = GetCompressor();
+        compressedGreen = compressor.Compress(green);
+        compressor = GetCompressor();
+        compressedBlue = compressor.Compress(blue);
+    }
+
+    private void getColoursFromImage(BufferedImage image) {
+        int current = 0;
+        for(int j=0;j< imageHeight;++j)
+        {
+            for(int i=0;i< imageWidth;++i)
+            {
+                int rgb = image.getRGB(i,j);
+                red[current] = 		(byte)((rgb >> 16) & 0xFF);
+                green[current] = 	(byte)((rgb >>  8) & 0xFF);
+                blue[current] = 	(byte)((rgb      ) & 0xFF);
+                current++;
+            }
+        }
+    }
+
+    private void initSizeAndColourArraysForCompression(BufferedImage image) {
+        imageWidth = image.getWidth();
+        imageHeight = image.getHeight();
+        int pixelCount = imageWidth * imageHeight;
+        red = new byte[pixelCount];
+        green = new byte[pixelCount];
+        blue = new byte[pixelCount];
+    }
+
+    @Override
 	public BufferedImage Decompress(byte[] image) {
-		//ByteBuffer byteBuffer = ByteBuffer.allocate(image.length);
-		ByteBuffer byteBuffer = ByteBuffer.wrap(image);		
-		
-		int width = byteBuffer.getInt();
-		int height = byteBuffer.getInt();
-		int redLength = byteBuffer.getInt();
-		int greenLength = byteBuffer.getInt();
-		int blueLength = byteBuffer.getInt();
-		
-		byte[] redCompressed = new byte[redLength];
-		byte[] greenCompressed = new byte[greenLength];
-		byte[] blueCompressed = new byte[blueLength];		
-		byteBuffer = byteBuffer.get(redCompressed,0,redLength);
-		byteBuffer = byteBuffer.get(greenCompressed,0,greenLength);
-		byteBuffer = byteBuffer.get(blueCompressed,0,blueLength);
-		ICompressor compressor = GetCompressor();
-		byte[] redDecompressed = compressor.Decompress(redCompressed);
-		compressor = GetCompressor();
-		byte[] greenDecompressed = compressor.Decompress(greenCompressed);
-		compressor = GetCompressor();
-		byte[] blueDecompressed = compressor.Decompress(blueCompressed);
-		BufferedImage bi = new BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);
-		for(int i=0;i<height;++i)
-		{
-			for(int j=0;j<width;++j)
-			{
-				int red = redDecompressed[i*width + j];
-				int green = greenDecompressed[i*width + j];
-				int blue = blueDecompressed[i*width + j];
-				if(red < 0)
-					red += 256;
-				if(green < 0)
-					green += 256;
-				if(blue < 0)
-					blue += 256;
-				int rgb = (red<<16)|(green<<8)|blue;
-				bi.setRGB(j, i, rgb);
-			}
-		}
-		return bi;
+        readImageSizeAndColourArraysForDecompression(image);
+        decompressColours();
+        BufferedImage bufferedImage = createImageFromColourArrays();
+		return bufferedImage;
 	}
-	
-	protected abstract ICompressor GetCompressor();
+
+    private BufferedImage createImageFromColourArrays() {
+        BufferedImage bufferedImage = new BufferedImage(imageWidth,imageHeight,BufferedImage.TYPE_3BYTE_BGR);
+        for(int i=0;i<imageHeight;++i)
+        {
+            for(int j=0;j<imageWidth;++j)
+            {
+                int redByte = red[i*imageWidth + j];
+                int greenByte = green[i*imageWidth + j];
+                int blueByte = blue[i*imageWidth + j];
+                if(redByte < 0)
+                    redByte += 256;
+                if(greenByte < 0)
+                    greenByte += 256;
+                if(blueByte < 0)
+                    blueByte += 256;
+                int rgb = (redByte<<16)|(greenByte<<8)|blueByte;
+                bufferedImage.setRGB(j, i, rgb);
+            }
+        }
+        return bufferedImage;
+    }
+
+    private void decompressColours() {
+        ICompressor compressor = GetCompressor();
+        red = compressor.Decompress(compressedRed);
+        compressor = GetCompressor();
+        green = compressor.Decompress(compressedGreen);
+        compressor = GetCompressor();
+        blue = compressor.Decompress(compressedBlue);
+    }
+
+    private void readImageSizeAndColourArraysForDecompression(byte[] image) {
+        ByteBuffer byteBuffer = ByteBuffer.wrap(image);
+
+        imageWidth = byteBuffer.getInt();
+        imageHeight = byteBuffer.getInt();
+        int redLength = byteBuffer.getInt();
+        int greenLength = byteBuffer.getInt();
+        int blueLength = byteBuffer.getInt();
+
+        compressedRed = new byte[redLength];
+        compressedGreen = new byte[greenLength];
+        compressedBlue = new byte[blueLength];
+
+        byteBuffer = byteBuffer.get(compressedRed,0,redLength);
+        byteBuffer = byteBuffer.get(compressedGreen,0,greenLength);
+        byteBuffer = byteBuffer.get(compressedBlue,0,blueLength);
+    }
+
+    protected abstract ICompressor GetCompressor();
 
 }
