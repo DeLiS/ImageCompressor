@@ -5,11 +5,11 @@ public class BinaryIO {
     private final int SIZEOFBYTE = 8;
     private final int SIZEOFINT = 32;
     private final int MASK = 0xFF;
-    private byte[] data;
-    private int dataPointer;
     int bytesProceeded;
     int buffer;
     int bitsInBuffer;
+    private byte[] data;
+    private int dataPointer;
 
     public BinaryIO(byte[] dest) {
         data = dest;
@@ -40,10 +40,10 @@ public class BinaryIO {
     private void copyFullBufferToData() {
         byte[] bufferAsBytes = bufferToByteArray();
 
-        for (int i = 3; i >= 0; --i, dataPointer++) {
+        for (int i = (BYTESININT - 1); i >= 0; --i, dataPointer++) {
             data[dataPointer] = bufferAsBytes[i];
         }
-        bytesProceeded += 4;
+        bytesProceeded += BYTESININT;
     }
 
     private void fillUpBufferWithPartOfValueBits(int value, int bitsCount, int shift) {
@@ -96,7 +96,7 @@ public class BinaryIO {
     }
 
     public void Flush() {
-        if (bufferIsEmpty()){
+        if (bufferIsEmpty()) {
             return;
         }
         shiftBitsInBufferToTheLeft(freeBitsInBuffer());
@@ -107,7 +107,7 @@ public class BinaryIO {
         byte[] bufferAsBytes = bufferToByteArray();
 
         int bytesCount = (bitsInBuffer + SIZEOFBYTE - 1) / SIZEOFBYTE;
-        for (int i = 3; i >= 4 - bytesCount; --i, dataPointer++) {
+        for (int i = 3; i >= BYTESININT - bytesCount; --i, dataPointer++) {
             data[dataPointer] = bufferAsBytes[i];
         }
         bytesProceeded += bytesCount;
