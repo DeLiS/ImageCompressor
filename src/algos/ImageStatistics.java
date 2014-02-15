@@ -85,19 +85,21 @@ public class ImageStatistics implements Comparable<ImageStatistics> {
 	}
 	public String Write()
 	{
-		String result = "";
-		result += GetName();
-		result += " ";
-		result += GetOriginalSize();
-		result += " ";
-		result += GetCompressedSize();
-		result += " ";
-		result += GetWorkTime();
-		result += " ";
-		result += GetImageType();
-		result += " ";
-		result += IsCompressionStatistics();
-		return result;
+        StringBuilder result = new StringBuilder();
+
+		result.append(GetName());
+        result.append(" ");
+        result.append(GetOriginalSize());
+        result.append(" ");
+        result.append(GetCompressedSize());
+        result.append(" ");
+        result.append(GetWorkTime());
+        result.append(" ");
+        result.append(GetImageType());
+        result.append(" ");
+        result.append(IsCompressionStatistics());
+
+		return result.toString();
 	}
 	public ImageStatistics(String string) throws Exception
 	{
