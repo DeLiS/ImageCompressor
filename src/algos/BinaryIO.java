@@ -88,10 +88,10 @@ public class BinaryIO {
 
     private byte[] bufferToByteArray() {
         byte[] tmp = new byte[BYTESININT];
-        tmp[0] = (byte) (((buffer << 24) >>> 24) & MASK);
-        tmp[1] = (byte) (((buffer << 16) >>> 24) & MASK);
-        tmp[2] = (byte) (((buffer << 8) >>> 24) & MASK);
-        tmp[3] = (byte) (((buffer << 0) >>> 24) & MASK);
+        tmp[0] = (byte) (((buffer << 3*SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
+        tmp[1] = (byte) (((buffer << 2*SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
+        tmp[2] = (byte) (((buffer << SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
+        tmp[3] = (byte) (((buffer << 0) >>> 3*SIZEOFBYTE) & MASK);
         return tmp;
     }
 
