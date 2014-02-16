@@ -67,7 +67,7 @@ public class JpegImageCompressor implements IImageCompressor {
     }
 
     private double Coefficient(int i, int u) {
-        double c = CConst(u);
+        double c = 1; // по формуле - CConst(u), но с 1 работает лучше;
         double result = c * Math.cos(((2 * i + 1) * u * Math.PI) / 2 / BLOCKSIZE);
         return result;
     }

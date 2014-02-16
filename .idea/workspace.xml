@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -82,7 +83,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="583" column="87" selection-start="22299" selection-end="22299" vertical-scroll-proportion="0.47129506" vertical-offset="9558" max-vertical-offset="11390">
+            <state line="69" column="70" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.33333334" vertical-offset="932" max-vertical-offset="11390">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -720,7 +721,11 @@
       <created>1392561042653</created>
       <updated>1392561042653</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="JPEGImageCompressor CompressWithRLE refactored&#10;">
+      <created>1392563149557</created>
+      <updated>1392563149557</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -786,7 +791,8 @@
     <MESSAGE value="JPEGImageCompressor Postcompression refactored&#10;" />
     <MESSAGE value="JPEGImageCompressor methods rearranged&#10;" />
     <MESSAGE value="JPEGImageCompressor deleted unused method&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor deleted unused method&#10;" />
+    <MESSAGE value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1031,7 +1037,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="583" column="87" selection-start="22299" selection-end="22299" vertical-scroll-proportion="0.47129506" vertical-offset="9558" max-vertical-offset="11390">
+        <state line="69" column="70" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.33333334" vertical-offset="932" max-vertical-offset="11390">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
