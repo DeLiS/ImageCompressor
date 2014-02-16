@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" afterPath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -74,7 +73,7 @@
       <file leaf-file-name="HuffmanCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="38" selection-start="3402" selection-end="3402" vertical-scroll-proportion="0.5073431" vertical-offset="1728" max-vertical-offset="3944">
+            <state line="189" column="12" selection-start="4936" selection-end="4936" vertical-scroll-proportion="0.57810414" vertical-offset="2593" max-vertical-offset="4148">
               <folding>
                 <element signature="method#CalculateQuantities#0;class#HuffmanCompressor#0" expanded="false" />
               </folding>
@@ -503,7 +502,11 @@
       <created>1392551142045</created>
       <updated>1392551142045</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="HuffmanCompressor.Decompress refactored&#10;">
+      <created>1392551732803</created>
+      <updated>1392551732803</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -557,7 +560,8 @@
     <MESSAGE value="GeneralImageCompressor refactored" />
     <MESSAGE value="String replaced with StringBuffer in ImageStatistics.Write" />
     <MESSAGE value="HuffmanCompressor.Compress refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="HuffmanCompressor.Compress refactored" />
+    <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="HuffmanCompressor.Decompress refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -774,7 +778,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="38" selection-start="3402" selection-end="3402" vertical-scroll-proportion="0.5073431" vertical-offset="1728" max-vertical-offset="3944">
+        <state line="189" column="12" selection-start="4936" selection-end="4936" vertical-scroll-proportion="0.57810414" vertical-offset="2593" max-vertical-offset="4148">
           <folding>
             <element signature="method#CalculateQuantities#0;class#HuffmanCompressor#0" expanded="false" />
           </folding>

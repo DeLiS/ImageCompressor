@@ -124,7 +124,6 @@ public class HuffmanCompressor implements ICompressor {
 	public byte[] Decompress(byte[] data) {
 		byte[] buffer = createBuffer(data);
 		binaryIO = new BinaryIO(data);
-
         readBitsCount();
         ReadQuantities();
 		BuildTree();
@@ -180,31 +179,44 @@ public class HuffmanCompressor implements ICompressor {
 	private void BuildTree()
 	{		
 		PriorityQueue<TreeNode> queue = new PriorityQueue<TreeNode>();
-		
-		for(int i = 0; i < BYTESCOUNT; ++i)
+
+        createTreeNodesFromQuantities(queue);
+        if(queue.size() == 1)
 		{
-			if( quantities[i] > 0)
-			{
-				TreeNode node = new TreeNode((byte)i,quantities[i]);
-				queue.add(node);
-			}
-		}
-		if(queue.size() == 1)
-		{
-			TreeNode fake = new TreeNode((byte)(queue.peek().character + 1),queue.peek().quantity +1);
-			queue.add(fake);
-			differentBytesCount += 1;
+            addFakeNode(queue);
 		}
 		while(queue.size() > 1)
 		{
-			TreeNode first = queue.poll();
-			TreeNode second = queue.poll();
-			TreeNode union = new TreeNode(first, second);
-			queue.add(union);
+            unionLastTwoNodesInQueue(queue);
 		}		
 		root = queue.poll();		
-	}	
-	private void Tour(TreeNode cur, int curCode, int curCodeLength)
+	}
+
+    private void unionLastTwoNodesInQueue(PriorityQueue<TreeNode> queue) {
+        TreeNode first = queue.poll();
+        TreeNode second = queue.poll();
+        TreeNode union = new TreeNode(first, second);
+        queue.add(union);
+    }
+
+    private void createTreeNodesFromQuantities(PriorityQueue<TreeNode> queue) {
+        for(int i = 0; i < BYTESCOUNT; ++i)
+        {
+            if( quantities[i] > 0)
+            {
+                TreeNode node = new TreeNode((byte)i,quantities[i]);
+                queue.add(node);
+            }
+        }
+    }
+
+    private void addFakeNode(PriorityQueue<TreeNode> queue) {
+        TreeNode fake = new TreeNode((byte)(queue.peek().character + 1),queue.peek().quantity +1);
+        queue.add(fake);
+        differentBytesCount += 1;
+    }
+
+    private void Tour(TreeNode cur, int curCode, int curCodeLength)
 	{
 		if(cur.character != null)
 		{
