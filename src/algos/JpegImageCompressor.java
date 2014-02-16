@@ -51,34 +51,60 @@ public class JpegImageCompressor implements IImageCompressor {
 		compressionRatio = 1;
 	}
 	
-	private static byte GetNumberOfBits(int n)
+	//����������� ���� C(i,u)*C(j,v)
+	private void PreCalcCoefficients()
 	{
-		if(n==0) return 0;
-		byte carry = 0;
-		if(n<0)
-			{
-				n = -n;
-				carry = 1;
-			}
-		byte result =  (byte)( Math.floor(Math.log(1.0*n)/ Math.log(2.0)) + 1);
-		return (byte) (result + carry);
+        preCalcCs();
+        preCalcCCs();
 	}
+
+    private void preCalcCs() {
+        C = new double[BLOCKSIZE][BLOCKSIZE];
+        for(int i=0;i<BLOCKSIZE;++i)
+        {
+            for(int j=0;j<BLOCKSIZE;++j)
+            {
+                C[i][j] = Coefficient(i, j);
+            }
+        }
+    }
+
+	private double Coefficient(int i, int u)
+	{
+		double  c = CConst(u);
+		double result = c * Math.cos( ((2*i+1)*u*Math.PI )/2/BLOCKSIZE);
+		return result;
+	}
+
+	private double CConst(double u)
+	{
+		if(u == 0){
+			return C_FOR_U_EQ_ZERO;
+		}else{
+            return C_FOR_NON_ZERO_U;
+        }
+	}
+
+    private void preCalcCCs() {
+        CC = new double[BLOCKSIZE][BLOCKSIZE][BLOCKSIZE][BLOCKSIZE];
+        for(int i=0;i<BLOCKSIZE;++i)
+        {
+            for(int j=0;j<BLOCKSIZE;++j)
+            {
+                for(int k=0;k<BLOCKSIZE;++k)
+                {
+                    for(int l = 0; l < BLOCKSIZE;++l)
+                    {
+                        CC[i][j][k][l] = C[i][j] * C[k][l];
+                    }
+                }
+            }
+        }
+    }
 
 	private static int GetCode(int n)
 	{
 		return Math.abs(n);
-	}
-
-	private static int GetNumber(int code,byte bitsCount)
-	{
-
-		int bitsCountCalculated = GetNumberOfBits(code);
-		if(bitsCountCalculated < bitsCount)
-		{
-			return -code;
-		}
-		return code;
-
 	}
 
 	@Override
@@ -140,52 +166,11 @@ public class JpegImageCompressor implements IImageCompressor {
         return (width/BLOCKSIZE * height/BLOCKSIZE )/2 * 3;
     }
 
-    private void initYCbCrMatrixes() {
-        Ycompressed = new double[height][width];
-        CbCompressed = new double[height/2][width/2];
-        CrCompressed = new double[height/2][width/2];
-    }
-
     private byte[] PostProcess2(int matrixCount)
 	{
 		byte[] result = PostCompression(globalResultInt,matrixCount);
 		return result;
 	}
-
-	//����������� ���� C(i,u)*C(j,v)
-	private void PreCalcCoefficients()
-	{
-        preCalcCs();
-        preCalcCCs();
-	}
-
-    private void preCalcCCs() {
-        CC = new double[BLOCKSIZE][BLOCKSIZE][BLOCKSIZE][BLOCKSIZE];
-        for(int i=0;i<BLOCKSIZE;++i)
-        {
-            for(int j=0;j<BLOCKSIZE;++j)
-            {
-                for(int k=0;k<BLOCKSIZE;++k)
-                {
-                    for(int l = 0; l < BLOCKSIZE;++l)
-                    {
-                        CC[i][j][k][l] = C[i][j] * C[k][l];
-                    }
-                }
-            }
-        }
-    }
-
-    private void preCalcCs() {
-        C = new double[BLOCKSIZE][BLOCKSIZE];
-        for(int i=0;i<BLOCKSIZE;++i)
-        {
-            for(int j=0;j<BLOCKSIZE;++j)
-            {
-                C[i][j] = Coefficient(i, j);
-            }
-        }
-    }
 
     private void GetYUVimage(BufferedImage image)
 	{
@@ -248,55 +233,6 @@ public class JpegImageCompressor implements IImageCompressor {
         }
         return matrix;
     }
-	
-    private double[][] DiscreteCosinusTransformation2(double[][] matrix, boolean forward)
-	{
-		double[][] result = new double[BLOCKSIZE][BLOCKSIZE];
-		for(int u = 0; u < BLOCKSIZE; ++u)
-		{
-			for(int v = 0; v < BLOCKSIZE; ++v)
-			{
-
-				result[u][v] = 0;
-				for(int x = 0; x < BLOCKSIZE; ++x)
-				{
-					for(int y = 0; y < BLOCKSIZE; ++y)
-					{
-						if(forward)
-						{
-							result[u][v] += CC[x][u][y][v] * matrix[x][y];
-						}
-						else
-						{
-							result[u][v] += CConst(x) * CConst(y)*CC[u][x][v][y] * matrix[x][y];
-						}
-					}
-				}
-				if(forward)
-				{
-					result[u][v]*= CConst(u)*CConst(v);
-				}
-				result[u][v] /= 4;
-			}
-		}
-		return result;
-	}
-
-	private double CConst(double u)
-	{
-		if(u == 0){
-			return C_FOR_U_EQ_ZERO;
-		}else{
-            return C_FOR_NON_ZERO_U;
-        }
-	}
-
-	private double Coefficient(int i, int u)
-	{
-		double  c = CConst(u);
-		double result = c * Math.cos( ((2*i+1)*u*Math.PI )/2/BLOCKSIZE);
-		return result;
-	}
 
 	private void Quantization(double[][] matrix, int leftTopRow, int leftTopColumn, int[][] quantizationMatrix)
 	{
@@ -310,7 +246,7 @@ public class JpegImageCompressor implements IImageCompressor {
 			}
 		}
 	}
-
+	
 	private int[] Scan2(double[][] matrix)
 	{
 		int[] tmp = new int[BLOCKSIZE*BLOCKSIZE];
@@ -423,47 +359,109 @@ public class JpegImageCompressor implements IImageCompressor {
 		return bi;
 	}
 
-	//leftTopRow, leftTopColumn - � ������ �������
-	private void BackwardProcess2(double[][] decompressedMatrix, double[][] compressedMatrix, int[] compressed, int leftTopRow, int leftTopColumn,int step, int[][] quantizationMatrix)
+    private int[][] PreDecompression(byte[] data )
 	{
+		ByteBuffer bb = ByteBuffer.wrap(data);
+		width = bb.getInt();
+		height = bb.getInt();
+		int matrixCount = bb.getInt();
+		int quantitiesSize = bb.getInt();
+		int binarySize = bb.getInt();
+		int[][] result = new int[matrixCount][BLOCKSIZE*BLOCKSIZE];
+		byte[] quantitiesCompressed = new byte[quantitiesSize];
+		byte[] binary = new byte[binarySize];
 
-		int[] linearized = compressed;
-		double[][] matrix = new double[BLOCKSIZE][BLOCKSIZE];
-		InversedScan2(linearized, matrix);
-		DeQuantization(matrix, 0, 0, quantizationMatrix);
+		bb = bb.get(quantitiesCompressed, 0, quantitiesSize);
+		bb = bb.get(binary, 0, binarySize);
 
-		double[][] result = DiscreteCosinusTransformation2(matrix, false);
+		HuffmanCompressor huffman = new HuffmanCompressor();
+		byte[] quantities = huffman.Decompress(quantitiesCompressed);
 
-		for(int i=0;i<step*BLOCKSIZE;i+=step)
+		BinaryIO bio = new BinaryIO(binary);
+
+		int bitsCount = quantities[0];
+
+		int code = 0;
+		if(bitsCount > 0)
+			code = bio.ReadBits(bitsCount);
+		int value = GetNumber(code,(byte)bitsCount);
+
+		result[0][0] = value;
+		int qPointer = 1;
+		for(int i=1;i<result.length;++i)
 		{
-			for(int j=0;j<step*BLOCKSIZE;j+=step)
-			{
-				decompressedMatrix[step*leftTopRow + i][step*leftTopColumn + j] = result[i/step][j/step];
-			}
+			bitsCount = quantities[qPointer++];
+			if(bitsCount>0)
+				code = bio.ReadBits(bitsCount);
+			else
+				code = 0;
+			value = GetNumber(code,(byte)bitsCount);
+			result[i][0] = result[i-1][0] + value;
 		}
+		int curRow = 0, curCol = 1;
+		while(qPointer < quantities.length)
+		{
+			int zerosCount = quantities[qPointer++] & 0xFF;
+			for(int i=0;i<zerosCount;++i)
+			{
+				result[curRow][curCol++] = 0;
+				if(curCol == BLOCKSIZE*BLOCKSIZE)
+				{
+					curRow++;
+					curCol = 1;
+				}
+			}
+			bitsCount = quantities[qPointer++] & 0xFF;
+			if(bitsCount==0)
+			{
+				result[curRow][curCol++] = 0;
+				if(curCol == BLOCKSIZE*BLOCKSIZE)
+				{
+					curRow++;
+					curCol = 1;
+				}
+				continue;
+			}
+			else
+			{
+				code = bio.ReadBits(bitsCount);
+				value = GetNumber(code,(byte)bitsCount);
+
+				result[curRow][curCol++] = value;
+				if(curCol == BLOCKSIZE*BLOCKSIZE)
+				{
+					curRow++;
+					curCol = 1;
+				}
+			}
+
+		}
+		return result;
 	}
-	
-	private void InversedScan2(int[] linearized, double[][] matrix)
+
+	private static int GetNumber(int code,byte bitsCount)
 	{
-		int p = 0;
-		for(int i = 0; i < BLOCKSIZE; ++i)
+
+		int bitsCountCalculated = GetNumberOfBits(code);
+		if(bitsCountCalculated < bitsCount)
 		{
-			for(int j = 0; j < BLOCKSIZE; ++j)
-			{
-				matrix[i][j] = linearized[p++];// bb.getInt();// (int)(linearized[ ZigZagMatrix[i][j] ] & 0xFF);
-			}
+			return -code;
 		}
+		return code;
+
 	}
-	
-	private void DeQuantization(double[][] compressedMatrix, int leftTopRow, int leftTopColumn,int[][] quantizationMatrix)
+
+	private static byte GetNumberOfBits(int n)
 	{
-		for(int i=0;i<BLOCKSIZE;++i)
-		{
-			for(int j=0;j<BLOCKSIZE;++j)
+		if(n==0) return 0;
+		byte carry = 0;
+		if(n<0)
 			{
-				compressedMatrix[leftTopRow + i][leftTopColumn + j] *= (compressionRatio*quantizationMatrix[i][j]);
+				n = -n;
+				carry = 1;
 			}
-		}
+		byte result =  (byte)( Math.floor(Math.log(1.0*n)/ Math.log(2.0)) + 1);
+		return (byte) (result + carry);
 	}
 
 	private void FillGaps(double[][] matrix)
@@ -518,6 +516,88 @@ public class JpegImageCompressor implements IImageCompressor {
 		}
 	}
 
+	//leftTopRow, leftTopColumn - � ������ �������
+	private void BackwardProcess2(double[][] decompressedMatrix, double[][] compressedMatrix, int[] compressed, int leftTopRow, int leftTopColumn,int step, int[][] quantizationMatrix)
+	{
+
+		int[] linearized = compressed;
+		double[][] matrix = new double[BLOCKSIZE][BLOCKSIZE];
+		InversedScan2(linearized, matrix);
+		DeQuantization(matrix, 0, 0, quantizationMatrix);
+
+		double[][] result = DiscreteCosinusTransformation2(matrix, false);
+
+		for(int i=0;i<step*BLOCKSIZE;i+=step)
+		{
+			for(int j=0;j<step*BLOCKSIZE;j+=step)
+			{
+				decompressedMatrix[step*leftTopRow + i][step*leftTopColumn + j] = result[i/step][j/step];
+			}
+		}
+	}
+	
+	private void DeQuantization(double[][] compressedMatrix, int leftTopRow, int leftTopColumn,int[][] quantizationMatrix)
+	{
+		for(int i=0;i<BLOCKSIZE;++i)
+		{
+			for(int j=0;j<BLOCKSIZE;++j)
+			{
+				compressedMatrix[leftTopRow + i][leftTopColumn + j] *= (compressionRatio*quantizationMatrix[i][j]);
+			}
+		}
+	}
+	
+	private void InversedScan2(int[] linearized, double[][] matrix)
+	{
+		int p = 0;
+		for(int i = 0; i < BLOCKSIZE; ++i)
+		{
+			for(int j = 0; j < BLOCKSIZE; ++j)
+			{
+				matrix[i][j] = linearized[p++];// bb.getInt();// (int)(linearized[ ZigZagMatrix[i][j] ] & 0xFF);
+			}
+		}
+	}
+
+    private double[][] DiscreteCosinusTransformation2(double[][] matrix, boolean forward)
+	{
+		double[][] result = new double[BLOCKSIZE][BLOCKSIZE];
+		for(int u = 0; u < BLOCKSIZE; ++u)
+		{
+			for(int v = 0; v < BLOCKSIZE; ++v)
+			{
+
+				result[u][v] = 0;
+				for(int x = 0; x < BLOCKSIZE; ++x)
+				{
+					for(int y = 0; y < BLOCKSIZE; ++y)
+					{
+						if(forward)
+						{
+							result[u][v] += CC[x][u][y][v] * matrix[x][y];
+						}
+						else
+						{
+							result[u][v] += CConst(x) * CConst(y)*CC[u][x][v][y] * matrix[x][y];
+						}
+					}
+				}
+				if(forward)
+				{
+					result[u][v]*= CConst(u)*CConst(v);
+				}
+				result[u][v] /= 4;
+			}
+		}
+		return result;
+	}
+
+    private void initYCbCrMatrixes() {
+        Ycompressed = new double[height][width];
+        CbCompressed = new double[height/2][width/2];
+        CrCompressed = new double[height/2][width/2];
+    }
+
 	double[][] QuaterMatrix(double[][] matrix)
 	{
 		double[][] result = new double[matrix.length/2][matrix[0].length/2];
@@ -555,7 +635,6 @@ public class JpegImageCompressor implements IImageCompressor {
         int[] line = stretchMatrixInOneLineByRowsFromSecondColumn(data);
         int startIndex = firstColumn.length;
         bitsPointer = compressWithRLE(bio, quantities, bitsPointer, line, startIndex);
-
         return Arrays.copyOf(quantities, bitsPointer);
     }
 
@@ -669,84 +748,4 @@ public class JpegImageCompressor implements IImageCompressor {
 }
         return firstColumn;
     }
-
-    private int[][] PreDecompression(byte[] data )
-	{
-		ByteBuffer bb = ByteBuffer.wrap(data);
-		width = bb.getInt();
-		height = bb.getInt();
-		int matrixCount = bb.getInt();
-		int quantitiesSize = bb.getInt();
-		int binarySize = bb.getInt();
-		int[][] result = new int[matrixCount][BLOCKSIZE*BLOCKSIZE];
-		byte[] quantitiesCompressed = new byte[quantitiesSize];
-		byte[] binary = new byte[binarySize];
-
-		bb = bb.get(quantitiesCompressed, 0, quantitiesSize);
-		bb = bb.get(binary, 0, binarySize);
-
-		HuffmanCompressor huffman = new HuffmanCompressor();
-		byte[] quantities = huffman.Decompress(quantitiesCompressed);
-
-		BinaryIO bio = new BinaryIO(binary);
-
-		int bitsCount = quantities[0];
-
-		int code = 0;
-		if(bitsCount > 0)
-			code = bio.ReadBits(bitsCount);
-		int value = GetNumber(code,(byte)bitsCount);
-
-		result[0][0] = value;
-		int qPointer = 1;
-		for(int i=1;i<result.length;++i)
-		{
-			bitsCount = quantities[qPointer++];
-			if(bitsCount>0)
-				code = bio.ReadBits(bitsCount);
-			else
-				code = 0;
-			value = GetNumber(code,(byte)bitsCount);
-			result[i][0] = result[i-1][0] + value;
-		}
-		int curRow = 0, curCol = 1;
-		while(qPointer < quantities.length)
-		{
-			int zerosCount = quantities[qPointer++] & 0xFF;
-			for(int i=0;i<zerosCount;++i)
-			{
-				result[curRow][curCol++] = 0;
-				if(curCol == BLOCKSIZE*BLOCKSIZE)
-				{
-					curRow++;
-					curCol = 1;
-				}
-			}
-			bitsCount = quantities[qPointer++] & 0xFF;
-			if(bitsCount==0)
-			{
-				result[curRow][curCol++] = 0;
-				if(curCol == BLOCKSIZE*BLOCKSIZE)
-				{
-					curRow++;
-					curCol = 1;
-				}
-				continue;
-			}
-			else
-			{
-				code = bio.ReadBits(bitsCount);
-				value = GetNumber(code,(byte)bitsCount);
-
-				result[curRow][curCol++] = value;
-				if(curCol == BLOCKSIZE*BLOCKSIZE)
-				{
-					curRow++;
-					curCol = 1;
-				}
-			}
-
-		}
-		return result;
-	}
 }

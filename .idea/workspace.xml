@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -63,7 +63,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="674" class="algos.JpegImageCompressor" package="algos">
+      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="363" class="algos.JpegImageCompressor" package="algos">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -100,23 +100,29 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="538" column="67" selection-start="14995" selection-end="14995" vertical-scroll-proportion="0.47663552" vertical-offset="4097" max-vertical-offset="8194">
+            <state line="103" column="0" selection-start="2954" selection-end="2954" vertical-scroll-proportion="0.25233644" vertical-offset="1171" max-vertical-offset="7684">
               <folding>
-                <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#RGBtoYCbCr#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#GetCode#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#Compress#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#compressCbAndCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#compressCrMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#compressCbMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#getTotalMatrixesCount#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#ForwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#getSubMatrixOfBlockSize#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#Coefficient#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#Quantization#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#Scan2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#Decompress#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#PreDecompression#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#GetNumber#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#GetNumberOfBits#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#FillGaps#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#QuaterMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -163,6 +169,122 @@
     <option name="width" value="1936" />
     <option name="height" value="1176" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>Class structure</id>
+          </State>
+          <State>
+            <id>Code maturity issues</id>
+          </State>
+          <State>
+            <id>Code style issues</id>
+          </State>
+          <State>
+            <id>Control flow issues</id>
+          </State>
+          <State>
+            <id>Data flow issues</id>
+          </State>
+          <State>
+            <id>Declaration redundancy</id>
+          </State>
+          <State>
+            <id>Encapsulation issues</id>
+          </State>
+          <State>
+            <id>Error handling</id>
+          </State>
+          <State>
+            <id>Error handlingGroovy</id>
+          </State>
+          <State>
+            <id>Finalization issues</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Imports</id>
+          </State>
+          <State>
+            <id>Initialization issues</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>J2ME issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
+          </State>
+          <State>
+            <id>Java language level migration aids</id>
+          </State>
+          <State>
+            <id>JavaBeans issues</id>
+          </State>
+          <State>
+            <id>Memory issues</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+          <State>
+            <id>Numeric issues</id>
+          </State>
+          <State>
+            <id>Performance issues</id>
+          </State>
+          <State>
+            <id>Portability issues</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsGroovy</id>
+          </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+          <State>
+            <id>Probable bugsGroovy</id>
+          </State>
+          <State>
+            <id>Security issues</id>
+          </State>
+          <State>
+            <id>Threading issues</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Verbose or redundant code constructs</id>
+          </State>
+          <State>
+            <id>Visibility issues</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -177,7 +299,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="PackagesPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -190,7 +312,34 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -288,7 +437,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -597,7 +746,11 @@
       <created>1392559462264</created>
       <updated>1392559462264</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="JPEGImageCompressor Postcompression refactored&#10;">
+      <created>1392560589962</created>
+      <updated>1392560589962</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -660,7 +813,8 @@
     <MESSAGE value="JPEGImageCompressor Postcompression some fixes&#10;" />
     <MESSAGE value="JPEGImageCompressor GetCode&#10;" />
     <MESSAGE value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
+    <MESSAGE value="JPEGImageCompressor Postcompression refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Postcompression refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -896,25 +1050,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="-4.857143" vertical-offset="3672" max-vertical-offset="4573">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="538" column="67" selection-start="14995" selection-end="14995" vertical-scroll-proportion="0.47663552" vertical-offset="4097" max-vertical-offset="8194">
+        <state line="103" column="0" selection-start="2954" selection-end="2954" vertical-scroll-proportion="0.25233644" vertical-offset="1171" max-vertical-offset="7684">
           <folding>
-            <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#RGBtoYCbCr#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#GetCode#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#Compress#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#compressCbAndCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#compressCrMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#compressCbMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#getTotalMatrixesCount#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#ForwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#getSubMatrixOfBlockSize#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#Coefficient#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#Quantization#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#Scan2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#Decompress#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#PreDecompression#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#GetNumber#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#GetNumberOfBits#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#FillGaps#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#QuaterMatrix#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
           </folding>
         </state>
       </provider>
