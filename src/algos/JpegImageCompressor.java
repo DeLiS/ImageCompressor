@@ -533,7 +533,7 @@ public class JpegImageCompressor implements IImageCompressor {
 	{
         int[] firstColumn = getFirstColumn(data);
         int[] diffs = calculateDifferences(firstColumn);
-		byte[] tmp = new byte[firstColumn.length * 8];
+		byte[] tmp = new byte[firstColumn.length * 16];
 		BinaryIO bio = new BinaryIO(tmp);
 		//в этом массиве будут храниться количества бит и количества нулей
 		byte[] quantities = new byte[8*data.length*data[0].length];
@@ -542,29 +542,16 @@ public class JpegImageCompressor implements IImageCompressor {
 		byte bitsCount;
 		int code;
 		//записываем сначала первый столбец
-		for(int i=0;i<diffs.length;++i)
-		{
-			bitsCount = GetNumberOfBits(diffs[i]);
-			code = GetCode(diffs[i]);
-			quantities[bitsPointer++] = bitsCount;
-			if(bitsCount > 0)
-				bio.WriteBits(code, bitsCount);
-		}
+        bitsPointer = writeFirstColumn(diffs, bio, quantities, bitsPointer);
 
-		// потом всё остальное по строкам
-		int[] line = new int[(data.length)*(data[0].length - 1)];
-		int p = 0;
-		for(int i=0;i<data.length;++i)
-		{
-			for(int j=1;j<data[i].length;++j)
-				line[p++] = data[i][j];
-		}
+        // потом всё остальное по строкам
+        int[] line = stretchMatrixInOneLineByRowsFromSecondColumn(data);
 
 		int i = firstColumn.length;
 		while(i<line.length)
 		{
 			int counter = 0;
-			while(line[i] == 0 && i < line.length - 1)
+			while(currentElementIsZero(line[i]) && isNotLastElementInLine(line, i))
 			{
 				counter++;
 				if(counter == 256)
@@ -580,24 +567,15 @@ public class JpegImageCompressor implements IImageCompressor {
 			}
 			if(counter > 0)
 			{
-				if(counter>1)
-				{
-					quantities[bitsPointer++] = (byte) (counter-1);//записать counter-1 предшествующих нулей в выход
-					quantities[bitsPointer++] = (byte) 0;//прочитать 0 бит, записать 1 ноль в выход
-					quantities[bitsPointer++] = (byte) 0;//записать 0 предшествующих нулей в выход
-				}
-				else
-				{
-					quantities[bitsPointer++] = (byte) 0; //записать 0 предшествующих нулей в выход
-					quantities[bitsPointer++] = (byte) 0; //прочитать 0 бит, записать 1 ноль в выход
-					quantities[bitsPointer++] = (byte) 0;// записать 0 предшествующих нулей в выход
-				}
+                quantities[bitsPointer++] = (byte) (counter-1);//записать counter-1 предшествующих нулей в выход
+                quantities[bitsPointer++] = (byte) 0;//прочитать 0 бит, записать 1 ноль в выход
+                quantities[bitsPointer++] = (byte) 0;//записать 0 предшествующих нулей в выход
 			}
-          /*  else //counter==0
+           else //counter==0
             {
-                quantities[qPointer++] = (byte) 0;
+                quantities[bitsPointer++] = (byte) 0;
             }
-            */
+
             bitsCount = GetNumberOfBits(line[i]);
 			code = GetCode(line[i]);
 			quantities[bitsPointer++] = bitsCount;
@@ -607,24 +585,66 @@ public class JpegImageCompressor implements IImageCompressor {
 		}
 		bio.Flush();
 		byte[] quantitiesUsed = Arrays.copyOf(quantities, bitsPointer);
-		HuffmanCompressor huffman = new HuffmanCompressor();
-		byte[] quantitiesCompressed = huffman.Compress(quantitiesUsed);
+        byte[] quantitiesCompressed = compressWithHuffman(quantitiesUsed);
 
 		int quantitiesSize = quantitiesCompressed.length;
 		int binarySize = bio.GetTotalBytesProceeded();
 		byte[] binary = Arrays.copyOf(tmp, binarySize);
-		byte[] result = new byte[40 + quantitiesSize + binarySize];
-		ByteBuffer bb = ByteBuffer.wrap(result);
-		bb.putInt(width);
-		bb.putInt(height);
-		bb.putInt(matrixCount);
-		bb.putInt(quantitiesSize);
-		bb.putInt(binarySize);
-		bb.put(quantitiesCompressed);
-		bb.put(binary);
+        byte[] result = createResult(matrixCount, quantitiesCompressed, quantitiesSize, binarySize, binary);
 
 		return result;
 	}
+
+    private byte[] compressWithHuffman(byte[] quantitiesUsed) {
+        HuffmanCompressor huffman = new HuffmanCompressor();
+        return huffman.Compress(quantitiesUsed);
+    }
+
+    private byte[] createResult(int matrixCount, byte[] quantitiesCompressed, int quantitiesSize, int binarySize, byte[] binary) {
+        byte[] result = new byte[40 + quantitiesSize + binarySize];
+        ByteBuffer bb = ByteBuffer.wrap(result);
+        bb.putInt(width);
+        bb.putInt(height);
+        bb.putInt(matrixCount);
+        bb.putInt(quantitiesSize);
+        bb.putInt(binarySize);
+        bb.put(quantitiesCompressed);
+        bb.put(binary);
+        return result;
+    }
+
+    private boolean isNotLastElementInLine(int[] line, int i) {
+        return i < line.length - 1;
+    }
+
+    private boolean currentElementIsZero(int i) {
+        return i == 0;
+    }
+
+    private int[] stretchMatrixInOneLineByRowsFromSecondColumn(int[][] data) {
+        int[] line = new int[(data.length)*(data[0].length - 1)];
+        int p = 0;
+        for(int i=0;i<data.length;++i)
+        {
+            for(int j=1;j<data[i].length;++j)
+                line[p++] = data[i][j];
+        }
+        return line;
+    }
+
+    private int writeFirstColumn(int[] diffs, BinaryIO bio, byte[] quantities, int bitsPointer) {
+        byte bitsCount;
+        int code;
+        for(int i=0;i<diffs.length;++i)
+        {
+            bitsCount = GetNumberOfBits(diffs[i]);
+            code = GetCode(diffs[i]);
+            quantities[bitsPointer++] = bitsCount;
+            if(bitsCount > 0)
+                bio.WriteBits(code, bitsCount);
+        }
+        return bitsPointer;
+    }
 
     private int[] calculateDifferences(int[] firstColumn) {
         int[] diffs = new int[firstColumn.length];

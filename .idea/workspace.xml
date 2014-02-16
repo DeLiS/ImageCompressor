@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -62,7 +63,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="646" class="algos.JpegImageCompressor" package="algos">
+      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="666" class="algos.JpegImageCompressor" package="algos">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -87,10 +88,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="BinaryIO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="24" selection-start="2113" selection-end="2113" vertical-scroll-proportion="0.38205498" vertical-offset="858" max-vertical-offset="7718">
+            <state line="684" column="38" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.31909212" vertical-offset="6697" max-vertical-offset="8058">
               <folding>
                 <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
@@ -116,7 +126,9 @@
         <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -577,7 +589,11 @@
       <created>1392557669303</created>
       <updated>1392557669303</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="JPEGImageCompressor GetCode&#10;">
+      <created>1392557785515</created>
+      <updated>1392557785515</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -589,7 +605,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39943874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -602,7 +618,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -638,7 +654,8 @@
     <MESSAGE value="JPEGImageCompressor&#10;coefficient in DCT changed" />
     <MESSAGE value="JPEGImageCompressor Quantization&#10;Math.round -&gt; Math.floor&#10;" />
     <MESSAGE value="JPEGImageCompressor Postcompression some fixes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Postcompression some fixes&#10;" />
+    <MESSAGE value="JPEGImageCompressor GetCode&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor GetCode&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -788,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="40" selection-start="4145" selection-end="4145" vertical-scroll-proportion="0.0" vertical-offset="1881" max-vertical-offset="2924">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.03835091" vertical-offset="11" max-vertical-offset="1054">
@@ -868,13 +878,22 @@
     <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="24" selection-start="2113" selection-end="2113" vertical-scroll-proportion="0.38205498" vertical-offset="858" max-vertical-offset="7718">
+        <state line="684" column="38" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.31909212" vertical-offset="6697" max-vertical-offset="8058">
           <folding>
             <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
