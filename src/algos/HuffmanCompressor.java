@@ -7,6 +7,7 @@ public class HuffmanCompressor implements ICompressor {
 
     public static final int START_CODE = 0;
     public static final int START_CODE_LENGTH = 0;
+    public static final int LEFT_BIT = 0;
 
     private class TreeNode implements Comparable<TreeNode>
 	{
@@ -121,37 +122,50 @@ public class HuffmanCompressor implements ICompressor {
 
     @Override
 	public byte[] Decompress(byte[] data) {
-		
-		byte[] buffer = new byte[SIZEOFINT + 8*data.length + (SIZEOFBYTE + SIZEOFINT)*BYTESCOUNT];
+		byte[] buffer = createBuffer(data);
 		binaryIO = new BinaryIO(data);
-		int bufferPointer = 0;
-		bitsCount = binaryIO.ReadBits(SIZEOFINT);
-		ReadQuantities();
+
+        readBitsCount();
+        ReadQuantities();
 		BuildTree();
-		TreeNode cur = root;
-		while(bitsCount > 0)
-		{
-			bitsCount -= 1;
-			int bit = binaryIO.ReadBits(1);
-			if(bit == 0)
-			{
-				cur = cur.left;
-			}
-			else
-			{
-				cur = cur.right;
-			}
-			if(cur.character != null)
-			{
-				buffer[bufferPointer] = cur.character;
-				bufferPointer += 1;
-				cur = root;
-			}
-		}		
+        int bufferPointer = readDataFromTreeToBuffer(buffer);
 		return Arrays.copyOf(buffer, bufferPointer);
 	}
-	
-	private void CalculateQuantities(byte[] data) {
+
+    private int readDataFromTreeToBuffer(byte[] buffer) {
+        TreeNode cur = root;
+        int bufferPointer = 0;
+        while(bitsCount > 0)
+        {
+            bitsCount -= 1;
+            int bit = binaryIO.ReadBits(1);
+            if(bit == LEFT_BIT)
+            {
+                cur = cur.left;
+            }
+            else
+            {
+                cur = cur.right;
+            }
+            if(cur.character != null)
+            {
+                buffer[bufferPointer] = cur.character;
+                bufferPointer += 1;
+                cur = root;
+            }
+        }
+        return bufferPointer;
+    }
+
+    private void readBitsCount() {
+        bitsCount = binaryIO.ReadBits(SIZEOFINT);
+    }
+
+    private byte[] createBuffer(byte[] data) {
+        return new byte[SIZEOFINT + 8*data.length + (SIZEOFBYTE + SIZEOFINT)*BYTESCOUNT];
+    }
+
+    private void CalculateQuantities(byte[] data) {
 		for(int i = 0; i < data.length; ++i)
 		{
 			int index = data[i] & 0xFF;
