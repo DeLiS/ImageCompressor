@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 public class HuffmanCompressor implements ICompressor {
 
-	
-	private class TreeNode implements Comparable<TreeNode>
+
+    public static final int START_CODE = 0;
+    public static final int START_CODE_LENGTH = 0;
+
+    private class TreeNode implements Comparable<TreeNode>
 	{
 		public TreeNode left;
 		public TreeNode right;
@@ -40,9 +43,9 @@ public class HuffmanCompressor implements ICompressor {
 		}
 	}
 	
-	private final int BYTESCOUNT = 256;
-	private final int SIZEOFBYTE = 8;
-	private final int SIZEOFINT = 32;
+	private static final int BYTESCOUNT = 256;
+	private static final int SIZEOFBYTE = 8;
+	private static final int SIZEOFINT = 32;
 	private int[] codes;
 	private int[] codeLengths;
 	private int[] quantities;
@@ -62,29 +65,61 @@ public class HuffmanCompressor implements ICompressor {
 	}
 	@Override
 	public byte[] Compress(byte[] data) {
-		byte[] buffer = new byte[SIZEOFINT + data.length + (SIZEOFBYTE + SIZEOFINT)*BYTESCOUNT];
-		binaryIO = new BinaryIO(buffer);
-		binaryIO.WriteBits(0, SIZEOFINT);//занимаем место
+        byte[] buffer = prepareBuffer(data);
 		CalculateQuantities(data);
 		BuildTree();
-		Tour(root,0,0);
-		WriteQuantities();
-		for(int i = 0; i < data.length; ++i)
-		{
-			int index = data[i] & 0xFF;
-			binaryIO.WriteBits(codes[index], codeLengths[index]);
-			bitsCount += codeLengths[index];
-		}
-		binaryIO.Flush();
-		int totalLength = binaryIO.GetTotalBytesProceeded();
-		binaryIO = new BinaryIO(buffer);
-		binaryIO.WriteBits(bitsCount,SIZEOFINT);// пишем в занятое место
-		binaryIO.Flush();
-		
+		Tour(root, START_CODE, START_CODE_LENGTH);
+		writeQuantities();
+        writeCodes(data);
+		int totalLength = getTotalLengthOfBuffer();
+        writeBitsCount(buffer);
 		return Arrays.copyOf(buffer, totalLength);
 	}
 
-	@Override
+    private int getTotalLengthOfBuffer() {
+        return binaryIO.GetTotalBytesProceeded();
+    }
+
+    private void writeBitsCount(byte[] buffer) {
+        binaryIO = new BinaryIO(buffer);
+        binaryIO.WriteBits(bitsCount,SIZEOFINT);// пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        binaryIO.Flush();
+    }
+
+    private void writeQuantities()
+    {
+        // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ 256 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        //(пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ.пїЅ. 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 0 - пїЅпїЅпїЅпїЅпїЅпїЅ 1)
+        binaryIO.WriteBits(differentBytesCount - 1, SIZEOFBYTE);
+        for(int i = 0; i < BYTESCOUNT; ++i)
+        {
+            if( codeLengths[i] >= 0)
+            {
+                binaryIO.WriteBits(i, SIZEOFBYTE);
+                binaryIO.WriteBits(quantities[i], SIZEOFINT);
+            }
+        }
+
+    }
+
+    private void writeCodes(byte[] data) {
+        for(int i = 0; i < data.length; ++i)
+        {
+            int index = data[i] & 0xFF;
+            binaryIO.WriteBits(codes[index], codeLengths[index]);
+            bitsCount += codeLengths[index];
+        }
+        binaryIO.Flush();
+    }
+
+    private byte[] prepareBuffer(byte[] data) {
+        byte[] buffer = new byte[SIZEOFINT + data.length + (SIZEOFBYTE + SIZEOFINT)*BYTESCOUNT];
+        binaryIO = new BinaryIO(buffer);
+        binaryIO.WriteBits(0, SIZEOFINT);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        return buffer;
+    }
+
+    @Override
 	public byte[] Decompress(byte[] data) {
 		
 		byte[] buffer = new byte[SIZEOFINT + 8*data.length + (SIZEOFBYTE + SIZEOFINT)*BYTESCOUNT];
@@ -173,21 +208,7 @@ public class HuffmanCompressor implements ICompressor {
 			Tour(cur.right, (curCode<<1)|1, curCodeLength + 1);
 		}
 	}
-	private void WriteQuantities()
-	{
-		// не может быть больше, чем 256 различных байт 
-		//(храним на 1 меньше, т.к. 0 различных байт не имеет смысла, 0 - значит 1)
-		binaryIO.WriteBits(differentBytesCount - 1, SIZEOFBYTE);   
-		for(int i = 0; i < BYTESCOUNT; ++i)
-		{
-			if( codeLengths[i] >= 0)
-			{
-				binaryIO.WriteBits(i, SIZEOFBYTE);
-				binaryIO.WriteBits(quantities[i], SIZEOFINT);
-			}
-		}
-		
-	}
+
 	private void ReadQuantities()
 	{
 		int differentBytesCount = binaryIO.ReadBits(SIZEOFBYTE) + 1;
