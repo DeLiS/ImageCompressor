@@ -276,7 +276,7 @@ public class JpegImageCompressor implements IImageCompressor {
 			{
 				int row = leftTopRow + i;
 				int column = leftTopColumn + j;
-				matrix[row][column] = Math.round( matrix[row][column]/(compressionRatio * quantizationMatrix[i][j]));
+				matrix[row][column] = Math.floor( matrix[row][column]/(compressionRatio * quantizationMatrix[i][j]));
 			}
 		}
 	}

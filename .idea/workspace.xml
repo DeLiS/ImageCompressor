@@ -90,7 +90,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="266" column="30" selection-start="7839" selection-end="7839" vertical-scroll-proportion="0.7451299" vertical-offset="3111" max-vertical-offset="11118">
+            <state line="278" column="49" selection-start="8191" selection-end="8191" vertical-scroll-proportion="0.7516234" vertical-offset="3311" max-vertical-offset="11118">
               <folding>
                 <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#preCalcCs#0;class#JpegImageCompressor#0" expanded="false" />
@@ -544,7 +544,11 @@
       <created>1392554384510</created>
       <updated>1392554384510</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="JPEGImageCompressor&#10;coefficient in DCT changed">
+      <created>1392554941302</created>
+      <updated>1392554941302</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -602,7 +606,8 @@
     <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
     <MESSAGE value="HuffmanCompressor constants renamed&#10;" />
     <MESSAGE value="some rearrangements in JPEGImageCompressor&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="some rearrangements in JPEGImageCompressor&#10;" />
+    <MESSAGE value="JPEGImageCompressor&#10;coefficient in DCT changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor&#10;coefficient in DCT changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -824,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="30" selection-start="7839" selection-end="7839" vertical-scroll-proportion="0.7451299" vertical-offset="3111" max-vertical-offset="11118">
+        <state line="278" column="49" selection-start="8191" selection-end="8191" vertical-scroll-proportion="0.7516234" vertical-offset="3311" max-vertical-offset="11118">
           <folding>
             <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#preCalcCs#0;class#JpegImageCompressor#0" expanded="false" />
