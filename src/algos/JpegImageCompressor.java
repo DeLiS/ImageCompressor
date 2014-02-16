@@ -53,7 +53,6 @@ public class JpegImageCompressor implements IImageCompressor {
 	
 	private static byte GetNumberOfBits(int n)
 	{
-
 		if(n==0) return 0;
 		byte carry = 0;
 		if(n<0)
@@ -67,12 +66,7 @@ public class JpegImageCompressor implements IImageCompressor {
 
 	private static int GetCode(int n)
 	{
-		if(n<0)
-		{
-			n = -n;
-			return n;
-		}
-		return n;
+		return Math.abs(n);
 	}
 
 	private static int GetNumber(int code,byte bitsCount)

@@ -62,7 +62,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="652" class="algos.JpegImageCompressor" package="algos">
+      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="646" class="algos.JpegImageCompressor" package="algos">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -90,7 +90,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="8" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.38205498" vertical-offset="637" max-vertical-offset="7820">
+            <state line="68" column="24" selection-start="2113" selection-end="2113" vertical-scroll-proportion="0.38205498" vertical-offset="858" max-vertical-offset="7718">
               <folding>
                 <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
@@ -573,7 +573,11 @@
       <created>1392555046022</created>
       <updated>1392555046022</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="JPEGImageCompressor Postcompression some fixes&#10;">
+      <created>1392557669303</created>
+      <updated>1392557669303</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -633,7 +637,8 @@
     <MESSAGE value="some rearrangements in JPEGImageCompressor&#10;" />
     <MESSAGE value="JPEGImageCompressor&#10;coefficient in DCT changed" />
     <MESSAGE value="JPEGImageCompressor Quantization&#10;Math.round -&gt; Math.floor&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Quantization&#10;Math.round -&gt; Math.floor&#10;" />
+    <MESSAGE value="JPEGImageCompressor Postcompression some fixes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Postcompression some fixes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -869,7 +874,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="8" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.38205498" vertical-offset="637" max-vertical-offset="7820">
+        <state line="68" column="24" selection-start="2113" selection-end="2113" vertical-scroll-proportion="0.38205498" vertical-offset="858" max-vertical-offset="7718">
           <folding>
             <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
