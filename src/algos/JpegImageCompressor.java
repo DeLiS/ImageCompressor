@@ -5,7 +5,9 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 public class JpegImageCompressor implements IImageCompressor {
 
-	private final int BLOCKSIZE = 8;
+    public static final double C_FOR_U_EQ_ZERO = 1.0 / Math.sqrt(2.0);
+    public static final int C_FOR_NON_ZERO_U = 1;
+    private final int BLOCKSIZE = 8;
 	
 	private int width;
 	private int height;
@@ -151,7 +153,7 @@ public class JpegImageCompressor implements IImageCompressor {
         {
             for(int j=0;j<BLOCKSIZE;++j)
             {
-                C[i][j] = Coefficient(i,j);
+                C[i][j] = Coefficient(i, j);
             }
         }
     }
@@ -200,20 +202,26 @@ public class JpegImageCompressor implements IImageCompressor {
 
     private void ForwardProcess2(double[][] oldMatrix, int leftTopRow, int leftTopColumn, int step, int[][] quantizationMatrix, int counter)
 	{
-		double[][] matrix = new double[BLOCKSIZE][BLOCKSIZE];
-		for(int i=0;i<BLOCKSIZE;++i)
-		{
-			for(int j=0;j<BLOCKSIZE;++j)
-			{
-				matrix[i][j] = oldMatrix[leftTopRow + i*step][leftTopColumn + j*step];
-			}
-		}
+        double[][] matrix = getSubMatrixOfBlockSize(oldMatrix, leftTopRow, leftTopColumn, step);
 		double[][] resultMatrix = DiscreteCosinusTransformation2(matrix,true);
 		Quantization(resultMatrix, 0,0,quantizationMatrix);
 		int[] linearized = Scan2(resultMatrix);
 		globalResultInt[counter] = linearized;
 	}
-	private double[][] DiscreteCosinusTransformation2(double[][] matrix, boolean forward)
+
+    private double[][] getSubMatrixOfBlockSize(double[][] oldMatrix, int leftTopRow, int leftTopColumn, int step) {
+        double[][] matrix = new double[BLOCKSIZE][BLOCKSIZE];
+        for(int i=0;i<BLOCKSIZE;++i)
+        {
+            for(int j=0;j<BLOCKSIZE;++j)
+            {
+                matrix[i][j] = oldMatrix[leftTopRow + i*step][leftTopColumn + j*step];
+            }
+        }
+        return matrix;
+    }
+
+    private double[][] DiscreteCosinusTransformation2(double[][] matrix, boolean forward)
 	{
 		double[][] result = new double[BLOCKSIZE][BLOCKSIZE];
 		for(int u = 0; u < BLOCKSIZE; ++u)
@@ -247,22 +255,15 @@ public class JpegImageCompressor implements IImageCompressor {
 	}
 	private double CConst(double u)
 	{
-		double c = 1;
-		if(u == 0)
-		{
-			
-			c = 1.0/Math.sqrt(2.0);
-		}
-		return c;
+		if(u == 0){
+			return C_FOR_U_EQ_ZERO;
+		}else{
+            return C_FOR_NON_ZERO_U;
+        }
 	}
 	private double Coefficient(int i, int u)
 	{
-		double  c = 1;
-		/*if(u == 0)
-		{
-			
-			c = 1.0/Math.sqrt(2.0);
-		}*/
+		double  c = CConst(u);
 		double result = c * Math.cos( ((2*i+1)*u*Math.PI )/2/BLOCKSIZE);
 		return result;
 	}

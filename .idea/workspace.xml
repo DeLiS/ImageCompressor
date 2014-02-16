@@ -4,9 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="HuffmanCompressor constants renamed&#10;">
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -63,7 +62,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="592" class="algos.JpegImageCompressor" package="algos">
+      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="593" class="algos.JpegImageCompressor" package="algos">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -91,10 +90,11 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="48" selection-start="6831" selection-end="6831" vertical-scroll-proportion="1.1931819" vertical-offset="2665" max-vertical-offset="11611">
+            <state line="266" column="30" selection-start="7839" selection-end="7839" vertical-scroll-proportion="0.7451299" vertical-offset="3111" max-vertical-offset="11118">
               <folding>
                 <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#preCalcCs#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -540,7 +540,11 @@
       <created>1392552008298</created>
       <updated>1392552008298</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="some rearrangements in JPEGImageCompressor&#10;">
+      <created>1392554384510</created>
+      <updated>1392554384510</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -597,7 +601,8 @@
     <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
     <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
     <MESSAGE value="HuffmanCompressor constants renamed&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="HuffmanCompressor constants renamed&#10;" />
+    <MESSAGE value="some rearrangements in JPEGImageCompressor&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="some rearrangements in JPEGImageCompressor&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -819,10 +824,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="48" selection-start="6831" selection-end="6831" vertical-scroll-proportion="1.1931819" vertical-offset="2665" max-vertical-offset="11611">
+        <state line="266" column="30" selection-start="7839" selection-end="7839" vertical-scroll-proportion="0.7451299" vertical-offset="3111" max-vertical-offset="11118">
           <folding>
             <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#preCalcCs#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
           </folding>
         </state>
       </provider>
