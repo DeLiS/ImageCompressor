@@ -83,7 +83,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="70" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.33333334" vertical-offset="932" max-vertical-offset="11390">
+            <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.83540803" vertical-offset="4751" max-vertical-offset="11424">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -725,7 +725,11 @@
       <created>1392563149557</created>
       <updated>1392563149557</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="JPEGImageCompressor green colour fixed&#10;">
+      <created>1392563777414</created>
+      <updated>1392563777414</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -792,7 +796,8 @@
     <MESSAGE value="JPEGImageCompressor methods rearranged&#10;" />
     <MESSAGE value="JPEGImageCompressor deleted unused method&#10;" />
     <MESSAGE value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
+    <MESSAGE value="JPEGImageCompressor green colour fixed&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor green colour fixed&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1037,7 +1042,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="70" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.33333334" vertical-offset="932" max-vertical-offset="11390">
+        <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.83540803" vertical-offset="4751" max-vertical-offset="11424">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

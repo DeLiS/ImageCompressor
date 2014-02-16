@@ -1,4 +1,4 @@
 red.bmp 3126 98 94 0 true
-lenna.bmp 786486 168208 268 0 true
+lenna.bmp 786486 170857 240 0 true
 _red.bmp 3126 98 31 0 false
-_lenna.bmp 786486 168208 2215 0 false
+_lenna.bmp 786486 170857 1120 0 false

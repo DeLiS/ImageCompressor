@@ -57,29 +57,6 @@ public class JpegImageCompressor implements IImageCompressor {
         preCalcCCs();
     }
 
-    private void preCalcCs() {
-        C = new double[BLOCKSIZE][BLOCKSIZE];
-        for (int i = 0; i < BLOCKSIZE; ++i) {
-            for (int j = 0; j < BLOCKSIZE; ++j) {
-                C[i][j] = Coefficient(i, j);
-            }
-        }
-    }
-
-    private double Coefficient(int i, int u) {
-        double c = 1; // по формуле - CConst(u), но с 1 работает лучше;
-        double result = c * Math.cos(((2 * i + 1) * u * Math.PI) / 2 / BLOCKSIZE);
-        return result;
-    }
-
-    private double CConst(double u) {
-        if (u == 0) {
-            return C_FOR_U_EQ_ZERO;
-        } else {
-            return C_FOR_NON_ZERO_U;
-        }
-    }
-
     private void preCalcCCs() {
         CC = new double[BLOCKSIZE][BLOCKSIZE][BLOCKSIZE][BLOCKSIZE];
         for (int i = 0; i < BLOCKSIZE; ++i) {
@@ -91,6 +68,21 @@ public class JpegImageCompressor implements IImageCompressor {
                 }
             }
         }
+    }
+
+    private void preCalcCs() {
+        C = new double[BLOCKSIZE][BLOCKSIZE];
+        for (int i = 0; i < BLOCKSIZE; ++i) {
+            for (int j = 0; j < BLOCKSIZE; ++j) {
+                C[i][j] = Coefficient(i, j);
+            }
+        }
+    }
+
+    private double Coefficient(int i, int u) {
+        double c = C_FOR_NON_ZERO_U; // по формуле - CConst(u), но с 1 работает лучше;
+        double result = c * Math.cos(((2 * i + 1) * u * Math.PI) / 2 / BLOCKSIZE);
+        return result;
     }
 
     private static int GetCode(int n) {
@@ -116,6 +108,14 @@ public class JpegImageCompressor implements IImageCompressor {
         }
         byte result = (byte) (Math.floor(Math.log(1.0 * n) / Math.log(2.0)) + 1);
         return (byte) (result + carry);
+    }
+
+    private double CConst(double u) {
+        if (u == 0) {
+            return C_FOR_U_EQ_ZERO;
+        } else {
+            return C_FOR_NON_ZERO_U;
+        }
     }
 
     @Override
@@ -268,30 +268,8 @@ public class JpegImageCompressor implements IImageCompressor {
         int Yend = 2 * blocksCount / 3;
         int Uend = Yend + (blocksCount - Yend) / 2;
         //int Vend = Uend + blocksCount / 3;
-        for (int i = 0; i < Yend; ++i) {
-            if (i < Yend) {
-                int blocksInRow = width / BLOCKSIZE;
-                int leftTopRow = (i / blocksInRow) * BLOCKSIZE;
-                ;//(i * BLOCKSIZE) / blocksInRow;
-                int leftTopColumn = (i % blocksInRow) * BLOCKSIZE;
-
-                BackwardProcess2(Y, Ycompressed, globalResultInt[i], leftTopRow, leftTopColumn, 1, YquantizationMatrix);
-            }
-        }
-
-        int blockIndex = 0;
-        for (int i = Yend; i < blocksCount; ++i) {
-            int blocksInRow = width / (2 * BLOCKSIZE);
-            int leftTopRow = (blockIndex / blocksInRow) * BLOCKSIZE;
-            ;//(i * BLOCKSIZE) / blocksInRow;
-            int leftTopColumn = (blockIndex % blocksInRow) * BLOCKSIZE;
-            BackwardProcess2(Cb, CbCompressed, globalResultInt[i], leftTopRow, leftTopColumn, 2, CquantizationMatrix);
-
-            ++i;
-            BackwardProcess2(Cr, CrCompressed, globalResultInt[i], leftTopRow, leftTopColumn, 2, CquantizationMatrix);
-            blockIndex++;
-        }
-
+        decompressYmatrix(Yend);
+        decompressCbAndCrMatrixes(blocksCount, Yend);
         FillGaps(Cb);
         FillGaps(Cr);
 
@@ -299,45 +277,69 @@ public class JpegImageCompressor implements IImageCompressor {
         int[][] R = new int[height][width];
         int[][] G = new int[height][width];
         int[][] B = new int[height][width];
-        for (int i = 0; i < height; ++i) {
-            for (int j = 0; j < width; ++j) {
-                R[i][j] = (int) Math.round(Y[i][j] + 1.402 * (Cr[i][j] - 128));
-                if (R[i][j] < 0) {
-                    System.out.println(R[i][j]);
-                    R[i][j] = 0;
-                }
-                if (R[i][j] > 255) {
-                    System.out.println(R[i][j]);
-                    R[i][j] = 255;
-                }
-                G[i][j] = (int) Math.round(Y[i][j] - 0.34414 * (Cb[i][j] - 128) - 0.71414 * (Cr[i][j] - 128));
-                if (G[i][j] < 0) {
-                    System.out.println(G[i][j]);
-                    G[i][j] = 0;
-                }
-                if (G[i][j] > 255) {
-                    System.out.println(G[i][j]);
-                    G[i][j] = 255;
-                }
-                B[i][j] = (int) Math.round(Y[i][j] + 1.772 * (Cb[i][j] - 128));
-                if (B[i][j] < 0) {
-                    System.out.println(B[i][j]);
-                    B[i][j] = 0;
-                }
-                if (B[i][j] > 255) {
-                    System.out.println(B[i][j]);
-                    B[i][j] = 255;
-                }
-            }
-        }
+        YUVtoRGB(R, G, B);
+        BufferedImage bi = createImageFromRGB(R, G, B);
+        return bi;
+    }
+
+    private BufferedImage createImageFromRGB(int[][] r, int[][] g, int[][] b) {
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
         for (int i = 0; i < height; ++i) {
             for (int j = 0; j < width; ++j) {
-                int rgb = (R[i][j] << 16) | (G[i][j] << 8) | B[i][j];
+                int rgb = (r[i][j] << 16) | (g[i][j] << 8) | b[i][j];
                 bi.setRGB(i, j, rgb);
             }
         }
         return bi;
+    }
+
+    private void YUVtoRGB(int[][] r, int[][] g, int[][] b) {
+        for (int i = 0; i < height; ++i) {
+            for (int j = 0; j < width; ++j) {
+                r[i][j] = (int) Math.round(Y[i][j] + 1.402 * (Cr[i][j] - 128));
+                checkBoundariesForColour(r, i, j);
+                g[i][j] = (int) Math.round(Y[i][j] - 0.34414 * (Cb[i][j] - 128) - 0.71414 * (Cr[i][j] - 128));
+                checkBoundariesForColour(g, i, j);
+                b[i][j] = (int) Math.round(Y[i][j] + 1.772 * (Cb[i][j] - 128));
+                checkBoundariesForColour(b, i, j);
+            }
+        }
+    }
+
+    private void checkBoundariesForColour(int[][] colour, int i, int j) {
+        if (colour[i][j] < 0) {
+            System.out.println(colour[i][j]);
+            colour[i][j] = colour[i][j] + 128;
+        }
+        if (colour[i][j] > 255) {
+            System.out.println(colour[i][j]);
+            colour[i][j] = colour[i][j] - 128;
+        }
+    }
+
+    private void decompressCbAndCrMatrixes(int blocksCount, int yend) {
+        int blockIndex = 0;
+        for (int i = yend; i < blocksCount; ++i) {
+            int blocksInRow = width / (2 * BLOCKSIZE);
+            int leftTopRow = (blockIndex / blocksInRow) * BLOCKSIZE;//(i * BLOCKSIZE) / blocksInRow;
+            int leftTopColumn = (blockIndex % blocksInRow) * BLOCKSIZE;
+            BackwardProcess2(Cb, CbCompressed, globalResultInt[i], leftTopRow, leftTopColumn, 2, CquantizationMatrix);
+            ++i;
+            BackwardProcess2(Cr, CrCompressed, globalResultInt[i], leftTopRow, leftTopColumn, 2, CquantizationMatrix);
+            blockIndex++;
+        }
+    }
+
+    private void decompressYmatrix(int yend) {
+        for (int i = 0; i < yend; ++i) {
+            if (i < yend) {
+                int blocksInRow = width / BLOCKSIZE;
+                int leftTopRow = (i / blocksInRow) * BLOCKSIZE;//(i * BLOCKSIZE) / blocksInRow;
+                int leftTopColumn = (i % blocksInRow) * BLOCKSIZE;
+
+                BackwardProcess2(Y, Ycompressed, globalResultInt[i], leftTopRow, leftTopColumn, 1, YquantizationMatrix);
+            }
+        }
     }
 
     private int[][] PreDecompression(byte[] data) {
