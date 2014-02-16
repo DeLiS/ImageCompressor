@@ -533,67 +533,75 @@ public class JpegImageCompressor implements IImageCompressor {
 	{
         int[] firstColumn = getFirstColumn(data);
         int[] diffs = calculateDifferences(firstColumn);
-		byte[] tmp = new byte[firstColumn.length * 16];
-		BinaryIO bio = new BinaryIO(tmp);
+		byte[] bufferForBinaryRepresentation = new byte[firstColumn.length * 16];
+		BinaryIO bio = new BinaryIO(bufferForBinaryRepresentation);
 		//в этом массиве будут храниться количества бит и количества нулей
 		byte[] quantities = new byte[8*data.length*data[0].length];
 		int bitsPointer = 0;
-
-		byte bitsCount;
-		int code;
-		//записываем сначала первый столбец
-        bitsPointer = writeFirstColumn(diffs, bio, quantities, bitsPointer);
-
-        // потом всё остальное по строкам
-        int[] line = stretchMatrixInOneLineByRowsFromSecondColumn(data);
-
-		int i = firstColumn.length;
-		while(i<line.length)
-		{
-			int counter = 0;
-			while(currentElementIsZero(line[i]) && isNotLastElementInLine(line, i))
-			{
-				counter++;
-				if(counter == 256)
-				{
-
-					quantities[bitsPointer++] = (byte)255;
-					quantities[bitsPointer++] = 0;  //при раскодировке этот ноль пишется в результат, из битового массива ничего не читается
-
-					counter = 0;
-
-				}
-				++i;
-			}
-			if(counter > 0)
-			{
-                quantities[bitsPointer++] = (byte) (counter-1);//записать counter-1 предшествующих нулей в выход
-                quantities[bitsPointer++] = (byte) 0;//прочитать 0 бит, записать 1 ноль в выход
-                quantities[bitsPointer++] = (byte) 0;//записать 0 предшествующих нулей в выход
-			}
-           else //counter==0
-            {
-                quantities[bitsPointer++] = (byte) 0;
-            }
-
-            bitsCount = GetNumberOfBits(line[i]);
-			code = GetCode(line[i]);
-			quantities[bitsPointer++] = bitsCount;
-			if(bitsCount>0)
-				bio.WriteBits(code, bitsCount);
-			++i;
-		}
-		bio.Flush();
-		byte[] quantitiesUsed = Arrays.copyOf(quantities, bitsPointer);
+        byte[] quantitiesUsed = calculateQuantitiesUsed(data, firstColumn, diffs, bio, quantities, bitsPointer);
         byte[] quantitiesCompressed = compressWithHuffman(quantitiesUsed);
-
 		int quantitiesSize = quantitiesCompressed.length;
-		int binarySize = bio.GetTotalBytesProceeded();
-		byte[] binary = Arrays.copyOf(tmp, binarySize);
-        byte[] result = createResult(matrixCount, quantitiesCompressed, quantitiesSize, binarySize, binary);
+		int binarySizeInBytes = bio.GetTotalBytesProceeded();
+		byte[] binary = Arrays.copyOf(bufferForBinaryRepresentation, binarySizeInBytes);
+        byte[] result = createResult(matrixCount, quantitiesCompressed, quantitiesSize, binarySizeInBytes, binary);
 
 		return result;
 	}
+
+    private byte[] calculateQuantitiesUsed(int[][] data, int[] firstColumn, int[] diffs, BinaryIO bio, byte[] quantities, int bitsPointer) {
+        //записываем сначала первый столбец
+        bitsPointer = writeFirstColumn(diffs, bio, quantities, bitsPointer);
+        // потом всё остальное по строкам
+        int[] line = stretchMatrixInOneLineByRowsFromSecondColumn(data);
+        int startIndex = firstColumn.length;
+        bitsPointer = compressWithRLE(bio, quantities, bitsPointer, line, startIndex);
+
+        return Arrays.copyOf(quantities, bitsPointer);
+    }
+
+    private int compressWithRLE(BinaryIO bio, byte[] quantities, int bitsPointer, int[] line, int startIndex) {
+        byte bitsCount;
+        int code;
+        int curIndex = startIndex;
+        while(curIndex<line.length)
+        {
+            int counter = 0;
+            while(currentElementIsZero(line[curIndex]) && isNotLastElementInLine(line, curIndex))
+            {
+                counter++;
+                if(counter == 256)
+                {
+
+                    quantities[bitsPointer++] = (byte)255;
+                    quantities[bitsPointer++] = 0;  //при раскодировке этот ноль пишется в результат, из битового массива ничего не читается
+
+                    counter = 0;
+
+                }
+                ++curIndex;
+            }
+            if(counter > 0)
+            {
+                quantities[bitsPointer++] = (byte) (counter-1);//записать counter-1 предшествующих нулей в выход
+                quantities[bitsPointer++] = (byte) 0;//прочитать 0 бит, записать 1 ноль в выход
+                quantities[bitsPointer++] = (byte) 0;//записать 0 предшествующих нулей в выход
+            }
+            else //counter==0
+            {
+            quantities[bitsPointer++] = (byte) 0;
+            }
+
+            bitsCount = GetNumberOfBits(line[curIndex]);
+            code = GetCode(line[curIndex]);
+            quantities[bitsPointer++] = bitsCount;
+            if(bitsCount>0){
+                bio.WriteBits(code, bitsCount);
+            }
+            ++curIndex;
+        }
+        bio.Flush();
+        return bitsPointer;
+    }
 
     private byte[] compressWithHuffman(byte[] quantitiesUsed) {
         HuffmanCompressor huffman = new HuffmanCompressor();

@@ -63,7 +63,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="666" class="algos.JpegImageCompressor" package="algos">
+      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="674" class="algos.JpegImageCompressor" package="algos">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -100,7 +100,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="684" column="38" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.31909212" vertical-offset="6697" max-vertical-offset="8058">
+            <state line="538" column="67" selection-start="14995" selection-end="14995" vertical-scroll-proportion="0.47663552" vertical-offset="4097" max-vertical-offset="8194">
               <folding>
                 <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
@@ -593,7 +593,11 @@
       <created>1392557785515</created>
       <updated>1392557785515</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;">
+      <created>1392559462264</created>
+      <updated>1392559462264</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -655,7 +659,8 @@
     <MESSAGE value="JPEGImageCompressor Quantization&#10;Math.round -&gt; Math.floor&#10;" />
     <MESSAGE value="JPEGImageCompressor Postcompression some fixes&#10;" />
     <MESSAGE value="JPEGImageCompressor GetCode&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor GetCode&#10;" />
+    <MESSAGE value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -893,7 +898,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="684" column="38" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.31909212" vertical-offset="6697" max-vertical-offset="8058">
+        <state line="538" column="67" selection-start="14995" selection-end="14995" vertical-scroll-proportion="0.47663552" vertical-offset="4097" max-vertical-offset="8194">
           <folding>
             <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#PreCalcCoefficients#0;class#JpegImageCompressor#0" expanded="false" />
