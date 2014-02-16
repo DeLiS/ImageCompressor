@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -100,7 +99,7 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="0" selection-start="2954" selection-end="2954" vertical-scroll-proportion="0.25233644" vertical-offset="1171" max-vertical-offset="7684">
+            <state line="600" column="4" selection-start="16134" selection-end="16134" vertical-scroll-proportion="0.5006676" vertical-offset="4640" max-vertical-offset="7497">
               <folding>
                 <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
                 <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
@@ -750,7 +749,11 @@
       <created>1392560589962</created>
       <updated>1392560589962</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="JPEGImageCompressor methods rearranged&#10;">
+      <created>1392560994052</created>
+      <updated>1392560994052</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -814,7 +817,8 @@
     <MESSAGE value="JPEGImageCompressor GetCode&#10;" />
     <MESSAGE value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
     <MESSAGE value="JPEGImageCompressor Postcompression refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor Postcompression refactored&#10;" />
+    <MESSAGE value="JPEGImageCompressor methods rearranged&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor methods rearranged&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1059,7 +1063,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="0" selection-start="2954" selection-end="2954" vertical-scroll-proportion="0.25233644" vertical-offset="1171" max-vertical-offset="7684">
+        <state line="600" column="4" selection-start="16134" selection-end="16134" vertical-scroll-proportion="0.5006676" vertical-offset="4640" max-vertical-offset="7497">
           <folding>
             <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
             <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />

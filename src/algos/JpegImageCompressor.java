@@ -598,18 +598,7 @@ public class JpegImageCompressor implements IImageCompressor {
         CrCompressed = new double[height/2][width/2];
     }
 
-	double[][] QuaterMatrix(double[][] matrix)
-	{
-		double[][] result = new double[matrix.length/2][matrix[0].length/2];
-		for(int i=0;i<matrix.length;i+=2)
-		{
-			for(int j=0;j<matrix[i].length;j+=2)
-				result[i/2][j/2] = matrix[i][j];
-		}
-		return result;
-	}
-
-	private byte[] PostCompression(int[][] data,int matrixCount)
+    private byte[] PostCompression(int[][] data,int matrixCount)
 	{
         int[] firstColumn = getFirstColumn(data);
         int[] diffs = calculateDifferences(firstColumn);
