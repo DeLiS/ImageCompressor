@@ -61,23 +61,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java" line="363" class="algos.JpegImageCompressor" package="algos">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -99,29 +82,9 @@
       <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="600" column="4" selection-start="16134" selection-end="16134" vertical-scroll-proportion="0.5006676" vertical-offset="4640" max-vertical-offset="7497">
+            <state line="583" column="87" selection-start="22299" selection-end="22299" vertical-scroll-proportion="0.47129506" vertical-offset="9558" max-vertical-offset="11390">
               <folding>
-                <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#GetCode#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#Compress#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#compressCbAndCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#compressCrMatrix#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#compressCbMatrix#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#getTotalMatrixesCount#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#ForwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#getSubMatrixOfBlockSize#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#Quantization#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#Scan2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#PreDecompression#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#GetNumber#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#GetNumberOfBits#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#FillGaps#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
-                <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -753,7 +716,11 @@
       <created>1392560994052</created>
       <updated>1392560994052</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="JPEGImageCompressor deleted unused method&#10;">
+      <created>1392561042653</created>
+      <updated>1392561042653</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -818,7 +785,8 @@
     <MESSAGE value="JPEGImageCompressor Compress &#10;fixed coding bug, no exceptions now, but image is green after decoding&#10;" />
     <MESSAGE value="JPEGImageCompressor Postcompression refactored&#10;" />
     <MESSAGE value="JPEGImageCompressor methods rearranged&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor methods rearranged&#10;" />
+    <MESSAGE value="JPEGImageCompressor deleted unused method&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor deleted unused method&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1063,29 +1031,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="600" column="4" selection-start="16134" selection-end="16134" vertical-scroll-proportion="0.5006676" vertical-offset="4640" max-vertical-offset="7497">
+        <state line="583" column="87" selection-start="22299" selection-end="22299" vertical-scroll-proportion="0.47129506" vertical-offset="9558" max-vertical-offset="11390">
           <folding>
-            <element signature="method#CConst#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#preCalcCCs#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#GetCode#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#Compress#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#compressCbAndCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#compressCrMatrix#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#compressCbMatrix#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#getTotalMatrixesCount#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#ForwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#getSubMatrixOfBlockSize#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#Quantization#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#Scan2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#PreDecompression#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#GetNumber#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#GetNumberOfBits#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#FillGaps#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#BackwardProcess2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#DeQuantization#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#InversedScan2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#DiscreteCosinusTransformation2#0;class#JpegImageCompressor#0" expanded="false" />
-            <element signature="method#initYCbCrMatrixes#0;class#JpegImageCompressor#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
