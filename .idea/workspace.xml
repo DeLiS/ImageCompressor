@@ -73,7 +73,7 @@
       <file leaf-file-name="HuffmanCompressor.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="12" selection-start="4936" selection-end="4936" vertical-scroll-proportion="0.57810414" vertical-offset="2593" max-vertical-offset="4148">
+            <state line="12" column="37" selection-start="400" selection-end="400" vertical-scroll-proportion="0.24966623" vertical-offset="0" max-vertical-offset="4165">
               <folding>
                 <element signature="method#CalculateQuantities#0;class#HuffmanCompressor#0" expanded="false" />
               </folding>
@@ -506,7 +506,11 @@
       <created>1392551732803</created>
       <updated>1392551732803</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="HuffmanCompressor.BuildTree refactored&#10;">
+      <created>1392551901785</created>
+      <updated>1392551901785</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -561,7 +565,8 @@
     <MESSAGE value="String replaced with StringBuffer in ImageStatistics.Write" />
     <MESSAGE value="HuffmanCompressor.Compress refactored" />
     <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="HuffmanCompressor.Decompress refactored&#10;" />
+    <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="HuffmanCompressor.BuildTree refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -778,7 +783,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="12" selection-start="4936" selection-end="4936" vertical-scroll-proportion="0.57810414" vertical-offset="2593" max-vertical-offset="4148">
+        <state line="12" column="37" selection-start="400" selection-end="400" vertical-scroll-proportion="0.24966623" vertical-offset="0" max-vertical-offset="4165">
           <folding>
             <element signature="method#CalculateQuantities#0;class#HuffmanCompressor#0" expanded="false" />
           </folding>
