@@ -55,103 +55,150 @@ public class JpegImageCompressor implements IImageCompressor {
 	public byte[] Compress(BufferedImage image) {	
 		
 		GetYUVimage(image);		
-		//обработка матриц по блокам, исходные и результирующие матрицы общие
-		Ycompressed = new double[height][width];
-		CbCompressed = new double[height/2][width/2];
-		CrCompressed = new double[height/2][width/2];
-		int matrixCount = (width/BLOCKSIZE * height/BLOCKSIZE )/2 * 3;
-		globalResultInt = new int[matrixCount][];
-		int counter = 0;
-		for(int i = 0; i < height; i+= BLOCKSIZE)
-		{
-			for(int j = 0; j < width; j+=BLOCKSIZE)
-			{
-				ForwardProcess2(Y,Ycompressed,i,j,1,YquantizationMatrix,counter);
-				++counter;
-			}
-		}
-		for(int i = 0; i < height; i+= 2*BLOCKSIZE)
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        initYCbCrMatrixes();
+		int matrixCount = getTotalMatrixesCount();
+        initGlobalResultArray(matrixCount);
+        int counter = 0;
+        counter = compressYmatrixes(counter);
+        compressCbAndCrMatrixes(counter);
+
+        byte[] result = PostProcess2(matrixCount);
+		return result;
+	}
+
+    private void compressCbAndCrMatrixes(int counter) {
+        for(int i = 0; i < height; i+= 2*BLOCKSIZE)
 		{
 			for(int j = 0; j < width; j+= 2*BLOCKSIZE)
 			{
-				ForwardProcess2(Cb,CbCompressed,i,j,2,CquantizationMatrix,counter);
-				++counter;
-				ForwardProcess2(Cr,CrCompressed,i,j,2,CquantizationMatrix,counter);
-				++counter;
+                counter = compressCbMatrix(counter, i, j);
+                counter = compressCrMatrix(counter, i, j);
 			}
-		}		
+		}
+    }
 
-		byte[] result = PostProcess2(matrixCount);
-		return result;
-	}
-	private byte[] PostProcess2(int matrixCount)
+    private int compressCrMatrix(int counter, int i, int j) {
+        ForwardProcess2(Cr, i,j,2,CquantizationMatrix,counter);
+        ++counter;
+        return counter;
+    }
+
+    private int compressCbMatrix(int counter, int i, int j) {
+        ForwardProcess2(Cb, i,j,2,CquantizationMatrix,counter);
+        ++counter;
+        return counter;
+    }
+
+    private int compressYmatrixes(int counter) {
+        for(int i = 0; i < height; i+= BLOCKSIZE)
+        {
+            for(int j = 0; j < width; j+=BLOCKSIZE)
+            {
+                ForwardProcess2(Y, i,j,1,YquantizationMatrix,counter);
+                ++counter;
+            }
+        }
+        return counter;
+    }
+
+    private void initGlobalResultArray(int matrixCount) {
+        globalResultInt = new int[matrixCount][];
+    }
+
+    private int getTotalMatrixesCount() {
+        return (width/BLOCKSIZE * height/BLOCKSIZE )/2 * 3;
+    }
+
+    private void initYCbCrMatrixes() {
+        Ycompressed = new double[height][width];
+        CbCompressed = new double[height/2][width/2];
+        CrCompressed = new double[height/2][width/2];
+    }
+
+    private byte[] PostProcess2(int matrixCount)
 	{
 		byte[] result = PostCompression(globalResultInt,matrixCount);
 		return result;
 	}
-	//предподсчет всех C(i,u)*C(j,v) 
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ C(i,u)*C(j,v) 
 	private void PreCalcCoefficients()
 	{
-		C = new double[BLOCKSIZE][BLOCKSIZE];
-		for(int i=0;i<BLOCKSIZE;++i)
-		{
-			for(int j=0;j<BLOCKSIZE;++j)
-			{
-				C[i][j] = Coefficient(i,j);
-			}
-		}
-		CC = new double[BLOCKSIZE][BLOCKSIZE][BLOCKSIZE][BLOCKSIZE];
-		for(int i=0;i<BLOCKSIZE;++i)
-		{
-			for(int j=0;j<BLOCKSIZE;++j)
-			{
-				for(int k=0;k<BLOCKSIZE;++k)
-				{
-					for(int l = 0; l < BLOCKSIZE;++l)
-					{
-						CC[i][j][k][l] = C[i][j] * C[k][l];
-					}
-				}
-			}
-		}
+        preCalcCs();
+        preCalcCCs();
 	}
-	
-	private void GetYUVimage(BufferedImage image)
+
+    private void preCalcCCs() {
+        CC = new double[BLOCKSIZE][BLOCKSIZE][BLOCKSIZE][BLOCKSIZE];
+        for(int i=0;i<BLOCKSIZE;++i)
+        {
+            for(int j=0;j<BLOCKSIZE;++j)
+            {
+                for(int k=0;k<BLOCKSIZE;++k)
+                {
+                    for(int l = 0; l < BLOCKSIZE;++l)
+                    {
+                        CC[i][j][k][l] = C[i][j] * C[k][l];
+                    }
+                }
+            }
+        }
+    }
+
+    private void preCalcCs() {
+        C = new double[BLOCKSIZE][BLOCKSIZE];
+        for(int i=0;i<BLOCKSIZE;++i)
+        {
+            for(int j=0;j<BLOCKSIZE;++j)
+            {
+                C[i][j] = Coefficient(i,j);
+            }
+        }
+    }
+
+    private void GetYUVimage(BufferedImage image)
 	{
 		width = image.getWidth();
 		height = image.getHeight();
 		int[][] red = new int[height][width];
 		int[][] green = new int[height][width];
 		int[][] blue = new int[height][width];
+        Y = new double[height][width];
+        Cb = new double[height][width];
+        Cr = new double[height][width];
 
-		for(int j=0;j<height;++j)
-		{
-			for(int i=0;i<width;++i)
-			{
-				int rgb = image.getRGB(i,j);
-				red[i][j] = 		(int)((rgb >> 16) & 0xFF);
-				green[i][j] = 	(int)((rgb >>  8) & 0xFF);
-				blue[i][j] = 	(int)((rgb      ) & 0xFF);
-			}
-		}
-		Y = new double[height][width];
-		Cb = new double[height][width];
-		Cr = new double[height][width];
-		
-		// перевод в YUV
-		for(int i=0;i<width;++i)
-		{
-			for(int j=0;j<height;++j)
-			{
-				Y[i][j] = 0.299*red[i][j] + 0.587*green[i][j] + 0.114*blue[i][j];
-				Cb[i][j] = -0.1687*red[i][j] - 0.3313*green[i][j] + 0.5*blue[i][j] + 128;
-				Cr[i][j] = 0.5*red[i][j] - 0.4187*green[i][j] - 0.0813*blue[i][j] + 128;
-			}
-		}
-	}
-	
-	
-	private void ForwardProcess2(double[][] oldMatrix, double[][] newMatrix,int leftTopRow, int leftTopColumn, int step, int [][] quantizationMatrix,int counter)
+        fillRGBarraysFromBytes(image, red, green, blue);
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ YUV
+        RGBtoYCbCr(red, green, blue);
+    }
+
+    private void fillRGBarraysFromBytes(BufferedImage image, int[][] red, int[][] green, int[][] blue) {
+        for(int j=0;j<height;++j)
+        {
+            for(int i=0;i<width;++i)
+            {
+                int rgb = image.getRGB(i,j);
+                red[i][j] = 		(int)((rgb >> 16) & 0xFF);
+                green[i][j] = 	(int)((rgb >>  8) & 0xFF);
+                blue[i][j] = 	(int)((rgb      ) & 0xFF);
+            }
+        }
+    }
+
+    private void RGBtoYCbCr(int[][] red, int[][] green, int[][] blue) {
+        for(int i=0;i<width;++i)
+        {
+            for(int j=0;j<height;++j)
+            {
+                Y[i][j] = 0.299*red[i][j] + 0.587*green[i][j] + 0.114*blue[i][j];
+                Cb[i][j] = -0.1687*red[i][j] - 0.3313*green[i][j] + 0.5*blue[i][j] + 128;
+                Cr[i][j] = 0.5*red[i][j] - 0.4187*green[i][j] - 0.0813*blue[i][j] + 128;
+            }
+        }
+    }
+
+
+    private void ForwardProcess2(double[][] oldMatrix, int leftTopRow, int leftTopColumn, int step, int[][] quantizationMatrix, int counter)
 	{
 		double[][] matrix = new double[BLOCKSIZE][BLOCKSIZE];
 		for(int i=0;i<BLOCKSIZE;++i)
@@ -251,11 +298,9 @@ public class JpegImageCompressor implements IImageCompressor {
 		Y = new double[height][width];
 		Cb = new double[height][width];
 		Cr = new double[height][width];
-		
-		
-		Ycompressed = new double[height][width];
-		CbCompressed = new double[height/2][width/2];
-		CrCompressed = new double[height/2][width/2];
+
+
+        initYCbCrMatrixes();
 		
 		
 		int blocksCount = globalResultInt.length;
@@ -344,7 +389,7 @@ public class JpegImageCompressor implements IImageCompressor {
 		}
 		return bi;
 	}
-	//leftTopRow, leftTopColumn - в сжатой матрице
+	//leftTopRow, leftTopColumn - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	private void BackwardProcess2(double[][] decompressedMatrix, double[][] compressedMatrix, int[] compressed, int leftTopRow, int leftTopColumn,int step, int[][] quantizationMatrix)
 	{
 		
@@ -388,7 +433,7 @@ public class JpegImageCompressor implements IImageCompressor {
 	{
 		int lastRow = matrix.length - 1;
 		int lastColumn = matrix[0].length - 1;
-		//заполняем последнюю строку и столбец, если они пустые
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if(lastRow % 2 == 1)
 		{
 			for(int j = 0; j < matrix[0].length-1; j += 2)
@@ -416,7 +461,7 @@ public class JpegImageCompressor implements IImageCompressor {
 		{
 			matrix[lastRow][lastColumn] = matrix[lastRow - 1][lastColumn - 1];
 		}
-		// заполняем те строки и столбцы, в которых изначально хоть что-то было ( все четные строки столбцы)
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅ ( пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 		for(int i=0;i<matrix.length; i+=2)
 		{
 			for(int j = 1; j < matrix[i].length-1; j+=2)
@@ -425,12 +470,12 @@ public class JpegImageCompressor implements IImageCompressor {
 				matrix[j][i] = (matrix[j-1][i] + matrix[j+1][i])/2;
 			}
 		}
-		// заполняем оставшиеся клетки ( вокруг них все заполнены), кроме нижней правой.
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ( пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ), пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 		for(int i = 1; i < matrix.length - 1; i+=2)
 		{
 			for(int j = 1; j < matrix.length - 1; j += 2)
 			{
-				//только угловые, потому что остальные соседи расчитаны на их основании
+				//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				matrix[i][j] = (matrix[i-1][j-1] + matrix[i+1][j-1] + matrix[i+1][j+1] + matrix[i-1][j+1])/4;
 			}
 		}
@@ -458,13 +503,13 @@ public class JpegImageCompressor implements IImageCompressor {
 			diffs[i] = firstColumn[i] - firstColumn[i-1];
 		byte[] tmp = new byte[firstColumn.length * 8];
 		BinaryIO bio = new BinaryIO(tmp);
-		//в этом массиве будут храниться количества бит и количества нулей
+		//пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		byte[] quantities = new byte[8*data.length*data[0].length];
 		int bitsPointer = 0;
 		
 		byte bitsCount;
 		int code;
-		//записываем сначала первый столбец
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for(int i=0;i<diffs.length;++i)
 		{
 			bitsCount = GetNumberOfBits(diffs[i]);
@@ -474,7 +519,7 @@ public class JpegImageCompressor implements IImageCompressor {
 				bio.WriteBits(code, bitsCount);
 		}
 
-		// потом всё остальное по строкам
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		int[] line = new int[(data.length)*(data[0].length - 1)];
 		int p = 0;
 		for(int i=0;i<data.length;++i)
@@ -494,7 +539,7 @@ public class JpegImageCompressor implements IImageCompressor {
 				{
 					
 					quantities[bitsPointer++] = (byte)255;
-					quantities[bitsPointer++] = 0;  //при раскодировке этот ноль пишется в результат, из битового массива ничего не читается
+					quantities[bitsPointer++] = 0;  //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					
 					counter = 0;
 					
@@ -505,15 +550,15 @@ public class JpegImageCompressor implements IImageCompressor {
 			{
 				if(counter>1)
 				{
-					quantities[bitsPointer++] = (byte) (counter-1);//записать counter-1 предшествующих нулей в выход
-					quantities[bitsPointer++] = (byte) 0;//прочитать 0 бит, записать 1 ноль в выход
-					quantities[bitsPointer++] = (byte) 0;//записать 0 предшествующих нулей в выход
+					quantities[bitsPointer++] = (byte) (counter-1);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ counter-1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+					quantities[bitsPointer++] = (byte) 0;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+					quantities[bitsPointer++] = (byte) 0;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 				else
 				{
-					quantities[bitsPointer++] = (byte) 0; //записать 0 предшествующих нулей в выход
-					quantities[bitsPointer++] = (byte) 0; //прочитать 0 бит, записать 1 ноль в выход
-					quantities[bitsPointer++] = (byte) 0;// записать 0 предшествующих нулей в выход
+					quantities[bitsPointer++] = (byte) 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+					quantities[bitsPointer++] = (byte) 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+					quantities[bitsPointer++] = (byte) 0;// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 				}
 			}
 			bitsCount = GetNumberOfBits(line[i]);
