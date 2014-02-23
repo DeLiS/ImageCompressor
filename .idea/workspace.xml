@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/CompressionTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/LzwTest.java" />
-      <change type="DELETED" beforePath="D:\Projects\IntellijIdeaProjects\ImageCompressor\src\test\LzwTests.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/HuffmanTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/RleTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/BinaryIOTests.java" afterPath="$PROJECT_DIR$/src/test/BinaryIOTests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -94,6 +94,21 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/CompressionTest.java" line="35" class="test.CompressionTest" package="test">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
@@ -107,19 +122,8 @@
       <file leaf-file-name="LZW.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="2550" max-vertical-offset="4573">
+            <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="4573">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11424">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -127,7 +131,7 @@
       <file leaf-file-name="CompressionTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="2096" selection-end="2096" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+            <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1241">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,10 +139,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LzwTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LzwTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/LzwTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.27236316" vertical-offset="0" max-vertical-offset="749">
+            <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,10 +150,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BinaryIOTests.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RleTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/RleTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="38" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HuffmanTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/HuffmanTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinaryIOTests.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="15" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+            <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.1588785" vertical-offset="0" max-vertical-offset="1139">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -180,7 +206,7 @@
       <file leaf-file-name="TestDCT.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
+            <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
               <folding />
             </state>
           </provider>
@@ -189,7 +215,7 @@
       <file leaf-file-name="TestClass.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1054">
+            <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="438" max-vertical-offset="1054">
               <folding />
             </state>
           </provider>
@@ -215,7 +241,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/test/TestDCT.java" />
         <option value="$PROJECT_DIR$/src/test/TestClass.java" />
-        <option value="$PROJECT_DIR$/src/test/BinaryIOTests.java" />
         <option value="$PROJECT_DIR$/src/algos/BinaryIO.java" />
         <option value="$PROJECT_DIR$/src/algos/GeneralImageCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/ImageStatistics.java" />
@@ -226,6 +251,9 @@
         <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
         <option value="$PROJECT_DIR$/src/test/CompressionTest.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTest.java" />
+        <option value="$PROJECT_DIR$/src/test/RleTest.java" />
+        <option value="$PROJECT_DIR$/src/test/HuffmanTest.java" />
+        <option value="$PROJECT_DIR$/src/test/BinaryIOTests.java" />
       </list>
     </option>
   </component>
@@ -532,7 +560,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
-  <component name="RunManager" selected="Application.TestCaseGenerator">
+  <component name="RunManager" selected="JUnit.BinaryIOTests and 3 more">
     <configuration default="false" name="BinaryIOTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageCompressor" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -555,18 +583,24 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="MainForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="forms.MainForm" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration default="false" name="LzwTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageCompressor" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.LzwTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ImageCompressor" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <envs />
+      <patterns />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
@@ -577,25 +611,74 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TestCaseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestCaseGenerator" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration default="false" name="BinaryIOTests and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageCompressor" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ImageCompressor" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
+      <patterns>
+        <pattern testClass="test.BinaryIOTests" />
+        <pattern testClass="test.HuffmanTest" />
+        <pattern testClass="test.LzwTest" />
+        <pattern testClass="test.RleTest" />
+      </patterns>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="RleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageCompressor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.RleTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="HuffmanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ImageCompressor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.HuffmanTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -726,16 +809,20 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
-      <item index="1" class="java.lang.String" itemvalue="Application.MainForm" />
-      <item index="2" class="java.lang.String" itemvalue="Application.TestCaseGenerator" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.LzwTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.BinaryIOTests and 3 more" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.RleTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.HuffmanTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.TestCaseGenerator" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainForm" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.BinaryIOTests and 3 more" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.HuffmanTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.LzwTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.RleTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -888,12 +975,16 @@
       <created>1393189070506</created>
       <updated>1393189070506</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="LzwTest created&#10;">
+      <created>1393191548531</created>
+      <updated>1393191548531</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -912,7 +1003,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -932,7 +1023,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="BinaryIO.WriteBits small changes&#10;" />
     <MESSAGE value="BinaryIO.Flush refactored&#10;" />
     <MESSAGE value="BinaryIO.ReadBits refactored&#10;" />
     <MESSAGE value="BinaryIO magic numbers refactored&#10;" />
@@ -957,7 +1047,8 @@
     <MESSAGE value="TestGenerator created" />
     <MESSAGE value="test for each algorithm generated&#10;" />
     <MESSAGE value="workspace changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace changed" />
+    <MESSAGE value="LzwTest created&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LzwTest created&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -967,13 +1058,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="306" column="5" selection-start="10644" selection-end="10644" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="11424">
@@ -1209,40 +1293,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.032598276" vertical-offset="0" max-vertical-offset="1043">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="45" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="1547">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1262,27 +1316,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
+    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="15" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2096" selection-end="2096" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/LzwTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.27236316" vertical-offset="0" max-vertical-offset="749">
+        <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/RleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="38" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/HuffmanTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="45" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="1547">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1241">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.1588785" vertical-offset="0" max-vertical-offset="1139">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

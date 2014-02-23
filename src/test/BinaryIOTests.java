@@ -8,8 +8,10 @@ import algos.BinaryIO;
 public class BinaryIOTests {
 
     public static final int dataSize = 10000;
+    public static final int INPUT_SIZE = 5001;
     byte[] data;
-	@Before
+
+    @Before
 	public void setUp() throws Exception {
 		data = new byte[dataSize];
 	}
@@ -18,7 +20,7 @@ public class BinaryIOTests {
 	public void testWriteBits() {
 		BinaryIO bio = new BinaryIO(data);
 		Random r = new Random();
-		int inputSize = 5001;
+		int inputSize = INPUT_SIZE;
 		byte[] numbers = new byte[inputSize];
 		int[] bits = new int[inputSize];
 
