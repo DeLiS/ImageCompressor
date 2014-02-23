@@ -1,11 +1,14 @@
 package test;
 
+import algos.HuffmanCompressor;
 import algos.ICompressor;
 import algos.LZW;
+import algos.RunLengthEncoder;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -23,11 +26,11 @@ public abstract class TestCaseGenerator {
     public static void main(String[] args) throws IOException{
         int n = 100;
         int len = 5000;
-        String fileName = "LZW.txt";
+        String fileName = "RLE.txt";
         TestCaseGenerator testCaseGenerator = new TestCaseGenerator(n, len) {
             @Override
             protected ICompressor getCompressor() {
-                return new LZW();
+                return new RunLengthEncoder();
             }
         };
         testCaseGenerator.generateTests();
@@ -44,8 +47,10 @@ public abstract class TestCaseGenerator {
     public void writeTestsToFile(String fileName) throws IOException{
         PrintWriter printWriter = new PrintWriter(fileName);
         for(int i = 0; i < numberOfTests; ++i){
-           printWriter.println(inputs[i]);
-           printWriter.println(outputs[i]);
+           String input = Arrays.toString(inputs[i]);
+           String output = Arrays.toString(outputs[i]);
+           printWriter.println(input);
+           printWriter.println(output);
         }
         printWriter.flush();
         printWriter.close();
