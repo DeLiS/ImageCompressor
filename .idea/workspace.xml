@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistics.txt" afterPath="$PROJECT_DIR$/statistics.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/LzwTests.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -71,19 +72,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BinaryIO.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <file leaf-file-name="LZW.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+            <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="2550" max-vertical-offset="4573">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="JpegImageCompressor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.83540803" vertical-offset="4751" max-vertical-offset="11424">
+            <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11424">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,13 +92,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RleImageCompressor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
+      <file leaf-file-name="LzwTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/LzwTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+            <state line="29" column="0" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCaseGenerator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="27" selection-start="605" selection-end="605" vertical-scroll-proportion="0.49933246" vertical-offset="51" max-vertical-offset="1462">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralImageCompressor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinaryIOTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestDCT.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestClass.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1054">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,6 +173,9 @@
         <option value="$PROJECT_DIR$/src/algos/ImageStatistics.java" />
         <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
+        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
+        <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
+        <option value="$PROJECT_DIR$/src/test/LzwTests.java" />
       </list>
     </option>
   </component>
@@ -275,34 +328,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompressor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompressor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompressor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ImageCompressor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -391,6 +416,48 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageCompressor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,7 +480,7 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="LayoutCode.rearrangeEntriesJava" value="true" />
   </component>
-  <component name="RunManager" selected="Application.MainForm">
+  <component name="RunManager" selected="Application.TestCaseGenerator">
     <configuration default="false" name="BinaryIOTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ImageCompressor" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -455,6 +522,22 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestCaseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.TestCaseGenerator" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ImageCompressor" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -585,14 +668,16 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
       <item index="1" class="java.lang.String" itemvalue="Application.MainForm" />
+      <item index="2" class="java.lang.String" itemvalue="Application.TestCaseGenerator" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.MainForm" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Application.TestCaseGenerator" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MainForm" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -729,19 +814,22 @@
       <created>1392563777414</created>
       <updated>1392563777414</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="JPEGImageCompressor">
+      <created>1392567581017</created>
+      <updated>1392567581017</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39943874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -757,8 +845,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -797,7 +886,8 @@
     <MESSAGE value="JPEGImageCompressor deleted unused method&#10;" />
     <MESSAGE value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
     <MESSAGE value="JPEGImageCompressor green colour fixed&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor green colour fixed&#10;" />
+    <MESSAGE value="JPEGImageCompressor" />
+    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -809,6 +899,98 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="5" selection-start="10644" selection-end="10644" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="11424">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.0" vertical-offset="4751" max-vertical-offset="11424">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.0" vertical-offset="4751" max-vertical-offset="11424">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.0" vertical-offset="4751" max-vertical-offset="11424">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="154" column="23" selection-start="4438" selection-end="4438" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
           <folding />
         </state>
@@ -816,72 +998,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="2516">
-          <folding />
-        </state>
+        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="2516" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="27" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="3536">
-          <folding />
-        </state>
+        <state line="112" column="27" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="3536" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="272">
-          <folding />
-        </state>
+        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/IImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="221">
-          <folding />
-        </state>
+        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="221" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="49" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2516">
-          <folding />
-        </state>
+        <state line="19" column="49" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2516" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/forms/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114">
-          <folding />
-        </state>
+        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
-          <folding />
-        </state>
+        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
-          <folding />
-        </state>
+        <state line="20" column="21" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
@@ -893,156 +1055,155 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/forms/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114">
-          <folding />
-        </state>
+        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
-          <folding />
-        </state>
+        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="25" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="799">
-          <folding />
-        </state>
+        <state line="25" column="25" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="799" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/forms/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114">
-          <folding />
-        </state>
+        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4114" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="833">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.03835091" vertical-offset="11" max-vertical-offset="1054">
-          <folding />
-        </state>
+        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/forms/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.09779482" vertical-offset="17" max-vertical-offset="2278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="-1.2003835" vertical-offset="1456" max-vertical-offset="2499">
-          <folding />
-        </state>
+        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3553" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="13" selection-start="3415" selection-end="3415" vertical-scroll-proportion="0.0" vertical-offset="3586" max-vertical-offset="4335">
-          <folding />
-        </state>
+        <state line="126" column="13" selection-start="3415" selection-end="3415" vertical-scroll-proportion="0.0" vertical-offset="3586" max-vertical-offset="4335" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/IImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.045393858" vertical-offset="0" max-vertical-offset="749">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="50" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-0.929239" vertical-offset="1614" max-vertical-offset="2516">
-          <folding />
-        </state>
+        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.045393858" vertical-offset="0" max-vertical-offset="749" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/RunLengthEncoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="-0.027597403" vertical-offset="51" max-vertical-offset="2193">
+        <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="-0.027597403" vertical-offset="51" max-vertical-offset="2193" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/001603.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1043" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="41" selection-start="2940" selection-end="2941" vertical-scroll-proportion="0.67401725" vertical-offset="1473" max-vertical-offset="2516">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state line="28" column="13" selection-start="722" selection-end="722" vertical-scroll-proportion="0.42377755" vertical-offset="0" max-vertical-offset="1530">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.23873442" vertical-offset="482" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+    <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="-4.857143" vertical-offset="3672" max-vertical-offset="4573">
+        <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.032598276" vertical-offset="0" max-vertical-offset="1043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="315" column="42" selection-start="10977" selection-end="10977" vertical-scroll-proportion="0.83540803" vertical-offset="4751" max-vertical-offset="11424">
+        <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11424">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/LzwTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="27" selection-start="605" selection-end="605" vertical-scroll-proportion="0.49933246" vertical-offset="51" max-vertical-offset="1462">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
