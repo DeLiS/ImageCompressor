@@ -26,7 +26,13 @@ public abstract class TestCaseGenerator {
     public static void main(String[] args) throws IOException{
         int n = 100;
         int len = 5000;
-        String fileName = "RLE.txt";
+        String[] fileNames = {"RLE.txt", "LZW.txt", "Huffman.txt"};
+        for(String fileName : fileNames){
+            createTestFile(n, len, fileName);
+        }
+    }
+
+    private static void createTestFile(final int n, final int len, String fileName) throws IOException {
         TestCaseGenerator testCaseGenerator = new TestCaseGenerator(n, len) {
             @Override
             protected ICompressor getCompressor() {
