@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/LzwTests.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -63,6 +60,38 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java" line="60" class="test.TestCaseGenerator" package="test">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java" line="54" class="test.TestCaseGenerator" package="test">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -106,7 +135,7 @@
       <file leaf-file-name="TestCaseGenerator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="27" selection-start="605" selection-end="605" vertical-scroll-proportion="0.49933246" vertical-offset="51" max-vertical-offset="1462">
+            <state line="32" column="45" selection-start="900" selection-end="900" vertical-scroll-proportion="0.36448598" vertical-offset="271" max-vertical-offset="1547">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,6 +189,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="delis91@gmail.com" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -174,8 +208,8 @@
         <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/LZW.java" />
-        <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTests.java" />
+        <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
       </list>
     </option>
   </component>
@@ -537,7 +571,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="ImageCompressor" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -818,12 +858,16 @@
       <created>1392567581017</created>
       <updated>1392567581017</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="TestGenerator created">
+      <created>1393188166815</created>
+      <updated>1393188166815</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -862,7 +906,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Initial commit&#10;" />
     <MESSAGE value="BinaryIO tests refactored" />
     <MESSAGE value="BinaryIO.WriteBits refactored&#10;" />
     <MESSAGE value="BinaryIO.WriteBits small changes&#10;" />
@@ -887,7 +930,8 @@
     <MESSAGE value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
     <MESSAGE value="JPEGImageCompressor green colour fixed&#10;" />
     <MESSAGE value="JPEGImageCompressor" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPEGImageCompressor" />
+    <MESSAGE value="TestGenerator created" />
+    <option name="LAST_COMMIT_MESSAGE" value="TestGenerator created" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1203,7 +1247,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="27" selection-start="605" selection-end="605" vertical-scroll-proportion="0.49933246" vertical-offset="51" max-vertical-offset="1462">
+        <state line="32" column="45" selection-start="900" selection-end="900" vertical-scroll-proportion="0.36448598" vertical-offset="271" max-vertical-offset="1547">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
