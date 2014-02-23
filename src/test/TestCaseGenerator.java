@@ -22,21 +22,34 @@ public abstract class TestCaseGenerator {
     private Random random = new Random(System.currentTimeMillis());
     private byte[][] inputs;
     private byte[][] outputs;
+    public static final String RLE = "RLE.txt";
+    public static final String LZW = "LZW.txt";
+    public static final String HUFFMAN = "Huffman.txt";
+
 
     public static void main(String[] args) throws IOException{
         int n = 100;
         int len = 5000;
-        String[] fileNames = {"RLE.txt", "LZW.txt", "Huffman.txt"};
+        String[] fileNames = {RLE, LZW, HUFFMAN};
         for(String fileName : fileNames){
             createTestFile(n, len, fileName);
         }
     }
 
-    private static void createTestFile(final int n, final int len, String fileName) throws IOException {
+    private static void createTestFile(final int n, final int len, final String fileName) throws IOException {
         TestCaseGenerator testCaseGenerator = new TestCaseGenerator(n, len) {
             @Override
             protected ICompressor getCompressor() {
-                return new RunLengthEncoder();
+                if(fileName.equals(RLE)){
+                    return new RunLengthEncoder();
+                }
+                if(fileName.equals(LZW)){
+                    return new LZW();
+                }
+                if(fileName.equals(HUFFMAN)){
+                    return new HuffmanCompressor();
+               }
+               throw new IllegalArgumentException("wrong filename");
             }
         };
         testCaseGenerator.generateTests();
