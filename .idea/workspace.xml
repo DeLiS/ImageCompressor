@@ -862,7 +862,11 @@
       <created>1393188166815</created>
       <updated>1393188166815</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="test for each algorithm generated&#10;">
+      <created>1393189052676</created>
+      <updated>1393189052677</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -906,7 +910,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="BinaryIO tests refactored" />
     <MESSAGE value="BinaryIO.WriteBits refactored&#10;" />
     <MESSAGE value="BinaryIO.WriteBits small changes&#10;" />
     <MESSAGE value="BinaryIO.Flush refactored&#10;" />
@@ -931,7 +934,8 @@
     <MESSAGE value="JPEGImageCompressor green colour fixed&#10;" />
     <MESSAGE value="JPEGImageCompressor" />
     <MESSAGE value="TestGenerator created" />
-    <option name="LAST_COMMIT_MESSAGE" value="TestGenerator created" />
+    <MESSAGE value="test for each algorithm generated&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="test for each algorithm generated&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
