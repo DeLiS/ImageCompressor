@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/TestCaseGenerator.java" afterPath="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" afterPath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -120,64 +121,17 @@
       <file leaf-file-name="LZW.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="4573">
+            <state line="61" column="43" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="5168">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompressionTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
+      <file leaf-file-name="BinaryIO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1241">
+            <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LzwTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/LzwTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="442">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RleTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/RleTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="38" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HuffmanTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/HuffmanTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BinaryIOTests.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1139">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestCaseGenerator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="68" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.68456376" vertical-offset="153" max-vertical-offset="1870">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -185,26 +139,20 @@
       <file leaf-file-name="GeneralImageCompressor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="2516">
+            <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDCT.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestDCT.java">
+      <file leaf-file-name="HuffmanCompressor.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2278">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestClass.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
-              <folding />
+            <state line="12" column="46" selection-start="409" selection-end="409" vertical-scroll-proportion="0.1792905" vertical-offset="17" max-vertical-offset="4352">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4807#4817#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -232,9 +180,7 @@
         <option value="$PROJECT_DIR$/src/algos/BinaryIO.java" />
         <option value="$PROJECT_DIR$/src/algos/GeneralImageCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/ImageStatistics.java" />
-        <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
-        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTests.java" />
         <option value="$PROJECT_DIR$/src/test/CompressionTest.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTest.java" />
@@ -242,6 +188,9 @@
         <option value="$PROJECT_DIR$/src/test/HuffmanTest.java" />
         <option value="$PROJECT_DIR$/src/test/BinaryIOTests.java" />
         <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
+        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
+        <option value="$PROJECT_DIR$/src/algos/TreeNode.java" />
+        <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
       </list>
     </option>
   </component>
@@ -435,6 +384,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -523,7 +473,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -704,6 +653,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -729,19 +691,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -807,9 +756,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.BinaryIOTests and 3 more" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HuffmanTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.LzwTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.LzwTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.BinaryIOTests" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HuffmanTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.RleTest" />
       </list>
     </recent_temporary>
@@ -975,7 +924,11 @@
       <created>1393192253821</created>
       <updated>1393192253821</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="TestCaseGenerator fixed&#10;">
+      <created>1393195303874</created>
+      <updated>1393195303874</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -987,11 +940,13 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39943874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1001,10 +956,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1019,7 +972,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="BinaryIO magic numbers refactored&#10;" />
     <MESSAGE value="GeneralImageCompressor refactored" />
     <MESSAGE value="String replaced with StringBuffer in ImageStatistics.Write" />
     <MESSAGE value="HuffmanCompressor.Compress refactored" />
@@ -1044,7 +996,8 @@
     <MESSAGE value="LzwTest created&#10;" />
     <MESSAGE value="creation of tests for rle, lzw and huffman finished" />
     <MESSAGE value="TestCaseGenerator refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="TestCaseGenerator refactored" />
+    <MESSAGE value="TestCaseGenerator fixed&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="TestCaseGenerator fixed&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1054,11 +1007,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="306" column="5" selection-start="10644" selection-end="10644" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="11424" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1564" />
@@ -1209,11 +1157,6 @@
         <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3553" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="13" selection-start="3415" selection-end="3415" vertical-scroll-proportion="0.0" vertical-offset="3586" max-vertical-offset="4335" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
@@ -1244,11 +1187,6 @@
         <state line="28" column="13" selection-start="722" selection-end="722" vertical-scroll-proportion="0.42377755" vertical-offset="0" max-vertical-offset="1530" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.23873442" vertical-offset="482" max-vertical-offset="2924" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.032598276" vertical-offset="0" max-vertical-offset="1043" />
@@ -1257,27 +1195,6 @@
     <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11424" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2499">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="28" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/LzwTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/HuffmanTest.java">
@@ -1301,13 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1241">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/BinaryIOTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
@@ -1324,9 +1234,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TestCaseGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="68" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.68456376" vertical-offset="153" max-vertical-offset="1870">
+        <state line="51" column="68" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1870">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/LzwTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="25" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.13751669" vertical-offset="373" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="43" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="5168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/GeneralImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="35" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2499">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="46" selection-start="409" selection-end="409" vertical-scroll-proportion="0.1792905" vertical-offset="17" max-vertical-offset="4352">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4807#4817#0" expanded="true" />
           </folding>
         </state>
       </provider>

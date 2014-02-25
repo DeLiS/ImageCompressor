@@ -7,14 +7,20 @@ public class LZW implements ICompressor {
 	private final short EMPTY_CODE = 258;
 	private final short END_CODE = 259;
 	private final short POOL_START = END_CODE  + 1;
-	private final int MAXCODELENGTH = 12;
-	private final int MAGICNUMBER = (2<<(MAXCODELENGTH)) - 1;
-	private final int TABLECAPACITY = 2<<13 +1;
-	private final int STARTBITSTOWRITE = 9;
+	private final int MAX_CODE_LENGTH = 12;
+	private final int MAGIC_NUMBER = (2<<(MAX_CODE_LENGTH)) - 1;
+	private final int TABLE_CAPACITY = 2<<13 +1;
+	private final int START_BITS_TO_WRITE = 9;
 	private final int[] THRESHOLDS = {511,1023,2047,4095,8191};
 	private final int CLEARTABLESIZE = 4095;
-	private byte[] buffer;	
-	private class ListOfInts
+
+	private byte[] buffer;
+    private int nextCode;
+    private int bitsInCode;
+    private int prevCode;
+    private int valueCode;
+
+    private class ListOfInts
 	{
 		public LinkedList<Integer> list;
 		public ListOfInts()
@@ -32,64 +38,58 @@ public class LZW implements ICompressor {
 	}
 	@Override
 	public byte[] Compress(byte[] data) {
-		
-		buffer = new byte[2*(data.length + 2)];
-		BinaryIO writer = new BinaryIO(buffer);
-		
-		int nextCode = POOL_START; // в этой переменной будет храниться код, который надо выдать следующей цепочке
-		int bitsInCode = STARTBITSTOWRITE; // а в этой переменной будет храниться текущее количество бит, которое занимет код
-		
-		ListOfInts[] table = new ListOfInts[TABLECAPACITY];		
-		InitHashTable(table);
-		writer.WriteBits(CLEAR_CODE, bitsInCode);
-		int prevCode = EMPTY_CODE;
-		for(int i=0;i<data.length; ++i)
-		{
-			int cur = (int)data[i] & 0xFF ;			
-			int key = MakeKey(prevCode, cur);
+
+        BinaryIO writer = initBufferAndBinaryWriter(data);
+        ListOfInts[] table = new ListOfInts[TABLE_CAPACITY];
+
+        resetTable(table);
+        writeClearCode(writer);
+
+        for(int i=0;i<data.length; ++i){
+			int currentByte = getCurrentByte(data[i]);
+			int key = MakeKey(prevCode, currentByte);
 			int hash = GetHash(key);
-			
+
+            valueCode = 0;
+
 			boolean contains = false;
-			int valueCode = 0, valuePrevCode;
-			int valueLastSymbol;
-			
-			
-			for(int j=0;j<table[hash].list.size(); ++j)
-			{
+
+
+
+			for(int j=0;j<table[hash].list.size(); ++j){
 				Integer value = table[hash].list.get(j);
 				valueCode = GetCode(value);
-				valuePrevCode = GetPrevCode(value);
-				valueLastSymbol = GetLastSymbol(value);
-				
-				if(prevCode == valuePrevCode && cur == valueLastSymbol)
+				int valuePrevCode = GetPrevCode(value);
+				int valueLastSymbol = GetLastSymbol(value);
+
+				if(prevCode == valuePrevCode && currentByte == valueLastSymbol)
 				{
 					contains = true;
 					break;
-				}				
+				}
 			}
 			
-			if(contains)
-			{
+			if(contains){
 				prevCode = valueCode;
 			}
 			else
 			{
 				int toWrite = prevCode;//((byte) (prevCode))&0xFF;
-				writer.WriteBits(toWrite, bitsInCode);		
-				int newElement = GetNewElement(nextCode,prevCode,cur);
+				writer.WriteBits(toWrite, bitsInCode);
+				int newElement = GetNewElement(nextCode, prevCode,currentByte);
 				table[hash].list.add(newElement);
 				
-				int prevKey = MakeKey(EMPTY_CODE,cur);
+				int prevKey = MakeKey(EMPTY_CODE,currentByte);
 				int prevHash = GetHash(prevKey);
 				prevCode = EMPTY_CODE;
 				for(int j=0;j<table[prevHash].list.size(); ++j)
 				{
 					Integer value = table[prevHash].list.get(j);
-					valueCode = GetCode(value);
-					valuePrevCode = GetPrevCode(value);
-					valueLastSymbol = GetLastSymbol(value);
+					int valueCode = GetCode(value);
+					int valuePrevCode = GetPrevCode(value);
+					int valueLastSymbol = GetLastSymbol(value);
 					
-					if(prevCode == valuePrevCode && cur == valueLastSymbol)
+					if(prevCode == valuePrevCode && currentByte == valueLastSymbol)
 					{
 						prevCode = valueCode;
 						break;
@@ -99,16 +99,14 @@ public class LZW implements ICompressor {
 				++nextCode;
 				if(Arrays.binarySearch(THRESHOLDS, nextCode) >= 0)
 				{
-					++bitsInCode;					
+					++bitsInCode;
 				}
-				if(nextCode == CLEARTABLESIZE)
+				if(reachedCodeSizeLimit())
 				{
 					writer.WriteBits(prevCode, bitsInCode);
-					writer.WriteBits(CLEAR_CODE, bitsInCode);
-					InitHashTable(table);
-					nextCode = POOL_START;
-					bitsInCode = STARTBITSTOWRITE;
-					prevCode = EMPTY_CODE;
+                    writeClearCode(writer);
+
+                    resetTable(table);
 				}
 			}
 		}
@@ -118,28 +116,65 @@ public class LZW implements ICompressor {
 		writer.Flush();
 		return Arrays.copyOf(buffer, writer.GetTotalBytesProceeded());
 	}
-	
-	void InitHashTable( ListOfInts[] table)
+
+    private int getCurrentByte(byte b) {
+        return b & 0xFF;
+    }
+
+    private boolean reachedCodeSizeLimit() {
+        return nextCode == CLEARTABLESIZE;
+    }
+
+    private void writeClearCode(BinaryIO writer) {
+        writer.WriteBits(CLEAR_CODE, bitsInCode);
+    }
+
+    private void resetTable(ListOfInts[] table) {
+        initHashTable(table);
+        nextCode = POOL_START;
+        bitsInCode = START_BITS_TO_WRITE;
+        prevCode = EMPTY_CODE;
+    }
+
+    private BinaryIO initBufferAndBinaryWriter(byte[] data) {
+        buffer = new byte[2*(data.length + 2)];
+        return new BinaryIO(buffer);
+    }
+
+    void initHashTable(ListOfInts[] table)
 	{
-		for(int i=0; i < TABLECAPACITY; ++i)
-		{
-			table[i] = new ListOfInts();
-		}
-		for(int i=0;i<256; ++i)
-		{
-			int key = MakeKey(EMPTY_CODE, i);
-			int hash = GetHash(key);
-			int newElement = GetNewElement( i, EMPTY_CODE, i);
-			table[hash].list.add(newElement);			
-		}
-	}
-	int GetNewElement(int curCode, int prevCode, int cur)
+        initListsInTable(table);
+        addInTableSingleByteChains(table);
+    }
+
+    private void initListsInTable(ListOfInts[] table) {
+        for(int i=0; i < TABLE_CAPACITY; ++i)
+        {
+            table[i] = new ListOfInts();
+        }
+    }
+
+    private void addInTableSingleByteChains(ListOfInts[] table) {
+        for(int codedByte=0;codedByte<256; ++codedByte)
+        {
+addSingleByteChainToTable(table, codedByte);
+        }
+    }
+
+    private void addSingleByteChainToTable(ListOfInts[] table, int i) {
+        int key = MakeKey(EMPTY_CODE, i);
+        int hash = GetHash(key);
+        int newElement = GetNewElement( i, EMPTY_CODE, i);
+        table[hash].list.add(newElement);
+    }
+
+    int GetNewElement(int curCode, int prevCode, int cur)
 	{
 		return (((curCode << 12) | prevCode) << 8) | (cur & 0xFF);
 	}
 	int GetCode(int value)
 	{
-		// код текущей цепочки
+		// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		return value>>>20;
 	}
 	int GetPrevCode(int value)
@@ -158,7 +193,7 @@ public class LZW implements ICompressor {
 	}
 	int GetHash(int key)
 	{
-		int hash = ((( key ) >> MAXCODELENGTH ) ^ key) & (MAGICNUMBER); 
+		int hash = ((( key ) >> MAX_CODE_LENGTH) ^ key) & (MAGIC_NUMBER);
 		return hash;
 	}
 	void InitCodeArray(ListOfBytes[] table)
@@ -180,10 +215,10 @@ public class LZW implements ICompressor {
 		
 		buffer = new byte[(2+data.length) * 2];
 		int bytesCount = 0;
-		int bitsInCode = STARTBITSTOWRITE;
+		int bitsInCode = START_BITS_TO_WRITE;
 		int nextCode = POOL_START;
 		BinaryIO reader = new BinaryIO(data);
-		ListOfBytes[] table = new ListOfBytes[TABLECAPACITY];
+		ListOfBytes[] table = new ListOfBytes[TABLE_CAPACITY];
 		InitCodeArray(table);
 		
 		int code = reader.ReadBits(bitsInCode);
@@ -194,7 +229,7 @@ public class LZW implements ICompressor {
 			{
 				InitCodeArray(table);
 				nextCode = POOL_START;
-				bitsInCode = STARTBITSTOWRITE;
+				bitsInCode = START_BITS_TO_WRITE;
 				code = reader.ReadBits(bitsInCode);
 				code = ((byte) code) & 0xFF;				 
 				if( code == END_CODE)
