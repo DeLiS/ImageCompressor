@@ -12,43 +12,8 @@ public class HuffmanCompressor implements ICompressor {
     private static final int SIZE_OF_BYTE = 8;
     private static final int SIZE_OF_INT = 32;
 
-    private class TreeNode implements Comparable<TreeNode>
-	{
-		public TreeNode left;
-		public TreeNode right;
-		public int quantity;
-		public Byte character;
-		public int size;
-		public TreeNode()
-		{
-			left = right  = null;
-			character = null;
-			size = 1;
-			quantity = 0;
-		}		
-		public TreeNode(Byte character, int quantity)
-		{
-			this();	
-			size = 3;
-			this.character = character;
-			this.quantity = quantity;
-		}
-		public TreeNode(TreeNode left, TreeNode right)
-		{
-			this();
-			this.left = left;
-			this.right = right;
-			this.quantity = left.quantity + right.quantity;
-			this.size = 1 + left.size + right.size;
-		}
-		@Override
-		public int compareTo(TreeNode node) {
-			return this.quantity - node.quantity;
-		}
-	}
-	
 
-	private int[] codes;
+    private int[] codes;
 	private int[] codeLengths;
 	private int[] quantities;
 	private int differentBytesCount;
