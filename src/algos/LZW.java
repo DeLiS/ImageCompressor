@@ -50,54 +50,31 @@ public class LZW implements ICompressor {
 			int key = MakeKey(prevCode, currentByte);
 			int hash = GetHash(key);
 
-            valueCode = 0;
-
-			boolean contains = false;
-
-
-
-			for(int j=0;j<table[hash].list.size(); ++j){
-				Integer value = table[hash].list.get(j);
-				valueCode = GetCode(value);
-				int valuePrevCode = GetPrevCode(value);
-				int valueLastSymbol = GetLastSymbol(value);
-
-				if(prevCode == valuePrevCode && currentByte == valueLastSymbol)
-				{
-					contains = true;
-					break;
-				}
-			}
+            boolean contains = getValueCodeIfContainsCurrentChain(table[hash], currentByte);
 			
 			if(contains){
 				prevCode = valueCode;
-			}
-			else
-			{
-				int toWrite = prevCode;//((byte) (prevCode))&0xFF;
-				writer.WriteBits(toWrite, bitsInCode);
-				int newElement = GetNewElement(nextCode, prevCode,currentByte);
-				table[hash].list.add(newElement);
+			}else{
+                writer.WriteBits(prevCode, bitsInCode);
+                addNewElementToHashTable(table, currentByte, hash);
 				
 				int prevKey = MakeKey(EMPTY_CODE,currentByte);
 				int prevHash = GetHash(prevKey);
 				prevCode = EMPTY_CODE;
-				for(int j=0;j<table[prevHash].list.size(); ++j)
-				{
-					Integer value = table[prevHash].list.get(j);
-					int valueCode = GetCode(value);
-					int valuePrevCode = GetPrevCode(value);
-					int valueLastSymbol = GetLastSymbol(value);
-					
-					if(prevCode == valuePrevCode && currentByte == valueLastSymbol)
-					{
-						prevCode = valueCode;
-						break;
-					}				
-				}
+                LinkedList<Integer> collisionsList = getCollisionsList(table, prevHash);
+                for (Integer value : collisionsList) {
+                    int valueCode = GetCode(value);
+                    int valuePrevCode = GetPrevCode(value);
+                    int valueLastSymbol = GetLastSymbol(value);
+
+                    if (prevCode == valuePrevCode && currentByte == valueLastSymbol) {
+                        prevCode = valueCode;
+                        break;
+                    }
+                }
 				
 				++nextCode;
-				if(Arrays.binarySearch(THRESHOLDS, nextCode) >= 0)
+				if(nextCodeIsAThreshold())
 				{
 					++bitsInCode;
 				}
@@ -110,12 +87,60 @@ public class LZW implements ICompressor {
 				}
 			}
 		}
-		int toWrite = prevCode;//((byte) (prevCode))&0xFF;
-		writer.WriteBits(toWrite, bitsInCode);
-		writer.WriteBits(END_CODE, bitsInCode);
-		writer.Flush();
-		return Arrays.copyOf(buffer, writer.GetTotalBytesProceeded());
+
+        finishWritingCodes(writer);
+        byte[] result = getUsedSubarrayOfBuffer(writer);
+        return result;
 	}
+
+    private byte[] getUsedSubarrayOfBuffer(BinaryIO writer) {
+        return Arrays.copyOf(buffer, writer.GetTotalBytesProceeded());
+    }
+
+    private void finishWritingCodes(BinaryIO writer) {
+        writer.WriteBits(prevCode, bitsInCode);
+        writer.WriteBits(END_CODE, bitsInCode);
+        writer.Flush();
+    }
+
+    private boolean nextCodeIsAThreshold() {
+        return Arrays.binarySearch(THRESHOLDS, nextCode) >= 0;
+    }
+
+    private void addNewElementToHashTable(ListOfInts[] table, int currentByte, int hash) {
+        int newElement = GetNewElement(nextCode, prevCode,currentByte);
+        LinkedList<Integer> collisionsList = getCollisionsList(table, hash);
+        addNewElementToCollisionsList(newElement, collisionsList);
+    }
+
+    private void addNewElementToCollisionsList(int newElement, LinkedList<Integer> collisionsList) {
+        collisionsList.add(newElement);
+    }
+
+    private LinkedList<Integer> getCollisionsList(ListOfInts[] table, int hash) {
+        return table[hash].list;
+    }
+
+    private boolean getValueCodeIfContainsCurrentChain(ListOfInts listOfInts, int currentByte) {
+        valueCode = 0;
+
+        boolean contains = false;
+
+
+        for(int j=0;j< listOfInts.list.size(); ++j){
+            Integer value = listOfInts.list.get(j);
+            valueCode = GetCode(value);
+            int valuePrevCode = GetPrevCode(value);
+            int valueLastSymbol = GetLastSymbol(value);
+
+            if(prevCode == valuePrevCode && currentByte == valueLastSymbol)
+            {
+                contains = true;
+                break;
+            }
+        }
+        return contains;
+    }
 
     private int getCurrentByte(byte b) {
         return b & 0xFF;
@@ -165,7 +190,8 @@ addSingleByteChainToTable(table, codedByte);
         int key = MakeKey(EMPTY_CODE, i);
         int hash = GetHash(key);
         int newElement = GetNewElement( i, EMPTY_CODE, i);
-        table[hash].list.add(newElement);
+        LinkedList<Integer> collisionsList = getCollisionsList(table, hash);
+        addNewElementToCollisionsList(newElement, collisionsList);
     }
 
     int GetNewElement(int curCode, int prevCode, int cur)

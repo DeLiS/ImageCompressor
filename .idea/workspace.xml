@@ -4,13 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" afterPath="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="LZW Compress refactored&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algos/TreeNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,10 +119,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LZW.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="43" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="5168">
+            <state line="85" column="38" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.95327103" vertical-offset="731" max-vertical-offset="5610">
               <folding />
             </state>
           </provider>
@@ -145,14 +146,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HuffmanCompressor.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HuffmanCompressor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="46" selection-start="409" selection-end="409" vertical-scroll-proportion="0.1792905" vertical-offset="17" max-vertical-offset="4352">
+            <state line="76" column="44" selection-start="2257" selection-end="2257" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="3757">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4807#4817#0" expanded="true" />
+                <element signature="e#4081#4091#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HuffmanImageCompressor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ICompressor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IImageCompressor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/IImageCompressor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageStatistics.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="128" column="41" selection-start="2940" selection-end="2941" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2516">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeNode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algos/TreeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="5" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="765">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -188,9 +234,9 @@
         <option value="$PROJECT_DIR$/src/test/HuffmanTest.java" />
         <option value="$PROJECT_DIR$/src/test/BinaryIOTests.java" />
         <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
-        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
-        <option value="$PROJECT_DIR$/src/algos/TreeNode.java" />
         <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
+        <option value="$PROJECT_DIR$/src/algos/TreeNode.java" />
+        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
       </list>
     </option>
   </component>
@@ -496,6 +542,22 @@
     <property name="LayoutCode.rearrangeEntriesJava" value="true" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="286" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="304" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="310" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="990" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="308" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="297" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="303" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="982" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RunManager" selected="JUnit.BinaryIOTests and 3 more">
     <configuration default="false" name="BinaryIOTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -793,6 +855,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="" />
+      <changelist id="" name="Huffman" comment="" />
       <created>1392275841662</created>
       <updated>1392275841662</updated>
     </task>
@@ -928,7 +991,15 @@
       <created>1393195303874</created>
       <updated>1393195303874</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="LZW Compress refactored&#10;">
+      <created>1393363758272</created>
+      <updated>1393363758272</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Huffman">
+      <created>1393363911640</created>
+      <updated>1393363911640</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -945,7 +1016,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39943874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292797" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -953,7 +1024,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -972,8 +1043,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="GeneralImageCompressor refactored" />
-    <MESSAGE value="String replaced with StringBuffer in ImageStatistics.Write" />
     <MESSAGE value="HuffmanCompressor.Compress refactored" />
     <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
     <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
@@ -997,7 +1066,9 @@
     <MESSAGE value="creation of tests for rle, lzw and huffman finished" />
     <MESSAGE value="TestCaseGenerator refactored" />
     <MESSAGE value="TestCaseGenerator fixed&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="TestCaseGenerator fixed&#10;" />
+    <MESSAGE value="LZW Compress refactored&#10;" />
+    <MESSAGE value="Huffman" />
+    <option name="LAST_COMMIT_MESSAGE" value="Huffman" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1157,16 +1228,6 @@
         <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3553" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/IImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.045393858" vertical-offset="0" max-vertical-offset="749" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/RunLengthEncoder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="-0.027597403" vertical-offset="51" max-vertical-offset="2193" />
@@ -1177,24 +1238,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1043" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="41" selection-start="2940" selection-end="2941" vertical-scroll-proportion="0.67401725" vertical-offset="1473" max-vertical-offset="2516" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/RleImageCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="13" selection-start="722" selection-end="722" vertical-scroll-proportion="0.42377755" vertical-offset="0" max-vertical-offset="1530" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.032598276" vertical-offset="0" max-vertical-offset="1043" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11424" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/HuffmanTest.java">
@@ -1255,16 +1301,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="43" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="5168">
+        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
+    <entry file="file://$PROJECT_DIR$/src/algos/TreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
+        <state line="20" column="5" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="765">
           <folding />
         </state>
       </provider>
@@ -1278,11 +1324,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/HuffmanCompressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="46" selection-start="409" selection-end="409" vertical-scroll-proportion="0.1792905" vertical-offset="17" max-vertical-offset="4352">
+        <state line="76" column="44" selection-start="2257" selection-end="2257" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="3757">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4807#4817#0" expanded="true" />
+            <element signature="e#4081#4091#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/HuffmanImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/ICompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/IImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/JpegImageCompressor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="507" column="33" selection-start="18743" selection-end="18743" vertical-scroll-proportion="0.6782377" vertical-offset="8077" max-vertical-offset="11390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/ImageStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="41" selection-start="2940" selection-end="2941" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2516">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="38" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.95327103" vertical-offset="731" max-vertical-offset="5610">
+          <folding />
         </state>
       </provider>
     </entry>
