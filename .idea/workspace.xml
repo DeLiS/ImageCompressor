@@ -4,8 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="LZW Compress refactored&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/algos/TreeNode.java" />
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -122,7 +121,7 @@
       <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="38" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.95327103" vertical-offset="731" max-vertical-offset="5610">
+            <state line="79" column="17" selection-start="2334" selection-end="2334" vertical-scroll-proportion="0.5447263" vertical-offset="935" max-vertical-offset="5593">
               <folding />
             </state>
           </provider>
@@ -999,7 +998,11 @@
       <created>1393363911640</created>
       <updated>1393363911640</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="LZW Compress refactored&#10;">
+      <created>1393367198758</created>
+      <updated>1393367198758</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1066,9 +1069,9 @@
     <MESSAGE value="creation of tests for rle, lzw and huffman finished" />
     <MESSAGE value="TestCaseGenerator refactored" />
     <MESSAGE value="TestCaseGenerator fixed&#10;" />
-    <MESSAGE value="LZW Compress refactored&#10;" />
     <MESSAGE value="Huffman" />
-    <option name="LAST_COMMIT_MESSAGE" value="Huffman" />
+    <MESSAGE value="LZW Compress refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LZW Compress refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1369,7 +1372,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="38" selection-start="2500" selection-end="2500" vertical-scroll-proportion="0.95327103" vertical-offset="731" max-vertical-offset="5610">
+        <state line="79" column="17" selection-start="2334" selection-end="2334" vertical-scroll-proportion="0.5447263" vertical-offset="935" max-vertical-offset="5593">
           <folding />
         </state>
       </provider>

@@ -82,7 +82,6 @@ public class LZW implements ICompressor {
 				{
 					writer.WriteBits(prevCode, bitsInCode);
                     writeClearCode(writer);
-
                     resetTable(table);
 				}
 			}
