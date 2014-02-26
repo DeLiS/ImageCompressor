@@ -179,9 +179,8 @@ public class LZW implements ICompressor {
     }
 
     private void addInTableSingleByteChains(ListOfInts[] table) {
-        for(int codedByte=0;codedByte<256; ++codedByte)
-        {
-addSingleByteChainToTable(table, codedByte);
+        for(int codedByte=0;codedByte<256; ++codedByte){
+            addSingleByteChainToTable(table, codedByte);
         }
     }
 
