@@ -32,6 +32,14 @@ public class LZW implements ICompressor {
         resetTable(table);
         writeClearCode(writer);
 
+        codeDataBytes(data, writer, table);
+
+        finishWritingCodes(writer);
+        byte[] result = getUsedSubarrayOfBuffer(writer);
+        return result;
+    }
+
+    private void codeDataBytes(byte[] data, BinaryIO writer, ListOfInts[] table) {
         for (int i = 0; i < data.length; ++i) {
             int currentByte = getCurrentByte(data[i]);
             int key = MakeKey(prevCode, currentByte);
@@ -45,10 +53,6 @@ public class LZW implements ICompressor {
                 createNewEntryAndWriteItsCode(writer, table, currentByte, hash);
             }
         }
-
-        finishWritingCodes(writer);
-        byte[] result = getUsedSubarrayOfBuffer(writer);
-        return result;
     }
 
     private void createNewEntryAndWriteItsCode(BinaryIO writer, ListOfInts[] table, int currentByte, int hash) {
@@ -71,6 +75,10 @@ public class LZW implements ICompressor {
         }
 
         ++nextCode;
+        checkCodeRestrictions(writer, table);
+    }
+
+    private void checkCodeRestrictions(BinaryIO writer, ListOfInts[] table) {
         if (nextCodeIsAThreshold()) {
             ++bitsInCode;
         }

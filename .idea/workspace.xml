@@ -4,9 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="" />
-    <list id="d25f2f8b-1e9c-4089-8411-114a1347e609" name="TestsChangelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/CompressionTest.java" afterPath="$PROJECT_DIR$/src/test/CompressionTest.java" />
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="LZW   refactored&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -121,7 +120,7 @@
       <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="7" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.31909212" vertical-offset="679" max-vertical-offset="5372">
+            <state line="77" column="8" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.45393857" vertical-offset="969" max-vertical-offset="5508">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -242,8 +241,8 @@
         <option value="$PROJECT_DIR$/src/test/TestCaseGenerator.java" />
         <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/TreeNode.java" />
-        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
         <option value="$PROJECT_DIR$/src/test/CompressionTest.java" />
+        <option value="$PROJECT_DIR$/src/algos/LZW.java" />
       </list>
     </option>
   </component>
@@ -862,7 +861,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="" />
-      <changelist id="d25f2f8b-1e9c-4089-8411-114a1347e609" name="TestsChangelist" comment="" />
+      <changelist id="" name="TestsChangelist" comment="" />
       <created>1392275841662</created>
       <updated>1392275841662</updated>
     </task>
@@ -1022,7 +1021,11 @@
       <created>1393455689134</created>
       <updated>1393455689134</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="TestsChangelist">
+      <created>1393455720186</created>
+      <updated>1393455720186</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1066,7 +1069,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
     <MESSAGE value="HuffmanCompressor constants renamed&#10;" />
     <MESSAGE value="some rearrangements in JPEGImageCompressor&#10;" />
     <MESSAGE value="JPEGImageCompressor&#10;coefficient in DCT changed" />
@@ -1091,7 +1093,8 @@
     <MESSAGE value="LZW Compress refactored&#10;" />
     <MESSAGE value="LZW addInTableSingleByteChain  refactored&#10;" />
     <MESSAGE value="LZW   refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="LZW   refactored&#10;" />
+    <MESSAGE value="TestsChangelist" />
+    <option name="LAST_COMMIT_MESSAGE" value="TestsChangelist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1389,7 +1392,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="7" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.31909212" vertical-offset="679" max-vertical-offset="5372">
+        <state line="77" column="8" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.45393857" vertical-offset="969" max-vertical-offset="5508">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
