@@ -4,7 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="LZW   refactored&#10;">
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -120,7 +120,7 @@
       <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="8" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.45393857" vertical-offset="969" max-vertical-offset="5508">
+            <state line="71" column="45" selection-start="2361" selection-end="2361" vertical-scroll-proportion="-2.5500667" vertical-offset="3117" max-vertical-offset="5559">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1025,7 +1025,11 @@
       <created>1393455720186</created>
       <updated>1393455720186</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="LZW   refactored&#10;">
+      <created>1393456268300</created>
+      <updated>1393456268300</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1092,9 +1096,9 @@
     <MESSAGE value="Huffman" />
     <MESSAGE value="LZW Compress refactored&#10;" />
     <MESSAGE value="LZW addInTableSingleByteChain  refactored&#10;" />
-    <MESSAGE value="LZW   refactored&#10;" />
     <MESSAGE value="TestsChangelist" />
-    <option name="LAST_COMMIT_MESSAGE" value="TestsChangelist" />
+    <MESSAGE value="LZW   refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LZW   refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1392,7 +1396,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="8" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.45393857" vertical-offset="969" max-vertical-offset="5508">
+        <state line="71" column="45" selection-start="2361" selection-end="2361" vertical-scroll-proportion="-2.5500667" vertical-offset="3117" max-vertical-offset="5559">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

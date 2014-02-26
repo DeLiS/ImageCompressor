@@ -59,23 +59,27 @@ public class LZW implements ICompressor {
         writer.WriteBits(prevCode, bitsInCode);
         addNewElementToHashTable(table, currentByte, hash);
 
-        int prevKey = MakeKey(EMPTY_CODE, currentByte);
-        int prevHash = GetHash(prevKey);
+        LinkedList<Integer> collisionsList = getCollisionListByPrevCodeAndCurByte(EMPTY_CODE, currentByte, table);
         prevCode = EMPTY_CODE;
-        LinkedList<Integer> collisionsList = getCollisionsList(table, prevHash);
         for (Integer value : collisionsList) {
-            int valueCode = GetCode(value);
-            int valuePrevCode = GetPrevCode(value);
-            int valueLastSymbol = GetLastSymbol(value);
-
-            if (prevCode == valuePrevCode && currentByte == valueLastSymbol) {
-                prevCode = valueCode;
+            if (areEqualValues(prevCode, currentByte, value)) {
+                prevCode = GetCode(value);
                 break;
             }
         }
 
         ++nextCode;
         checkCodeRestrictions(writer, table);
+    }
+
+    private LinkedList<Integer> getCollisionListByPrevCodeAndCurByte(short previousCode, int currentByte, ListOfInts[] table) {
+        int prevKey = MakeKey(previousCode, currentByte);
+        return getCollisionListByKey(table, prevKey);
+    }
+
+    private LinkedList<Integer> getCollisionListByKey(ListOfInts[] table, int prevKey) {
+        int prevHash = GetHash(prevKey);
+        return getCollisionsList(table, prevHash);
     }
 
     private void checkCodeRestrictions(BinaryIO writer, ListOfInts[] table) {
@@ -113,10 +117,8 @@ public class LZW implements ICompressor {
     }
 
     private void addSingleByteChainToTable(ListOfInts[] table, int i) {
-        int key = MakeKey(EMPTY_CODE, i);
-        int hash = GetHash(key);
+        LinkedList<Integer> collisionsList = getCollisionListByPrevCodeAndCurByte(EMPTY_CODE, i, table);
         int newElement = GetNewElement(i, EMPTY_CODE, i);
-        LinkedList<Integer> collisionsList = getCollisionsList(table, hash);
         addNewElementToCollisionsList(newElement, collisionsList);
     }
 
@@ -167,18 +169,19 @@ public class LZW implements ICompressor {
         boolean contains = false;
 
 
-        for (int j = 0; j < listOfInts.list.size(); ++j) {
+        for (int j = 0; j < listOfInts.list.size() && !contains; ++j) {
             Integer value = listOfInts.list.get(j);
             valueCode = GetCode(value);
-            int valuePrevCode = GetPrevCode(value);
-            int valueLastSymbol = GetLastSymbol(value);
-
-            if (prevCode == valuePrevCode && currentByte == valueLastSymbol) {
-                contains = true;
-                break;
-            }
+            contains = areEqualValues(prevCode, currentByte, value);
         }
         return contains;
+    }
+
+    private boolean areEqualValues(int previousCode, int currentByte, int value){
+        int valuePrevCode = GetPrevCode(value);
+        int valueLastSymbol = GetLastSymbol(value);
+        boolean result = previousCode == valuePrevCode && currentByte == valueLastSymbol;
+        return result;
     }
 
     int GetLastSymbol(int value) {
@@ -272,6 +275,17 @@ public class LZW implements ICompressor {
         return Arrays.copyOf(buffer, bytesCount);
     }
 
+    void InitCodeArray(ListOfBytes[] table) {
+        for (int i = 0; i < table.length; ++i) {
+            table[i] = null;
+        }
+        table[CLEAR_CODE] = new ListOfBytes();
+        for (int i = 0; i < 256; ++i) {
+            table[i] = new ListOfBytes();
+            table[i].list.add((byte) (i & 0xFF));
+        }
+    }
+
     public int AddData(int start, int code, ListOfBytes[] table) {
 
         ListOfBytes elem = table[code];
@@ -286,17 +300,6 @@ public class LZW implements ICompressor {
             buffer[start + i] = elem.list.get(i);
         }
         return size;
-    }
-
-    void InitCodeArray(ListOfBytes[] table) {
-        for (int i = 0; i < table.length; ++i) {
-            table[i] = null;
-        }
-        table[CLEAR_CODE] = new ListOfBytes();
-        for (int i = 0; i < 256; ++i) {
-            table[i] = new ListOfBytes();
-            table[i].list.add((byte) (i & 0xFF));
-        }
     }
 
     private class ListOfInts {
