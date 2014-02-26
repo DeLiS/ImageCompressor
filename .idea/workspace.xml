@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/CompressionTest.java" afterPath="$PROJECT_DIR$/src/test/CompressionTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -120,7 +121,18 @@
       <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="12" selection-start="5325" selection-end="5325" vertical-scroll-proportion="0.3858478" vertical-offset="2805" max-vertical-offset="5576">
+            <state line="54" column="7" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.31909212" vertical-offset="679" max-vertical-offset="5372">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompressionTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="65" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="1343">
               <folding />
             </state>
           </provider>
@@ -223,7 +235,6 @@
         <option value="$PROJECT_DIR$/src/algos/ImageStatistics.java" />
         <option value="$PROJECT_DIR$/src/algos/JpegImageCompressor.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTests.java" />
-        <option value="$PROJECT_DIR$/src/test/CompressionTest.java" />
         <option value="$PROJECT_DIR$/src/test/LzwTest.java" />
         <option value="$PROJECT_DIR$/src/test/RleTest.java" />
         <option value="$PROJECT_DIR$/src/test/HuffmanTest.java" />
@@ -232,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/algos/HuffmanCompressor.java" />
         <option value="$PROJECT_DIR$/src/algos/TreeNode.java" />
         <option value="$PROJECT_DIR$/src/algos/LZW.java" />
+        <option value="$PROJECT_DIR$/src/test/CompressionTest.java" />
       </list>
     </option>
   </component>
@@ -1001,7 +1013,11 @@
       <created>1393367671633</created>
       <updated>1393367671633</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="LZW addInTableSingleByteChain  refactored&#10;">
+      <created>1393454166206</created>
+      <updated>1393454166206</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1045,7 +1061,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="HuffmanCompressor.Compress refactored" />
     <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
     <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
     <MESSAGE value="HuffmanCompressor constants renamed&#10;" />
@@ -1070,7 +1085,8 @@
     <MESSAGE value="TestCaseGenerator fixed&#10;" />
     <MESSAGE value="Huffman" />
     <MESSAGE value="LZW Compress refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="LZW Compress refactored&#10;" />
+    <MESSAGE value="LZW addInTableSingleByteChain  refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LZW addInTableSingleByteChain  refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1296,13 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.13751669" vertical-offset="373" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/BinaryIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="13" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="2924">
@@ -1366,10 +1375,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CompressionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="65" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="12" selection-start="5325" selection-end="5325" vertical-scroll-proportion="0.3858478" vertical-offset="2805" max-vertical-offset="5576">
-          <folding />
+        <state line="54" column="7" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.31909212" vertical-offset="679" max-vertical-offset="5372">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
