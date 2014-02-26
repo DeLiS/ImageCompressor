@@ -24,7 +24,7 @@ public abstract class CompressionTest {
     }
 
     @Test
-    public void testCompression() throws IOException{
+    public void testCompressionAndDecompressionSeparately() throws IOException{
         while((inputLine = bufferedReader.readLine()) != null){
             readOutputLine();
             byte[] inputBytes = createBytesFromString(inputLine);
@@ -35,6 +35,19 @@ public abstract class CompressionTest {
 
             assertArrayEquals(inputBytes, decompressionResult);
             assertArrayEquals(outputBytes, compressionResult);
+        }
+    }
+
+    @Test
+    public void testCompressionAndDecompressionChained() throws IOException{
+        while((inputLine = bufferedReader.readLine()) != null){
+            readOutputLine();
+            byte[] inputBytes = createBytesFromString(inputLine);
+            ICompressor compressor = getCompressor();
+            byte[] compressionResult = compressor.Compress(inputBytes);
+            byte[] decompressionResult = compressor.Decompress(compressionResult);
+
+            assertArrayEquals(inputBytes, decompressionResult);
         }
     }
 

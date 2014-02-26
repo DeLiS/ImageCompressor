@@ -4,9 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="" />
+    <list id="d25f2f8b-1e9c-4089-8411-114a1347e609" name="TestsChangelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/CompressionTest.java" afterPath="$PROJECT_DIR$/src/test/CompressionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -862,6 +862,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="" />
+      <changelist id="d25f2f8b-1e9c-4089-8411-114a1347e609" name="TestsChangelist" comment="" />
       <created>1392275841662</created>
       <updated>1392275841662</updated>
     </task>
@@ -1017,7 +1018,11 @@
       <created>1393454166206</created>
       <updated>1393454166206</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="LZW   refactored&#10;">
+      <created>1393455689134</created>
+      <updated>1393455689134</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1061,7 +1066,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="HuffmanCompressor.Decompress refactored&#10;" />
     <MESSAGE value="HuffmanCompressor.BuildTree refactored&#10;" />
     <MESSAGE value="HuffmanCompressor constants renamed&#10;" />
     <MESSAGE value="some rearrangements in JPEGImageCompressor&#10;" />
@@ -1086,7 +1090,8 @@
     <MESSAGE value="Huffman" />
     <MESSAGE value="LZW Compress refactored&#10;" />
     <MESSAGE value="LZW addInTableSingleByteChain  refactored&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="LZW addInTableSingleByteChain  refactored&#10;" />
+    <MESSAGE value="LZW   refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="LZW   refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
