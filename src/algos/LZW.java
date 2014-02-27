@@ -83,7 +83,7 @@ public class LZW implements ICompressor {
     }
 
     private void checkCodeRestrictions(BinaryIO writer, ListOfInts[] table) {
-        if (nextCodeIsAThreshold()) {
+        if (codeIsAThreshold(nextCode)) {
             ++bitsInCode;
         }
         if (reachedCodeSizeLimit()) {
@@ -204,8 +204,8 @@ public class LZW implements ICompressor {
         addNewElementToCollisionsList(newElement, collisionsList);
     }
 
-    private boolean nextCodeIsAThreshold() {
-        return Arrays.binarySearch(THRESHOLDS, nextCode) >= 0;
+    private boolean codeIsAThreshold(int code) {
+        return Arrays.binarySearch(THRESHOLDS, code) >= 0;
     }
 
     private void finishWritingCodes(BinaryIO writer) {
@@ -224,55 +224,82 @@ public class LZW implements ICompressor {
 
         buffer = new byte[(2 + data.length) * 2];
         int bytesCount = 0;
-        int bitsInCode = START_BITS_TO_WRITE;
-        int nextCode = POOL_START;
+        bitsInCode = START_BITS_TO_WRITE;
+        nextCode = POOL_START;
         BinaryIO reader = new BinaryIO(data);
         ListOfBytes[] table = new ListOfBytes[TABLE_CAPACITY];
         InitCodeArray(table);
 
-        int code = reader.ReadBits(bitsInCode);
-        int oldCode = EMPTY_CODE;
-        while (code != END_CODE) {
-            if (code == CLEAR_CODE) {
-                InitCodeArray(table);
-                nextCode = POOL_START;
-                bitsInCode = START_BITS_TO_WRITE;
-                code = reader.ReadBits(bitsInCode);
-                code = ((byte) code) & 0xFF;
-                if (code == END_CODE) {
+        valueCode = reader.ReadBits(bitsInCode);
+        prevCode = EMPTY_CODE;
+        while (isNotEndCode()) {
+            if (isClearCode()) {
+                resetCodeArrayAndParams(table);
+                readNextCode(reader);
+                if (isEndCode()) {
                     return Arrays.copyOf(buffer, bytesCount);
                 }
-                bytesCount += AddData(bytesCount, code, table);
-                oldCode = code;
+                bytesCount = addDataByCode(bytesCount, table);
             } else {
-                if (table[code] != null) {
-                    int bytesWritten = AddData(bytesCount, code, table);
-                    bytesCount += bytesWritten;
+                if (table[valueCode] != null) {
+
                     table[nextCode] = new ListOfBytes();
-                    table[nextCode].list = (LinkedList<Byte>) table[oldCode].list.clone();
-                    table[nextCode].list.add(table[code].list.get(0));
+                    table[nextCode].list = (LinkedList<Byte>) table[prevCode].list.clone();
+                    table[nextCode].list.add(table[valueCode].list.get(0));
+                    bytesCount += AddData(bytesCount, valueCode, table);
                     nextCode += 1;
-                    if (Arrays.binarySearch(THRESHOLDS, nextCode + 1) >= 0) {
-                        ++bitsInCode;
-                    }
-                    oldCode = code;
+                    checkNextCodeSize();
+                    prevCode = valueCode;
                 } else {
-                    LinkedList<Byte> llb = (LinkedList<Byte>) table[oldCode].list.clone();
-                    llb.add(llb.get(0));
+                    valueCode = nextCode;
                     table[nextCode] = new ListOfBytes();
-                    table[nextCode].list = llb;
-                    bytesCount += AddData(bytesCount, nextCode, table);
-                    oldCode = nextCode;
+                    table[nextCode].list = (LinkedList<Byte>) table[prevCode].list.clone();
+                    table[nextCode].list.add( table[valueCode].list.get(0));
+                    bytesCount += AddData(bytesCount, valueCode, table);
                     nextCode += 1;
-                    if (Arrays.binarySearch(THRESHOLDS, nextCode + 1) >= 0) {
-                        ++bitsInCode;
-                    }
+                    checkNextCodeSize();
+                    prevCode = valueCode;
                 }
             }
-            code = reader.ReadBits(bitsInCode);
+            valueCode = reader.ReadBits(bitsInCode);
         }
 
         return Arrays.copyOf(buffer, bytesCount);
+    }
+
+    private void resetCodeArrayAndParams(ListOfBytes[] table) {
+        InitCodeArray(table);
+        nextCode = POOL_START;
+        bitsInCode = START_BITS_TO_WRITE;
+    }
+
+    private void readNextCode(BinaryIO reader) {
+        valueCode = reader.ReadBits(bitsInCode);
+        valueCode = ((byte) valueCode) & 0xFF;
+    }
+
+    private int addDataByCode(int bytesCount, ListOfBytes[] table) {
+        bytesCount += AddData(bytesCount, valueCode, table);
+        prevCode = valueCode;
+        return bytesCount;
+    }
+
+    private boolean isEndCode() {
+        return valueCode == END_CODE;
+    }
+
+    private void checkNextCodeSize() {
+        if (codeIsAThreshold(nextCode + 1)) {
+            ++bitsInCode;
+        }
+    }
+
+    private boolean isNotEndCode() {
+        return valueCode != END_CODE;
+    }
+
+    private boolean isClearCode() {
+        return valueCode == CLEAR_CODE;
     }
 
     void InitCodeArray(ListOfBytes[] table) {
