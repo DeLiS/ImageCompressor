@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageCompressor.iws" />
@@ -120,7 +119,7 @@
       <file leaf-file-name="LZW.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="45" selection-start="2361" selection-end="2361" vertical-scroll-proportion="-2.5500667" vertical-offset="3117" max-vertical-offset="5559">
+            <state line="10" column="32" selection-start="231" selection-end="231" vertical-scroll-proportion="0.22696929" vertical-offset="0" max-vertical-offset="5559">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1029,7 +1028,11 @@
       <created>1393456268300</created>
       <updated>1393456268300</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="LZW   refactored&#10;">
+      <created>1393458100466</created>
+      <updated>1393458100466</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1396,7 +1399,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algos/LZW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="45" selection-start="2361" selection-end="2361" vertical-scroll-proportion="-2.5500667" vertical-offset="3117" max-vertical-offset="5559">
+        <state line="10" column="32" selection-start="231" selection-end="231" vertical-scroll-proportion="0.22696929" vertical-offset="0" max-vertical-offset="5559">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
