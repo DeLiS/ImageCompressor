@@ -177,7 +177,7 @@ public class LZW implements ICompressor {
         return contains;
     }
 
-    private boolean areEqualValues(int previousCode, int currentByte, int value){
+    private boolean areEqualValues(int previousCode, int currentByte, int value) {
         int valuePrevCode = GetPrevCode(value);
         int valueLastSymbol = GetLastSymbol(value);
         boolean result = previousCode == valuePrevCode && currentByte == valueLastSymbol;
@@ -202,10 +202,6 @@ public class LZW implements ICompressor {
         int newElement = GetNewElement(nextCode, prevCode, currentByte);
         LinkedList<Integer> collisionsList = getCollisionsList(table, hash);
         addNewElementToCollisionsList(newElement, collisionsList);
-    }
-
-    private boolean codeIsAThreshold(int code) {
-        return Arrays.binarySearch(THRESHOLDS, code) >= 0;
     }
 
     private void finishWritingCodes(BinaryIO writer) {
@@ -267,6 +263,16 @@ public class LZW implements ICompressor {
         return bytesCount;
     }
 
+    private void checkNextCodeSize() {
+        if (codeIsAThreshold(nextCode + 1)) {
+            ++bitsInCode;
+        }
+    }
+
+    private boolean codeIsAThreshold(int code) {
+        return Arrays.binarySearch(THRESHOLDS, code) >= 0;
+    }
+
     private boolean tableIncludesValueCode(ListOfBytes[] table) {
         return table[valueCode] != null;
     }
@@ -288,14 +294,24 @@ public class LZW implements ICompressor {
         return bytesCount;
     }
 
-    private boolean isEndCode() {
-        return valueCode == END_CODE;
+    public int AddData(int start, int code, ListOfBytes[] table) {
+
+        ListOfBytes elem = table[code];
+        int size = elem.list.size();
+        if (start + size >= buffer.length) {
+            int c = (start + size) / buffer.length + 1;
+            byte[] newBuf = new byte[buffer.length * c];
+            System.arraycopy(buffer, 0, newBuf, 0, buffer.length);
+            buffer = newBuf;
+        }
+        for (int i = 0; i < size; ++i) {
+            buffer[start + i] = elem.list.get(i);
+        }
+        return size;
     }
 
-    private void checkNextCodeSize() {
-        if (codeIsAThreshold(nextCode + 1)) {
-            ++bitsInCode;
-        }
+    private boolean isEndCode() {
+        return valueCode == END_CODE;
     }
 
     private boolean isNotEndCode() {
@@ -315,22 +331,6 @@ public class LZW implements ICompressor {
             table[i] = new ListOfBytes();
             table[i].list.add((byte) (i & 0xFF));
         }
-    }
-
-    public int AddData(int start, int code, ListOfBytes[] table) {
-
-        ListOfBytes elem = table[code];
-        int size = elem.list.size();
-        if (start + size >= buffer.length) {
-            int c = (start + size) / buffer.length + 1;
-            byte[] newBuf = new byte[buffer.length * c];
-            System.arraycopy(buffer, 0, newBuf, 0, buffer.length);
-            buffer = newBuf;
-        }
-        for (int i = 0; i < size; ++i) {
-            buffer[start + i] = elem.list.get(i);
-        }
-        return size;
     }
 
     private class ListOfInts {

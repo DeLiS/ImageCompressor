@@ -19,6 +19,10 @@ public class BinaryIO {
         clearBuffer();
     }
 
+    private void clearBuffer() {
+        buffer = 0;
+    }
+
     public void WriteBits(int value, int bitsCount) {
         if (bufferHasFreeSpaceMoreThan(bitsCount)) {
             writeValueToBuffer(value, bitsCount);
@@ -46,6 +50,15 @@ public class BinaryIO {
         bytesProceeded += BYTESININT;
     }
 
+    private byte[] bufferToByteArray() {
+        byte[] tmp = new byte[BYTESININT];
+        tmp[0] = (byte) (((buffer << 3 * SIZEOFBYTE) >>> 3 * SIZEOFBYTE) & MASK);
+        tmp[1] = (byte) (((buffer << 2 * SIZEOFBYTE) >>> 3 * SIZEOFBYTE) & MASK);
+        tmp[2] = (byte) (((buffer << SIZEOFBYTE) >>> 3 * SIZEOFBYTE) & MASK);
+        tmp[3] = (byte) (((buffer << 0) >>> 3 * SIZEOFBYTE) & MASK);
+        return tmp;
+    }
+
     private void fillUpBufferWithPartOfValueBits(int value, int bitsCount, int shift) {
         prepareBuffer(shift);
         value >>>= (bitsCount - shift);
@@ -68,14 +81,6 @@ public class BinaryIO {
         return shift == SIZEOFINT;
     }
 
-    private void clearBuffer() {
-        buffer = 0;
-    }
-
-    private int freeBitsInBuffer() {
-        return SIZEOFINT - bitsInBuffer;
-    }
-
     private void writeValueToBuffer(int value, int bitsCount) {
         buffer <<= bitsCount;
         buffer |= value;
@@ -86,13 +91,8 @@ public class BinaryIO {
         return freeBitsInBuffer() > bitsCount;
     }
 
-    private byte[] bufferToByteArray() {
-        byte[] tmp = new byte[BYTESININT];
-        tmp[0] = (byte) (((buffer << 3*SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
-        tmp[1] = (byte) (((buffer << 2*SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
-        tmp[2] = (byte) (((buffer << SIZEOFBYTE) >>> 3*SIZEOFBYTE) & MASK);
-        tmp[3] = (byte) (((buffer << 0) >>> 3*SIZEOFBYTE) & MASK);
-        return tmp;
+    private int freeBitsInBuffer() {
+        return SIZEOFINT - bitsInBuffer;
     }
 
     public void Flush() {
@@ -133,17 +133,6 @@ public class BinaryIO {
         }
     }
 
-    private int readBitsFromBuffer(int bitsCount) {
-        int shift = freeBitsInBuffer();
-
-        int copy = buffer;
-        int result = ((copy << shift) >>> (SIZEOFINT - bitsCount));
-        buffer <<= (bitsCount + shift);
-        bitsInBuffer -= bitsCount;
-        buffer >>>= (bitsCount + shift);
-        return result;
-    }
-
     private boolean isSpaceForByteInBuffer() {
         return bitsInBuffer <= SIZEOFINT - SIZEOFBYTE;
     }
@@ -158,6 +147,17 @@ public class BinaryIO {
 
     public boolean HaveMoreData() {
         return dataPointer < data.length;
+    }
+
+    private int readBitsFromBuffer(int bitsCount) {
+        int shift = freeBitsInBuffer();
+
+        int copy = buffer;
+        int result = ((copy << shift) >>> (SIZEOFINT - bitsCount));
+        buffer <<= (bitsCount + shift);
+        bitsInBuffer -= bitsCount;
+        buffer >>>= (bitsCount + shift);
+        return result;
     }
 
     public int GetTotalBytesProceeded() {

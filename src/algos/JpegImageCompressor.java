@@ -572,7 +572,7 @@ public class JpegImageCompressor implements IImageCompressor {
             while (currentElementIsZero(line[curIndex]) && isNotLastElementInLine(line, curIndex)) {
                 counter++;
                 if (counter == 256) {
-                    bitsPointer = addPairToArray(quantities, bitsPointer, (byte)255, (byte)0); //при раскодировке этот ноль пишется в результат, из битового массива ничего не читается
+                    bitsPointer = addPairToArray(quantities, bitsPointer, (byte) 255, (byte) 0); //при раскодировке этот ноль пишется в результат, из битового массива ничего не читается
                     counter = 0;
                 }
                 ++curIndex;
@@ -593,7 +593,7 @@ public class JpegImageCompressor implements IImageCompressor {
         return bitsPointer;
     }
 
-    private int addPairToArray(byte[] array, int startIndex, byte firstNumber, byte secondNumber ){
+    private int addPairToArray(byte[] array, int startIndex, byte firstNumber, byte secondNumber) {
         array[startIndex] = firstNumber;
         array[startIndex + 1] = secondNumber;
         return startIndex + 2;
