@@ -157,6 +157,61 @@ public class MainController {
         resultFiles = new File[selectedFiles.length];
         workTime = new long[selectedFiles.length];
         coefficient = new float[selectedFiles.length];
+        createCompressor();
+
+        for (int i = 0; i < selectedFiles.length; ++i) {
+            try {
+                readAndCompressImage(i);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        UpdateStatisticsFields();
+    }
+
+    private void readAndCompressImage(int i) throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(selectedFiles[i]);
+
+        long startTime = System.currentTimeMillis();
+        byte[] result = compressor.Compress(bufferedImage);
+        long endTime = System.currentTimeMillis();
+
+        workTime[i] = endTime - startTime;
+
+        String filename = createOutputFile(i, result);
+
+        resultFiles[i] = new File(filename);
+        coefficient[i] = calculateCompressionCoefficient(i);
+
+        saveCompressionStatistics(i, bufferedImage, startTime, endTime);
+    }
+
+    private float calculateCompressionCoefficient(int i) {
+        return 1.0f * selectedFiles[i].length() / resultFiles[i].length();
+    }
+
+    private String createOutputFile(int i, byte[] result) throws IOException {
+        String filename = destinationFolder + selectedFiles[i].getName() + "c";
+        FileOutputStream fos = new FileOutputStream(filename);
+        fos.write(result);
+        fos.close();
+        return filename;
+    }
+
+    private void saveCompressionStatistics(int i, BufferedImage bufferedImage, long startTime, long endTime) {
+        ImageStatistics imageStatistics = new ImageStatistics();
+        imageStatistics.SetName(selectedFiles[i].getName());
+        imageStatistics.SetOriginalSize(selectedFiles[i].length());
+        imageStatistics.SetCompressedSize(resultFiles[i].length());
+        imageStatistics.SetImageType(imageTypes[i]);
+        imageStatistics.SetHashCode(bufferedImage.hashCode());
+        imageStatistics.SetWorkTime(endTime - startTime);
+        imageStatistics.SetIsCompressionStatistics(true);
+        Statistics.GetInstance().AddItem(imageStatistics);
+    }
+
+    private void createCompressor() {
         switch (cbMethod.getSelectedIndex()) {
             case 0:
                 compressor = new RleImageCompressor();
@@ -171,34 +226,18 @@ public class MainController {
                 compressor = new JpegImageCompressor();
                 break;
         }
+    }
 
+    private void BtDecompressClick(ActionEvent arg0) {
+        proceeded = true;
+        resultFiles = new File[selectedFiles.length];
+        workTime = new long[selectedFiles.length];
+        coefficient = new float[selectedFiles.length];
+        createCompressor();
         for (int i = 0; i < selectedFiles.length; ++i) {
             try {
-                BufferedImage bufferedImage = ImageIO.read(selectedFiles[i]);
+                decompressImageFromFile(i);
 
-                long startTime = System.currentTimeMillis();
-                byte[] result = compressor.Compress(bufferedImage);
-                long endTime = System.currentTimeMillis();
-
-                workTime[i] = endTime - startTime;
-
-                String filename = destinationFolder + selectedFiles[i].getName() + "c";
-                FileOutputStream fos = new FileOutputStream(filename);
-                fos.write(result);
-                fos.close();
-
-                resultFiles[i] = new File(filename);
-                coefficient[i] = 1.0f * selectedFiles[i].length() / resultFiles[i].length();
-
-                ImageStatistics imageStatistics = new ImageStatistics();
-                imageStatistics.SetName(selectedFiles[i].getName());
-                imageStatistics.SetOriginalSize(selectedFiles[i].length());
-                imageStatistics.SetCompressedSize(resultFiles[i].length());
-                imageStatistics.SetImageType(imageTypes[i]);
-                imageStatistics.SetHashCode(bufferedImage.hashCode());
-                imageStatistics.SetWorkTime(endTime - startTime);
-                imageStatistics.SetIsCompressionStatistics(true);
-                Statistics.GetInstance().AddItem(imageStatistics);
             } catch (IOException e) {
 
             }
@@ -207,60 +246,49 @@ public class MainController {
         UpdateStatisticsFields();
     }
 
-    private void BtDecompressClick(ActionEvent arg0) {
-        proceeded = true;
-        resultFiles = new File[selectedFiles.length];
-        workTime = new long[selectedFiles.length];
-        coefficient = new float[selectedFiles.length];
-        switch (cbMethod.getSelectedIndex()) {
-            case 0:
-                compressor = new RleImageCompressor();
-                break;
-            case 1:
-                compressor = new LzwImageCompressor();
-                break;
-            case 2:
-                compressor = new HuffmanImageCompressor();
-                break;
-            case 3:
-                compressor = new JpegImageCompressor();
-                break;
-        }
-        for (int i = 0; i < selectedFiles.length; ++i) {
-            try {
-                FileInputStream fis = new FileInputStream(selectedFiles[i].getAbsoluteFile());
-                byte[] bytes = new byte[(int) selectedFiles[i].length() + 1];
-                fis.read(bytes);
+    private void decompressImageFromFile(int i) throws IOException {
+        byte[] bytes = readBytesFromBile(i);
 
-                long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
 
-                BufferedImage bufferedImage = compressor.Decompress(bytes);
-                long endTime = System.currentTimeMillis();
-                workTime[i] = endTime - startTime;
+        BufferedImage bufferedImage = compressor.Decompress(bytes);
 
-                String filename = destinationFolder + "_" + selectedFiles[i].getName().substring(0, selectedFiles[i].getName().length() - 1);
-                File outputFile = new File(filename);
-                ImageIO.write(bufferedImage, "bmp", outputFile);
+        long endTime = System.currentTimeMillis();
 
-                resultFiles[i] = outputFile;
-                coefficient[i] = 1.0f * resultFiles[i].length() / selectedFiles[i].length();
+        workTime[i] = endTime - startTime;
 
-                ImageStatistics imageStatistics = new ImageStatistics();
-                imageStatistics.SetName(resultFiles[i].getName());
-                imageStatistics.SetOriginalSize(resultFiles[i].length());
-                imageStatistics.SetCompressedSize(selectedFiles[i].length());
-                imageStatistics.SetImageType(imageTypes[i]);
-                imageStatistics.SetHashCode(bufferedImage.hashCode());
-                imageStatistics.SetWorkTime(endTime - startTime);
-                imageStatistics.SetIsCompressionStatistics(false);
-                Statistics.GetInstance().AddItem(imageStatistics);
+        File outputFile = createOutputFile(i, bufferedImage);
+        resultFiles[i] = outputFile;
 
-            } catch (IOException e) {
+        coefficient[i] = 1.0f * resultFiles[i].length() / selectedFiles[i].length();
 
-            }
+        saveDecompressionStatistics(i, startTime, bufferedImage, endTime);
+    }
 
-        }
-        UpdateStatisticsFields();
+    private File createOutputFile(int i, BufferedImage bufferedImage) throws IOException {
+        String filename = destinationFolder + "_" + selectedFiles[i].getName().substring(0, selectedFiles[i].getName().length() - 1);
+        File outputFile = new File(filename);
+        ImageIO.write(bufferedImage, "bmp", outputFile);
+        return outputFile;
+    }
+
+    private byte[] readBytesFromBile(int i) throws IOException {
+        FileInputStream fis = new FileInputStream(selectedFiles[i].getAbsoluteFile());
+        byte[] bytes = new byte[(int) selectedFiles[i].length() + 1];
+        fis.read(bytes);
+        return bytes;
+    }
+
+    private void saveDecompressionStatistics(int i, long startTime, BufferedImage bufferedImage, long endTime) {
+        ImageStatistics imageStatistics = new ImageStatistics();
+        imageStatistics.SetName(resultFiles[i].getName());
+        imageStatistics.SetOriginalSize(resultFiles[i].length());
+        imageStatistics.SetCompressedSize(selectedFiles[i].length());
+        imageStatistics.SetImageType(imageTypes[i]);
+        imageStatistics.SetHashCode(bufferedImage.hashCode());
+        imageStatistics.SetWorkTime(endTime - startTime);
+        imageStatistics.SetIsCompressionStatistics(false);
+        Statistics.GetInstance().AddItem(imageStatistics);
     }
 
     private void SpinnerValueChanged(ChangeEvent arg0) {
