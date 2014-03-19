@@ -237,20 +237,25 @@ public class LZW implements ICompressor {
                 }
                 bytesCount = addDataByCode(bytesCount, table);
             } else {
-                if (tableIncludesValueCode(table)) {
-
-                    bytesCount = createNewEntryInTable(bytesCount, table);
-                    prevCode = valueCode;
-                } else {
-                    valueCode = nextCode;
-                    bytesCount = createNewEntryInTable(bytesCount, table);
-                    prevCode = valueCode;
-                }
+                bytesCount = handleNonClearCode(bytesCount, table);
             }
             valueCode = reader.ReadBits(bitsInCode);
         }
 
         return Arrays.copyOf(buffer, bytesCount);
+    }
+
+    private int handleNonClearCode(int bytesCount, ListOfBytes[] table) {
+        if (tableIncludesValueCode(table)) {
+
+            bytesCount = createNewEntryInTable(bytesCount, table);
+            prevCode = valueCode;
+        } else {
+            valueCode = nextCode;
+            bytesCount = createNewEntryInTable(bytesCount, table);
+            prevCode = valueCode;
+        }
+        return bytesCount;
     }
 
     private int createNewEntryInTable(int bytesCount, ListOfBytes[] table) {
