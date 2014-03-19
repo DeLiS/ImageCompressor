@@ -268,7 +268,7 @@ public class MainController {
     private File createOutputFile(int i, BufferedImage bufferedImage) throws IOException {
         String filename = destinationFolder + "_" + selectedFiles[i].getName().substring(0, selectedFiles[i].getName().length() - 1);
         File outputFile = new File(filename);
-        ImageIO.write(bufferedImage, "bmp", outputFile);
+        ImageIO.write(bufferedImage, BMP, outputFile);
         return outputFile;
     }
 

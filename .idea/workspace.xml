@@ -4,7 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="Constants extracted">
+    <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="methods extracted from main controller">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -160,8 +160,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3927613" vertical-offset="4507" max-vertical-offset="5253">
-              <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
+            <state vertical-scroll-proportion="4.691689" vertical-offset="1651" max-vertical-offset="5253">
+              <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2213#2383#0" expanded="true" />
@@ -1032,7 +1032,11 @@
       <created>1395251632664</created>
       <updated>1395251632664</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="methods extracted from main controller">
+      <created>1395252213645</created>
+      <updated>1395252213645</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1081,7 +1085,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="JPEGImageCompressor methods rearranged&#10;" />
     <MESSAGE value="JPEGImageCompressor deleted unused method&#10;" />
     <MESSAGE value="JPEGImageCompressor CompressWithRLE refactored&#10;" />
     <MESSAGE value="JPEGImageCompressor green colour fixed&#10;" />
@@ -1106,7 +1109,8 @@
     <MESSAGE value="small changes" />
     <MESSAGE value="prefixes removed" />
     <MESSAGE value="Constants extracted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Constants extracted" />
+    <MESSAGE value="methods extracted from main controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="methods extracted from main controller" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1518,8 +1522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3927613" vertical-offset="4507" max-vertical-offset="5253">
-          <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
+        <state vertical-scroll-proportion="4.691689" vertical-offset="1651" max-vertical-offset="5253">
+          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2213#2383#0" expanded="true" />
