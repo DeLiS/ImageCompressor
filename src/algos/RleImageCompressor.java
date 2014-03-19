@@ -67,6 +67,7 @@ public class RleImageCompressor implements IImageCompressor {
                 int red = decompressed[i * width + j];
                 int green = decompressed[pixelCount + i * width + j];
                 int blue = decompressed[2 * pixelCount + i * width + j];
+                //костыли
                 if (red < 0)
                     red += 256;
                 if (green < 0)

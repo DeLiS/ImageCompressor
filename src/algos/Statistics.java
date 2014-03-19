@@ -5,14 +5,14 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Statistics {
-    private static Statistics _statistics = null;
-    private static String _filename = "statistics.txt";
-    TreeSet<ImageStatistics> _statisticsSet;
+    private static Statistics statistics = null;
+    private static String filename = "statistics.txt";
+    TreeSet<ImageStatistics> statisticsSet;
 
 
     private Statistics() {
-        _statisticsSet = new TreeSet<ImageStatistics>();
-        File f = new File(_filename);
+        statisticsSet = new TreeSet<ImageStatistics>();
+        File f = new File(filename);
         if (f.exists() && f.length() > 0) {
             ReadData();
         }
@@ -20,11 +20,11 @@ public class Statistics {
 
     private void ReadData() {
         try {
-            BufferedReader in = new BufferedReader(new FileReader(new File(_filename).getAbsoluteFile()));
+            BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()));
             while (in.ready()) {
                 String nextItem = in.readLine();
                 ImageStatistics imageStatistics = new ImageStatistics(nextItem);
-                _statisticsSet.add(imageStatistics);
+                statisticsSet.add(imageStatistics);
             }
             in.close();
         } catch (IOException e) {
@@ -36,20 +36,20 @@ public class Statistics {
     }
 
     public static Statistics GetInstance() {
-        if (_statistics == null) {
-            _statistics = new Statistics();
+        if (statistics == null) {
+            statistics = new Statistics();
         }
-        return _statistics;
+        return statistics;
     }
 
     public void AddItem(ImageStatistics imageStatistics) {
-        _statisticsSet.add(imageStatistics);
+        statisticsSet.add(imageStatistics);
     }
 
     public void WriteData() {
         try {
-            PrintWriter out = new PrintWriter(new File(_filename).getAbsoluteFile());
-            for (Iterator<ImageStatistics> it = _statisticsSet.iterator(); it.hasNext(); ) {
+            PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile());
+            for (Iterator<ImageStatistics> it = statisticsSet.iterator(); it.hasNext(); ) {
                 String tmp = it.next().Write();
                 out.println(tmp);
             }

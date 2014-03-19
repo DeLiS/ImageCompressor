@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0aaa412-5a85-44a8-a406-bcb0e08a2cb6" name="Default" comment="method extracted in lzw decompress">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/LZW.java" afterPath="$PROJECT_DIR$/src/algos/LZW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/RleImageCompressor.java" afterPath="$PROJECT_DIR$/src/algos/RleImageCompressor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algos/Statistics.java" afterPath="$PROJECT_DIR$/src/algos/Statistics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -994,7 +993,11 @@
       <created>1395250839478</created>
       <updated>1395250839478</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="method extracted in lzw decompress">
+      <created>1395251182371</created>
+      <updated>1395251182371</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
