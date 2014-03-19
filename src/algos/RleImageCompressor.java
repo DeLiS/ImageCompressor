@@ -16,6 +16,22 @@ public class RleImageCompressor implements IImageCompressor {
         byte[] green = new byte[pixelCount];
         byte[] blue = new byte[pixelCount];
 
+        getColourArraysFromImage(image, width, height, red, green, blue);
+        RunLengthEncoder rle = new RunLengthEncoder();
+        byte[] compressedRed = rle.Compress(red);
+        byte[] compressedGreen = rle.Compress(green);
+        byte[] compressedBlue = rle.Compress(blue);
+        ByteBuffer bb = ByteBuffer.allocate(8 + compressedRed.length + compressedGreen.length + compressedBlue.length);
+        bb.putInt(width);
+        bb.putInt(height);
+        putArrayInByteBuffer(compressedRed, bb);
+        putArrayInByteBuffer(compressedGreen, bb);
+        putArrayInByteBuffer(compressedBlue, bb);
+
+        return bb.array();
+    }
+
+    private void getColourArraysFromImage(BufferedImage image, int width, int height, byte[] red, byte[] green, byte[] blue) {
         int current = 0;
         for (int j = 0; j < height; ++j) {
             for (int i = 0; i < width; ++i) {
@@ -26,29 +42,17 @@ public class RleImageCompressor implements IImageCompressor {
                 current++;
             }
         }
-        RunLengthEncoder rle = new RunLengthEncoder();
-        byte[] compressedRed = rle.Compress(red);
-        byte[] compressedGreen = rle.Compress(green);
-        byte[] compressedBlue = rle.Compress(blue);
-        ByteBuffer bb = ByteBuffer.allocate(8 + compressedRed.length + compressedGreen.length + compressedBlue.length);
-        bb.putInt(width);
-        bb.putInt(height);
+    }
+
+    private void putArrayInByteBuffer(byte[] compressedRed, ByteBuffer bb) {
         for (int i = 0; i < compressedRed.length; ++i) {
             bb.put(compressedRed[i]);
         }
-        for (int i = 0; i < compressedGreen.length; ++i) {
-            bb.put(compressedGreen[i]);
-        }
-        for (int i = 0; i < compressedBlue.length; ++i) {
-            bb.put(compressedBlue[i]);
-        }
-
-        return bb.array();
     }
 
     @Override
     public BufferedImage Decompress(byte[] image) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(image.length);
+        ByteBuffer byteBuffer;
         byteBuffer = ByteBuffer.wrap(image);
         int width = byteBuffer.getInt();
         int height = byteBuffer.getInt();
