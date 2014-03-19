@@ -112,13 +112,13 @@ public class MainController {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             proceeded = false;
             selectedFiles = fileChooser.getSelectedFiles();
+            imageTypes = new int[selectedFiles.length];
             dlmSelectedFiles.clear();
             for (int i = 0; i < selectedFiles.length; ++i) {
                 dlmSelectedFiles.addElement(selectedFiles[i]);
             }
         }
         UpdateStatisticsFields();
-        imageTypes = new int[selectedFiles.length];
 
     }
 
