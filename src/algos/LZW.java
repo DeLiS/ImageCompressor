@@ -241,23 +241,13 @@ public class LZW implements ICompressor {
                 }
                 bytesCount = addDataByCode(bytesCount, table);
             } else {
-                if (table[valueCode] != null) {
+                if (tableIncludesValueCode(table)) {
 
-                    table[nextCode] = new ListOfBytes();
-                    table[nextCode].list = (LinkedList<Byte>) table[prevCode].list.clone();
-                    table[nextCode].list.add(table[valueCode].list.get(0));
-                    bytesCount += AddData(bytesCount, valueCode, table);
-                    nextCode += 1;
-                    checkNextCodeSize();
+                    bytesCount = createNewEntryInTable(bytesCount, table);
                     prevCode = valueCode;
                 } else {
                     valueCode = nextCode;
-                    table[nextCode] = new ListOfBytes();
-                    table[nextCode].list = (LinkedList<Byte>) table[prevCode].list.clone();
-                    table[nextCode].list.add( table[valueCode].list.get(0));
-                    bytesCount += AddData(bytesCount, valueCode, table);
-                    nextCode += 1;
-                    checkNextCodeSize();
+                    bytesCount = createNewEntryInTable(bytesCount, table);
                     prevCode = valueCode;
                 }
             }
@@ -265,6 +255,20 @@ public class LZW implements ICompressor {
         }
 
         return Arrays.copyOf(buffer, bytesCount);
+    }
+
+    private int createNewEntryInTable(int bytesCount, ListOfBytes[] table) {
+        table[nextCode] = new ListOfBytes();
+        table[nextCode].list = (LinkedList<Byte>) table[prevCode].list.clone();
+        table[nextCode].list.add(table[valueCode].list.get(0));
+        bytesCount += AddData(bytesCount, valueCode, table);
+        nextCode += 1;
+        checkNextCodeSize();
+        return bytesCount;
+    }
+
+    private boolean tableIncludesValueCode(ListOfBytes[] table) {
+        return table[valueCode] != null;
     }
 
     private void resetCodeArrayAndParams(ListOfBytes[] table) {
