@@ -226,6 +226,12 @@ public class LZW implements ICompressor {
         ListOfBytes[] table = new ListOfBytes[TABLE_CAPACITY];
         InitCodeArray(table);
 
+        bytesCount = rebuildDataWithTable(bytesCount, reader, table);
+
+        return Arrays.copyOf(buffer, bytesCount);
+    }
+
+    private int rebuildDataWithTable(int bytesCount, BinaryIO reader, ListOfBytes[] table) {
         valueCode = reader.ReadBits(bitsInCode);
         prevCode = EMPTY_CODE;
         while (isNotEndCode()) {
@@ -233,7 +239,7 @@ public class LZW implements ICompressor {
                 resetCodeArrayAndParams(table);
                 readNextCode(reader);
                 if (isEndCode()) {
-                    return Arrays.copyOf(buffer, bytesCount);
+                    break;
                 }
                 bytesCount = addDataByCode(bytesCount, table);
             } else {
@@ -241,8 +247,7 @@ public class LZW implements ICompressor {
             }
             valueCode = reader.ReadBits(bitsInCode);
         }
-
-        return Arrays.copyOf(buffer, bytesCount);
+        return bytesCount;
     }
 
     private int handleNonClearCode(int bytesCount, ListOfBytes[] table) {
