@@ -21,6 +21,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class MainController {
+    public static final String BMP = "bmp";
+    public static final String BMPC = "bmpc";
+    public static final String BMP_AND_BMPC = "bmp and bmpc";
+    public static final String CHOOSE_FILES = "Choose Files";
+    public static final String CHOOSE_DESTINATION_DIRECTORY = "Choose destination directory";
     public DefaultListModel dlmSelectedFiles;
     public JLabel lbDestFolder;
     public IImageCompressor compressor;
@@ -102,8 +107,8 @@ public class MainController {
     private void BtSelectFilesClickEventHandler(ActionEvent arg0) {
         fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("bmp and bmpc", "bmp", "bmpc"));
-        int returnValue = fileChooser.showDialog(null, "Choose Files");
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(BMP_AND_BMPC, BMP, BMPC));
+        int returnValue = fileChooser.showDialog(null, CHOOSE_FILES);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             proceeded = false;
             selectedFiles = fileChooser.getSelectedFiles();
@@ -137,7 +142,7 @@ public class MainController {
     private void BtChooseDestFolderClickEventHandler(ActionEvent arg0) {
         fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int returnValue = fileChooser.showDialog(null, "Choose destination directory");
+        int returnValue = fileChooser.showDialog(null, CHOOSE_DESTINATION_DIRECTORY);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             destinationFolder = fileChooser.getSelectedFile().getPath();
             destinationFolder += "\\";
